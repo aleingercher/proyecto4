@@ -1,6 +1,7 @@
 package egg.proyecto4.entidades;
 
 
+
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
