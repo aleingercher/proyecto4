@@ -1,8 +1,97 @@
 package egg.proyecto4.entidades;
 
-public class Compra {
+import java.io.Serializable;
+import java.util.Date;
+import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import org.hibernate.annotations.GenericGenerator;
 
-    // CONSTRUCTORES
+@Entity
+public class Compra implements Serializable{
 
+    @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
+    @ManyToOne
+    private Usuario usuario;
+    @OneToMany
+    private List<Producto> producto;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaCompra;
+    private Float precioTotal;
+    @Enumerated(EnumType.STRING)
+    private MedioPago medioPago;//crear paquete enum.
+    @OneToOne   //Dato que no esta en el cuadro hecho.. a consultar
+    private Envio envio;
     // GETTERS / SETTERS
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public List<Producto> getProducto() {
+        return producto;
+    }
+
+    public void setProducto(List<Producto> producto) {
+        this.producto = producto;
+    }
+
+    public Date getFechaCompra() {
+        return fechaCompra;
+    }
+
+    public void setFechaCompra(Date fechaCompra) {
+        this.fechaCompra = fechaCompra;
+    }
+
+    public Float getPrecioTotal() {
+        return precioTotal;
+    }
+
+    public void setPrecioTotal(Float precioTotal) {
+        this.precioTotal = precioTotal;
+    }
+
+    public MedioPago getMedioPago() {
+        return medioPago;
+    }
+
+    public void setMedioPago(MedioPago medioPago) {
+        this.medioPago = medioPago;
+    }
+
+    public Envio getEnvio() {
+        return envio;
+    }
+
+    public void setEnvio(Envio envio) {
+        this.envio = envio;
+    }
+    
+    
+    
+    
 }
