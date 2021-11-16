@@ -1,6 +1,7 @@
 package egg.proyecto4.entidades;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -14,7 +15,7 @@ public class Cerveza implements Serializable{
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Enumerated(EnumType.STRING)
-    private Familia familia;//crear paquete enum
+    private Familia familia;//crear paquete enum 
 
     public Familia getFamilia() {
         return familia;
