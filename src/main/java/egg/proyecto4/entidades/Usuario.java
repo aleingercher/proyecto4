@@ -1,11 +1,8 @@
 package egg.proyecto4.entidades;
 
-import egg.proyecto4.enums.Role_e;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
@@ -29,8 +26,7 @@ public class Usuario implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date nacimineto;
     private String celular;
-    @Enumerated(EnumType.STRING)
-    private String role;
+    private String role;//--
 
     // GETTERS / SETTERS
     public String getId() {

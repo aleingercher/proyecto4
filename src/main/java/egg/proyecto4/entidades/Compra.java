@@ -1,12 +1,9 @@
 package egg.proyecto4.entidades;
 
-import egg.proyecto4.enums.MedioPago_e;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -30,9 +27,8 @@ public class Compra implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCompra;
     private Float precioTotal;
-    @Enumerated(EnumType.STRING)
-    private String medioPago;
-    @OneToOne   //Dato que no esta en el cuadro hecho.. a consultar
+    private String medioPago;//--
+    @OneToOne   
     private Envio envio;
     // GETTERS / SETTERS
 

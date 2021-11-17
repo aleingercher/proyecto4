@@ -1,7 +1,6 @@
 package egg.proyecto4.entidades;
 
 import egg.proyecto4.enums.Categoria_e;
-import egg.proyecto4.enums.Origen_e;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -20,21 +19,17 @@ public class Producto implements Serializable {
     private String id;
     @Enumerated(EnumType.STRING)
     private Categoria_e categoria;
-    @Enumerated(EnumType.STRING)
-    private String marca;//crear paquete enum
+    private String marca;//--
     private String otrasMarcas;
     private Float precio;
     private Integer stock;
     private Integer vendidos;
     private String descripcion;
-    @Enumerated(EnumType.STRING)
-    private String envase;//crear paquete enum
-    @Enumerated(EnumType.STRING)
-    private String tipo;//crear paquete enum
+    private String envase;//--
+    private String tipo;//--
     @OneToOne
     private Foto foto;
-    @Enumerated(EnumType.STRING)
-    private String origen;
+    private String origen;//--
 
     // GETTERS / SETTERS
 
