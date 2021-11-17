@@ -1,5 +1,6 @@
 package egg.proyecto4.entidades;
 
+import egg.proyecto4.enums.MedioPago_e;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
@@ -16,7 +17,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Compra implements Serializable{
+public class Compra implements Serializable {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -30,7 +31,7 @@ public class Compra implements Serializable{
     private Date fechaCompra;
     private Float precioTotal;
     @Enumerated(EnumType.STRING)
-    private MedioPago medioPago;//crear paquete enum.
+    private MedioPago_e medioPago;
     @OneToOne   //Dato que no esta en el cuadro hecho.. a consultar
     private Envio envio;
     // GETTERS / SETTERS
@@ -75,11 +76,11 @@ public class Compra implements Serializable{
         this.precioTotal = precioTotal;
     }
 
-    public MedioPago getMedioPago() {
+    public MedioPago_e getMedioPago() {
         return medioPago;
     }
 
-    public void setMedioPago(MedioPago medioPago) {
+    public void setMedioPago(MedioPago_e medioPago) {
         this.medioPago = medioPago;
     }
 
@@ -90,8 +91,5 @@ public class Compra implements Serializable{
     public void setEnvio(Envio envio) {
         this.envio = envio;
     }
-    
-    
-    
-    
+
 }

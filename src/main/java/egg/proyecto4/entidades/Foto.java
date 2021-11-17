@@ -7,8 +7,8 @@ import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Foto implements Serializable{
-    
+public class Foto implements Serializable {
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid")
@@ -18,7 +18,6 @@ public class Foto implements Serializable{
     private byte contenido;
 
     // GETTERS / SETTERS
-
     public String getId() {
         return id;
     }
