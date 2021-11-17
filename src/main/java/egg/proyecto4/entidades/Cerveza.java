@@ -10,7 +10,7 @@ import javax.persistence.Enumerated;
 public class Cerveza extends Producto {
 
     @Enumerated(EnumType.STRING)
-    private CervezaFamilia_e familia;//crear paquete enum 
+    private CervezaFamilia_e familia;//crear paquete enums
 
     public CervezaFamilia_e getFamilia() {
         return familia;
