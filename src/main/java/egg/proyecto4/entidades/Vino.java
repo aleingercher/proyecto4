@@ -10,25 +10,26 @@ import javax.persistence.Enumerated;
 public class Vino extends Producto {
     
     @Enumerated(EnumType.STRING)
-    private Varietal varietal;//debatir  atributo varietal
+    private String varietal;//debatir  atributo varietal
     @Enumerated(EnumType.STRING)
-    private VinoBodega_e bodega;
+    private String bodega;
 
     // GETTERS / SETTERS
-    public Varietal getVarietal() {
+
+    public String getVarietal() {
         return varietal;
     }
 
-    public void setVarietal(Varietal varietal) {
+    public void setVarietal(String varietal) {
         this.varietal = varietal;
     }
 
-    public VinoBodega_e getBodega() {
+    public String getBodega() {
         return bodega;
     }
 
-    public void setBodega(VinoBodega_e bodega) {
+    public void setBodega(String bodega) {
         this.bodega = bodega;
     }
-
+    
 }

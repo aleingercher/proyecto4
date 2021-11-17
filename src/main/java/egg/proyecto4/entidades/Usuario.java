@@ -30,7 +30,7 @@ public class Usuario implements Serializable {
     private Date nacimineto;
     private String celular;
     @Enumerated(EnumType.STRING)
-    private Role_e role;
+    private String role;
 
     // GETTERS / SETTERS
     public String getId() {
@@ -113,12 +113,14 @@ public class Usuario implements Serializable {
         this.celular = celular;
     }
 
-    public Role_e getRole() {
+    public String getRole() {
         return role;
     }
 
-    public void setRole(Role_e role) {
+    public void setRole(String role) {
         this.role = role;
     }
+
+    
 
 }

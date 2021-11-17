@@ -31,7 +31,7 @@ public class Compra implements Serializable {
     private Date fechaCompra;
     private Float precioTotal;
     @Enumerated(EnumType.STRING)
-    private MedioPago_e medioPago;
+    private String medioPago;
     @OneToOne   //Dato que no esta en el cuadro hecho.. a consultar
     private Envio envio;
     // GETTERS / SETTERS
@@ -76,11 +76,11 @@ public class Compra implements Serializable {
         this.precioTotal = precioTotal;
     }
 
-    public MedioPago_e getMedioPago() {
+    public String getMedioPago() {
         return medioPago;
     }
 
-    public void setMedioPago(MedioPago_e medioPago) {
+    public void setMedioPago(String medioPago) {
         this.medioPago = medioPago;
     }
 
@@ -92,4 +92,5 @@ public class Compra implements Serializable {
         this.envio = envio;
     }
 
+   
 }
