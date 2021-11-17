@@ -1,26 +1,20 @@
 package egg.proyecto4.entidades;
 
-import java.io.Serializable;
+import egg.proyecto4.enums.VinoBodega_e;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Vino implements Serializable{
+public class Vino extends Producto {
     
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Enumerated(EnumType.STRING)
-    private Varietal varietal;//crear paquete enum
+    private Varietal varietal;//debatir  atributo varietal
     @Enumerated(EnumType.STRING)
-    private Bodega bodega;//crear paquete enum
+    private VinoBodega_e bodega;
 
     // GETTERS / SETTERS
-
     public Varietal getVarietal() {
         return varietal;
     }
@@ -29,13 +23,12 @@ public class Vino implements Serializable{
         this.varietal = varietal;
     }
 
-    public Bodega getBodega() {
+    public VinoBodega_e getBodega() {
         return bodega;
     }
 
-    public void setBodega(Bodega bodega) {
+    public void setBodega(VinoBodega_e bodega) {
         this.bodega = bodega;
     }
-    
-    
+
 }

@@ -1,5 +1,6 @@
 package egg.proyecto4.entidades;
 
+import egg.proyecto4.enums.Role_e;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
@@ -12,7 +13,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -29,11 +30,9 @@ public class Usuario implements Serializable{
     private Date nacimineto;
     private String celular;
     @Enumerated(EnumType.STRING)
-    private UserRol userRol;//crear paquete enum
-    
+    private Role_e role;
 
     // GETTERS / SETTERS
-
     public String getId() {
         return id;
     }
@@ -114,13 +113,12 @@ public class Usuario implements Serializable{
         this.celular = celular;
     }
 
-    public UserRol getUserRol() {
-        return userRol;
+    public Role_e getRole() {
+        return role;
     }
 
-    public void setUserRol(UserRol userRol) {
-        this.userRol = userRol;
+    public void setRole(Role_e role) {
+        this.role = role;
     }
-    
-    
+
 }

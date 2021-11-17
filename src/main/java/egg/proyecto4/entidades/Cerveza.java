@@ -1,29 +1,23 @@
 package egg.proyecto4.entidades;
 
-import java.io.Serializable;
+import egg.proyecto4.enums.CervezaFamilia_e;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Cerveza implements Serializable{
-    @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Enumerated(EnumType.STRING)
-    private Familia familia;//crear paquete enum 
+public class Cerveza extends Producto {
 
-    public Familia getFamilia() {
+    @Enumerated(EnumType.STRING)
+    private CervezaFamilia_e familia;//crear paquete enum 
+
+    public CervezaFamilia_e getFamilia() {
         return familia;
     }
 
-    public void setFamilia(Familia familia) {
+    public void setFamilia(CervezaFamilia_e familia) {
         this.familia = familia;
     }
 
-    
 }
