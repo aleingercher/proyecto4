@@ -11,8 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 public class Tarjeta implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    
     private String nroTarjeta;
     private String vencimiento;
     private String titular;
