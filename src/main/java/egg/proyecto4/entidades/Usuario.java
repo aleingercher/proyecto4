@@ -17,6 +17,7 @@ public class Usuario implements Serializable {
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     private String username;
+    private String clave;
     private String nombre;
     private String apellido;
     private String email;
@@ -44,6 +45,16 @@ public class Usuario implements Serializable {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+    
+    
 
     public String getNombre() {
         return nombre;
