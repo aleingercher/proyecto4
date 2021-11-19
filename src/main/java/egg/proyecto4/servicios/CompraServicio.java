@@ -1,9 +1,13 @@
 package egg.proyecto4.servicios;
 
 import egg.proyecto4.entidades.Compra;
+import egg.proyecto4.entidades.Envio;
+import egg.proyecto4.entidades.Producto;
+import egg.proyecto4.entidades.Usuario;
 import egg.proyecto4.errores.errores;
 import egg.proyecto4.repositorios.CompraRepositorio;
 import java.util.Date;
+import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,47 +17,49 @@ public class CompraServicio {
 
     @Autowired
     private CompraRepositorio compraRepo;
+    @Autowired
+    private EnvioServicio serviEnvio;
+    @Autowired
+    private UsuarioServicio serviUser;
 
-    private void validar(String envio, String medioPago, String producto, String usuario) throws errores {
+    private void validar(Envio envio, String medioPago, List<Producto> producto, Usuario usuario) throws errores {
 
-        if (envio == null || envio.isEmpty()) {
-            throw new errores("Debe completar los datos del envío"); // Descripción ok?
+        if (envio == null){
+            throw new errores("Debe completar los datos del envío");
         } else if (medioPago == null || medioPago.isEmpty()) {
             throw new errores("Debe seleccionar un medio de pago.");
         } else if (producto == null || producto.isEmpty()) {
-            throw new errores("Debe seleccionar un producto");
-        } else if (usuario == null || usuario.isEmpty()) {
-            throw new errores("Debe seleccionar su usuario."); // ver esto
+            throw new errores("Debe seleccionar un producto.");
+        } else if (usuario == null) {
+            throw new errores("No se encontró el usuario.");
         }
 
-        //Siendo que son enums, no es necesario pattern y match (revisar).
     }
 
     // Guardar Compra
     @Transactional
-    public void guardarCompra(String envio, Date fechaCompra, String medioPago, String producto, String usuario) throws errores {
-
+    public void guardarCompra(String direccion, String medioPago, List<Producto> producto, String email, Float precioTotal) throws errores {
+        
+        Compra compra = new Compra();
+        compra.setFechaCompra(new Date());
+        
+        serviEnvio.guardarEnvio(direccion, compra.getFechaCompra()); 
+        Envio envio = serviEnvio.findByDirec(direccion);  
+        
+        Usuario usuario = serviUser.findByEmail(email); 
+        
         validar(envio, medioPago, producto, usuario);
 
-        Compra compra = new Compra();
+        
+        
         compra.setEnvio(envio);
-        compra.setFechaCompra(fechaCompra);
         compra.setMedioPago(medioPago);
-        compra.setPrecioTotal(Float.MIN_NORMAL); //ver si va así, o se pasa por parametro
+        compra.setPrecioTotal(precioTotal);
         compra.setProducto(producto);
         compra.setUsuario(usuario);
-        compraRepositorio.save(compra);
+        compraRepo.save(compra);
 
     }
 
-    // Modificar Compra
-    @Transactional
-    public void modificarCompra(String envio, Date fechaCompra, String medioPago, String producto, String usuario, String id) throws errores{
-        
-        validar(envio, medioPago, producto, usuario);
-        
-        Compra compra = compraRepo.findById(id).get();
-    }
-    
-    
+    // Modificar Compra (no creamos método debido a que no puede efectuar cambios post compras)
 }
