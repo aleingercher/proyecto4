@@ -18,16 +18,16 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.entidades.Cliente;
-import com.example.demo.errores.errorService;
 
 import egg.proyecto4.entidades.Usuario;
 import egg.proyecto4.enums.Role_e;
 import egg.proyecto4.errores.errores;
 import egg.proyecto4.repositorios.UsuarioRepositorio;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
 @Service
-public class UsuarioServicio {
+public class UsuarioServicio implements UserDetailsService {
+    
 
 	@Autowired
     private UsuarioRepositorio usuarioRepo; 
@@ -113,7 +113,7 @@ public class UsuarioServicio {
 		usuarioRepo.save(usuario);
 	}
 	
-		public void ModificarUsuario(String id,String nombre,String apellido, String email, String domicilio,String detalleDomicilio, String localidad, String celular, String clave, String clave2) throws errorService {
+		public void ModificarUsuario(String id,String nombre,String apellido, String email, String domicilio,String detalleDomicilio, String localidad, String celular, String clave, String clave2) throws errores {
 		
 		validar(nombre, apellido, email, domicilio, localidad, celular, clave, clave2);
 		
@@ -167,4 +167,9 @@ public class UsuarioServicio {
 			
 		
 	}
+
+    @Override
+    public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

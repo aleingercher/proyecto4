@@ -1,7 +1,6 @@
 package egg.proyecto4.servicios;
 
 import egg.proyecto4.entidades.Espirituosa;
-import egg.proyecto4.entidades.Foto;
 import egg.proyecto4.enums.Categoria_e;
 import egg.proyecto4.errores.errores;
 import egg.proyecto4.repositorios.EspirituosaRepositorio;
@@ -18,7 +17,7 @@ public class EspirituosaServicio {
     @Autowired
     private EspirituosaRepositorio espirituosaRepo;
     
-    private void validar(String descripcion, String envase,Foto foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
+    private void validar(String descripcion, String envase, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
         
         if (descripcion == null || descripcion.isEmpty()) {
             throw new errores("La descripción no puede estar vacía.");
@@ -48,35 +47,50 @@ public class EspirituosaServicio {
     
     //Guardar Espirituosa
     @Transactional
-    public void guardarEspirituosa (String descripcion, String envase,Foto foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
+    public void guardarEspirituosa (String descripcion, String envase,String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
         
-        validar(descripcion,envase,foto,marca,origen,otrasMarcas,tipo,precio,stock);
+        validar(descripcion,envase,marca,origen,tipo,precio,stock);
         
         Espirituosa espirituosa = new Espirituosa();
+        
         espirituosa.setCategoria(Categoria_e.ESPIRITUOSAS);
         espirituosa.setDescripcion(descripcion);
         espirituosa.setEnvase(envase);
-        espirituosa.setFoto(foto); //revisar
+        espirituosa.setFoto(foto);
         espirituosa.setMarca(marca);
         espirituosa.setOrigen(origen);
         espirituosa.setOtrasMarcas(otrasMarcas);
-        espirituosa.setPrecio(Float.NaN);
-        espirituosa.setStock(Integer.SIZE);
         espirituosa.setTipo(tipo);
-        espirituosa.setVendidos(Integer.SIZE);
+        espirituosa.setVendidos(0);
         espirituosa.setPrecio(precio);
         espirituosa.setStock(stock);
+        
         espirituosaRepo.save(espirituosa);
         
     }
     
     //Modificar Espirituosa
     @Transactional
-    public void modificarEspirituosa(String descripcion, String envase,Foto foto, String marca, String origen, String otrasMarcas, String tipo, String id, Float precio, Integer stock) throws errores {
+    public void modificarEspirituosa(String descripcion, String envase,String foto, String marca, String origen, String otrasMarcas, String tipo, String id, Float precio, Integer stock) throws errores {
         
-        validar(descripcion,envase,foto,marca,origen,otrasMarcas,tipo,precio,stock);
+        validar(descripcion,envase,marca,origen,tipo,precio,stock);
         
         Espirituosa espirituosa = espirituosaRepo.findById(id).get();
+        
+        espirituosa.setCategoria(Categoria_e.ESPIRITUOSAS);
+        espirituosa.setDescripcion(descripcion);
+        espirituosa.setEnvase(envase);
+        espirituosa.setFoto(foto);
+        espirituosa.setMarca(marca);
+        espirituosa.setOrigen(origen);
+        espirituosa.setOtrasMarcas(otrasMarcas);
+        espirituosa.setTipo(tipo);
+        espirituosa.setVendidos(0);
+        espirituosa.setPrecio(precio);
+        espirituosa.setStock(stock);
+        
+        espirituosaRepo.save(espirituosa);
+        
     }
     
     //Consultar Espirituosa
