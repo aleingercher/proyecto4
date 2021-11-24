@@ -7,7 +7,6 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
@@ -27,8 +26,7 @@ public class Producto implements Serializable {
     private String descripcion;
     private String envase;//--
     private String tipo;//--
-    @OneToOne
-    private Foto foto;
+    private String foto;
     private String origen;//--
 
     // GETTERS / SETTERS
@@ -113,11 +111,11 @@ public class Producto implements Serializable {
         this.tipo = tipo;
     }
 
-    public Foto getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(Foto foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
