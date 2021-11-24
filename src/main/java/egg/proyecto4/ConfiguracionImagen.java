@@ -15,4 +15,5 @@ public class ConfiguracionImagen implements WebMvcConfigurer{
         registry.addResourceHandler("/recursos/**").addResourceLocations("file:/C:/Producto/recursos/");
     }
 
+    //comentario solo para pullear (borrar)
 }
