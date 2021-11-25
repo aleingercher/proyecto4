@@ -29,8 +29,8 @@ spring:
         enabled: false
     servlet:
         multipart:
-            max-file-size:5MB
-            max-request-size:5MB
+            max-file-size: 5MB
+            max-request-size: 5MB
         session:
         cookie:
             http-only: true
