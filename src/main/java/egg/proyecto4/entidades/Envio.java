@@ -10,17 +10,17 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Envio implements Serializable{
-    
+public class Envio implements Serializable {
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
+    private String id;
     private String direccion;
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
 
     // GETTERS / SETTERS
-
     public String getDireccion() {
         return direccion;
     }
@@ -36,6 +36,15 @@ public class Envio implements Serializable{
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
     
     
+
 }

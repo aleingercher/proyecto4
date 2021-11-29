@@ -3,8 +3,6 @@ package egg.proyecto4.entidades;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Temporal;
@@ -12,13 +10,13 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    private String username;
+    private String clave;
     private String nombre;
     private String apellido;
     private String email;
@@ -28,12 +26,9 @@ public class Usuario implements Serializable{
     @Temporal(TemporalType.DATE)
     private Date nacimineto;
     private String celular;
-    @Enumerated(EnumType.STRING)
-    private UserRol userRol;//crear paquete enum
-    
+    private String role;//--
 
     // GETTERS / SETTERS
-
     public String getId() {
         return id;
     }
@@ -42,13 +37,15 @@ public class Usuario implements Serializable{
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getClave() {
+        return clave;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
+    
+    
 
     public String getNombre() {
         return nombre;
@@ -114,13 +111,14 @@ public class Usuario implements Serializable{
         this.celular = celular;
     }
 
-    public UserRol getUserRol() {
-        return userRol;
+    public String getRole() {
+        return role;
     }
 
-    public void setUserRol(UserRol userRol) {
-        this.userRol = userRol;
+    public void setRole(String role) {
+        this.role = role;
     }
+
     
-    
+
 }

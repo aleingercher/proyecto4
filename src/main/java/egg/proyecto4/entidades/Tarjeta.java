@@ -2,29 +2,22 @@ package egg.proyecto4.entidades;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Tarjeta implements Serializable{
+public class Tarjeta implements Serializable {
 
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "uuid2")
+    
     private String nroTarjeta;
     private String vencimiento;
     private String titular;
     private String ccv;
     @ManyToOne
     private Usuario usuario;
-    @OneToOne      //Dato que no esta en el cuadro hecho.. a consultar         
-    private Tarjeta tarjeta;
 
     // GETTERS / SETTERS
-
     public String getNroTarjeta() {
         return nroTarjeta;
     }
@@ -65,13 +58,4 @@ public class Tarjeta implements Serializable{
         this.usuario = usuario;
     }
 
-    public Tarjeta getTarjeta() {
-        return tarjeta;
-    }
-
-    public void setTarjeta(Tarjeta tarjeta) {
-        this.tarjeta = tarjeta;
-    }
-    
-    
 }

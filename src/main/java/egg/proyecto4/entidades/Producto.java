@@ -1,37 +1,34 @@
 package egg.proyecto4.entidades;
 
+import egg.proyecto4.enums.Categoria_e;
 import java.io.Serializable;
+import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 import org.hibernate.annotations.GenericGenerator;
 
-public class Producto implements Serializable{
-    
+@Entity
+public class Producto implements Serializable {
+
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
     @Enumerated(EnumType.STRING)
-    private Categoria categoria;//crear paquete enum
-    @Enumerated(EnumType.STRING)
-    private Marca marca;//crear paquete enum
-    private String otrasMarcas;       
-    private Float precio;       
-    private Integer stock;       
-    private Integer vendidos;       
+    private Categoria_e categoria;
+    private String marca;//--
+    private String otrasMarcas;
+    private Float precio;
+    private Integer stock;
+    private Integer vendidos;
     private String descripcion;
-    @Enumerated(EnumType.STRING)
-    private Envase envase;//crear paquete enum
-    @Enumerated(EnumType.STRING)
-    private Tipo tipo;//crear paquete enum
-    @OneToOne        
-    private Foto foto;       
-    @Enumerated(EnumType.STRING)
-    private Origen origen; //crear paquete enum       
-  
+    private String envase;//--
+    private String tipo;//--
+    private String foto;
+    private String origen;//--
+
     // GETTERS / SETTERS
 
     public String getId() {
@@ -42,19 +39,19 @@ public class Producto implements Serializable{
         this.id = id;
     }
 
-    public Categoria getCategoria() {
+    public Categoria_e getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria categoria) {
+    public void setCategoria(Categoria_e categoria) {
         this.categoria = categoria;
     }
 
-    public Marca getMarca() {
+    public String getMarca() {
         return marca;
     }
 
-    public void setMarca(Marca marca) {
+    public void setMarca(String marca) {
         this.marca = marca;
     }
 
@@ -98,37 +95,36 @@ public class Producto implements Serializable{
         this.descripcion = descripcion;
     }
 
-    public Envase getEnvase() {
+    public String getEnvase() {
         return envase;
     }
 
-    public void setEnvase(Envase envase) {
+    public void setEnvase(String envase) {
         this.envase = envase;
     }
 
-    public Tipo getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
-    public void setTipo(Tipo tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
-    public Foto getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(Foto foto) {
+    public void setFoto(String foto) {
         this.foto = foto;
     }
 
-    public Origen getOrigen() {
+    public String getOrigen() {
         return origen;
     }
 
-    public void setOrigen(Origen origen) {
+    public void setOrigen(String origen) {
         this.origen = origen;
     }
-    
-    
+   
 }

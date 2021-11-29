@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -16,7 +14,7 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-public class Compra implements Serializable{
+public class Compra implements Serializable {
 
     @Id
     @GeneratedValue(generator = "uuid")
@@ -29,9 +27,8 @@ public class Compra implements Serializable{
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCompra;
     private Float precioTotal;
-    @Enumerated(EnumType.STRING)
-    private MedioPago medioPago;//crear paquete enum.
-    @OneToOne   //Dato que no esta en el cuadro hecho.. a consultar
+    private String medioPago;//--
+    @OneToOne   
     private Envio envio;
     // GETTERS / SETTERS
 
@@ -75,11 +72,11 @@ public class Compra implements Serializable{
         this.precioTotal = precioTotal;
     }
 
-    public MedioPago getMedioPago() {
+    public String getMedioPago() {
         return medioPago;
     }
 
-    public void setMedioPago(MedioPago medioPago) {
+    public void setMedioPago(String medioPago) {
         this.medioPago = medioPago;
     }
 
@@ -90,8 +87,6 @@ public class Compra implements Serializable{
     public void setEnvio(Envio envio) {
         this.envio = envio;
     }
-    
-    
-    
-    
+
+   
 }

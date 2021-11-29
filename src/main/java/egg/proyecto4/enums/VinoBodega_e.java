@@ -1,0 +1,6 @@
+package egg.proyecto4.enums;
+
+public enum VinoBodega_e {
+
+	ALTAVISTA, ANDELUNA, ATAMISQUE, CATENA_ZAPATA, EL_MALEANTE, HUARPES, NORTON, PIATTELLI, RICCITELLI;
+}
