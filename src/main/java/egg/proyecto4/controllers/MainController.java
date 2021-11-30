@@ -9,14 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
 
 	@GetMapping("")
-	public String home() {
+	public String index() {
 		
-		return"Home";
+		return"index";
 	}
 	
 	@GetMapping("/home")
-	public String homee() {
+	public String home() {
 		
 		return "Home";
+	}
+	
+	@GetMapping("/menor")
+	public String menor() {
+		
+		return "menor";
 	}
 }
