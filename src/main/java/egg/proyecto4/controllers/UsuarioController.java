@@ -22,7 +22,7 @@ public class UsuarioController {
 	@Autowired
 	UsuarioServicio serviUsuario;
 	
-	@GetMapping("save")
+	@GetMapping("/save")
 	public String userSave() {
 		
 		return"Registro";
@@ -57,5 +57,7 @@ public class UsuarioController {
 		
 		return "modificarUsuario";
 	}
+	
+	
 	
 }
