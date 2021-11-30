@@ -1,9 +1,22 @@
 package egg.proyecto4.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("")
 public class MainController {
 
-    // ingrese contenido aqui
+	@GetMapping("")
+	public String home() {
+		
+		return"Home";
+	}
+	
+	@GetMapping("/home")
+	public String homee() {
+		
+		return "Home";
+	}
 }
