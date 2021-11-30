@@ -109,7 +109,6 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setCelular(celular);
 		usuario.setClave(encoder.encode(clave));
 		usuario.setRole(Role_e.USER.toString());
-		usuario.setUsername("dios");
 		
 		usuarioRepo.save(usuario);
 	}
@@ -148,10 +147,6 @@ public class UsuarioServicio implements UserDetailsService {
 	
 	public Usuario findByCelular(String celular) {
 		return usuarioRepo.findByCelular(celular);
-	}
-	
-	public Usuario findById(String id) {
-		return usuarioRepo.getById(id);
 	}
     
 	
