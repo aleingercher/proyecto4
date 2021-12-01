@@ -119,7 +119,7 @@ public class UsuarioServicio implements UserDetailsService {
 		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
-		Optional<Usuario> rta= usuarioRepo.findById(id);
+		Optional<Usuario> rta = usuarioRepo.findById(id);
 		
 		if(rta.isPresent()) {
 			
@@ -149,6 +149,10 @@ public class UsuarioServicio implements UserDetailsService {
 		return usuarioRepo.findByCelular(celular);
 	}
     
+        public Usuario findById(String id){
+            return usuarioRepo.getById(id);
+        }
+        
 	
 	//@Override
 	public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
@@ -167,9 +171,11 @@ public class UsuarioServicio implements UserDetailsService {
 			
 		
 	}
+        
 
     @Override
     public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+    
 }

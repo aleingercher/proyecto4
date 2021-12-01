@@ -108,4 +108,13 @@ public class VinoServicio {
     public List<Vino> consultarVinos(){
         return vinoRepo.findAll();
     }
+    
+    public Vino findById(String id){
+        return vinoRepo.getById(id);
+    }
+    
+    public void eliminarVino(String id){
+        Vino vino = vinoRepo.findById(id).get();
+        vinoRepo.delete(vino);
+    }
 }

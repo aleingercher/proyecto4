@@ -98,5 +98,13 @@ public class EspirituosaServicio {
         return espirituosaRepo.findAll();
     }
     
+    
+    public Espirituosa findById(String id){
+        return espirituosaRepo.getById(id);
+    }
  
+    public void eliminarEspirituosa(String id){
+        Espirituosa espirituosa = espirituosaRepo.findById(id).get();
+        espirituosaRepo.delete(espirituosa);
+    }
 }
