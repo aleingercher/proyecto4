@@ -101,10 +101,14 @@ public class CervezaServicio {
     public List<Cerveza> consultarCervezas() {
         return cervezaRepo.findAll();
     }
+    
+    public Cerveza findById(String id){
+        return cervezaRepo.getById(id);
+    }
 
     //Eliminar Cerveza (sin validación)
     public void eliminarCerveza(String id) {
         Cerveza cerveza = cervezaRepo.findById(id).get();
-
+        cervezaRepo.delete(cerveza);
     }
 }
