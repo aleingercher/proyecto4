@@ -3,7 +3,9 @@ package egg.proyecto4.servicios;
 import egg.proyecto4.entidades.Producto;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProductoServicio {
 
     @Autowired

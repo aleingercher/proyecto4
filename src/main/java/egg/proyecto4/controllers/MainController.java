@@ -25,4 +25,10 @@ public class MainController {
 		
 		return "menor";
 	}
+	
+	@GetMapping("/nosotros")
+	public String nosotros() {
+		
+		return "nosotros";
+	}
 }
