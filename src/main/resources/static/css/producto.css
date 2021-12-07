@@ -1,0 +1,45 @@
+
+
+.img-container {
+    padding: 10px;
+    width: 45%;
+}
+
+.product{
+    margin-left: 10em;
+    margin-right: 10em;
+    border-radius:0.5rem;
+   	border: 1px solid lightslategray;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+#imgProduct {
+    height: 100%;
+    width: 100%;
+    border-radius:0.5rem;
+   	border: 1px solid lightslategray;
+    border-collapse: collapse;
+}
+
+#item {
+    padding-top: 10px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-bottom: 15px;
+    float: left;
+}
+
+.medios{   
+    margin-left: 10em;
+    margin-right: 10em;
+    border-radius:0.5rem;
+   	border: 1px solid lightslategray;
+    border-collapse: collapse;
+    overflow: hidden;
+}
+
+#marcas {
+    height: 75px;
+    width: 75px;
+}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org" lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<link rel="stylesheet" href="CSS/maqueta.css">
+	<link rel="stylesheet" href="CSS/producto.css">
+	<title>Producto</title>
+</head>
+
+<body>
+	<header>
+		<div th:replace="fragments-navbar-home :: navbar"></div>
+	</header>
+	<div  class="product bg-light">
+		<div  id="item" class="img-container">
+			<img id="imgProduct" src="Imagenes/cerveza.jpg" th:alt="${prod.imagen}">
+		</div>
+		<div id="item">
+			<h1 th:text="${prod.marca}">Marca</h1>
+			<p th:text="${prod.tipo}">Tipo</p>
+			<p th:text="${prod.envase}">Envase</p>
+			<p th:if="${prod.varietal != null}" th:text="${prod.varietal}">Varietal</p>
+			<p th:if="${prod.bodega != null}" th:text="${prod.bodega}">Bodega</p>
+			<p th:if="${prod.familia != null}" th:text="${prod.familia}">Familia</p>
+			<h3>Precio</h3>
+			<a type="button" class="btn btn-outline-dark" href="#">Agregar a Carrito</a>
+			<a type="button" class="btn btn-outline-dark" href="#">Modificar Cantidad</a>			
+		</div>
+	</div>
+	<br>
+	<div class="medios bg-light">
+		<h2 style="text-align: center;">MEDIOS DE PAGO</h2>
+		<br>
+		<div id="item" class="">
+			<img id="marcas" src="Imagenes/1200px-American_Express_logo_(2018).svg.png" alt="">
+		</div>
+
+		<div id="item" class="">
+			<img id="marcas" src="Imagenes/cabal_credito.png" alt="">
+		</div>
+			
+		<div id="item" class="">
+			<img id="marcas" src="Imagenes/visa.png" alt="">
+		</div>
+		
+		<div id="item" class="">
+			<img id="marcas" src="Imagenes/nativa-nacion-logo.jpg" alt="">
+		</div>
+
+		<div id="item" class="">
+			<img id="marcas" src="Imagenes/1200px-Mastercard-logo.svg.png" alt="">
+		</div>
+
+		<div id="item" class="">
+			<img id="marcas" src="Imagenes/como-obtener-resument-tarjeta-naranja_foro.jpg" alt="">
+		</div>
+
+		<div id="item" class="">
+			<img id="marcas" src="Imagenes/unnamed.png" alt="">
+		</div>
+
+		<div id="item" class="">
+			<img id="marcas" src="Imagenes/tarjeta-argencard-logo.jpg" alt="">
+		</div>
+	</div>
+	<footer>
+		<div th:replace="fragments-navbar-home :: footer"></div>
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+		crossorigin="anonymous"></script>
+</body>
+</html>

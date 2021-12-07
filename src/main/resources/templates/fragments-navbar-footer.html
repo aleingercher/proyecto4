@@ -1,0 +1,55 @@
+<div th:fragment="navbar">
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#"> <img src="Imagenes/ARRA LIRE.png" alt="" width="80px" height="80px">BARRA LIBRE</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#MENU">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse " id="MENU">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3" >
+          <li class="nav-item">
+            <a  class="nav-link" href="#">HOME</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">NOSOTROS</a>
+          </li>
+          <li class="nav-item">
+            <a sec:authorize="!isAuthenticated()" class="nav-link" href="/auth/login">INGRESAR</a>
+          </li>
+          <li class="nav-item">
+            <a sec:authorize="isAuthenticated()" class="nav-link" href="#">LOGOUT</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  </div>
+  
+  <div th:fragment="footer">
+          <div class="grupo-1">
+              <div class="box">
+                  <figure>
+                      <a href="#">
+                          <img src="../static/imagenes/ARRA LIRE.png" alt="Logo de SLee Dw">
+                      </a>
+                  </figure>
+              </div>
+              <div class="box">
+                  <h2>SOBRE NOSOTROS</h2>
+                  <p>Hermosas cosas sobre nosotros </p>
+                  <p>somos lo mejor de eso no queda duda</p>
+              </div>
+              <div class="box">
+                  <h2>SIGUENOS</h2>
+                  <div class="red-social">
+                      <a href="#" class="fa fa-facebook"></a>
+                      <a href="#" class="fa fa-instagram"></a>
+                      <a href="#" class="fa fa-twitter"></a>
+                      <a href="#" class="fa fa-youtube"></a>
+                  </div>
+              </div>
+          </div>
+          <div class="grupo-2">
+              <small>&copy; 2021 <b>Barra Libre</b> - Todos los Derechos Reservados.</small>
+          </div>
+  </div>

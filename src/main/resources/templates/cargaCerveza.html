@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="CSS/maqueta.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Domine&family=Permanent+Marker&display=swap"
+    rel="stylesheet">
+  <script src="https://kit.fontawesome.com/e84be291c7.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <header>
+    <div th:replace="fragments-navbar-footer :: navbar"></div>
+  </header>
+  <form>
+    <div class="form-group">
+      <!-- Marca cerveza -->
+      <label for="marca" class="control-label">Marca de cerveza</label>
+      <select class="form-control" id="marca_producto" name="marca">
+        <option value="NULL"></option>
+        <option value="QU">Quilmes</option>
+        <option value="CO">Corona</option>
+        <option value="BR">Brahma</option>
+        <option value="AN">Andes</option>
+        <option value="IMP">Imperial</option>
+        <option value="STE">Stella</option>
+        <option value="HE">Heineken</option>
+        <option value="SH">Schneider</option>
+      </select>
+    </div>
+
+
+
+    <div class="form-group">
+      <!-- Otras marcas -->
+      <label for="Otra marca" class="control-label">Otra marca</label>
+      <input type="text" class="form-control" id="marca_producto_1" name="otraMarca"
+        placeholder="Cerveza Internacional">
+    </div>
+
+    <div class="form-group">
+      <!-- Familia cerveza -->
+      <label for="familia" class="control-label">Familia de cerveza</label>
+      <select class="form-control" id="familia_producto" name="familia">
+        <option value="NULL"></option>
+        <option value="GO">Golden</option>
+        <option value="NE">Negra</option>
+        <option value="ST">Stout</option>
+        <option value="Re">Red</option>
+        <option value="IP">Ipa</option>
+        <option value="AP">Apa</option>
+        <option value="HO">Honey</option>
+        <option value="LA">Lager</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <!-- Precio -->
+      <label for="Precio" class="control-label">Precio producto</label>
+      <input type="number" class="form-control" id="precio_producto" name="precio"
+        placeholder="Precio de producto">
+    </div>
+    <!-- /*como se pone variable float*/ -->
+    <div class="form-group">
+      <!-- stock -->
+      <label for="stock" class="control-label">Stock productos</label>
+      <input type="number" class="form-control" id="stock_producto" name="stock"
+        placeholder="Stock de producto">
+    </div>
+    </div>
+    <div class="form-group">
+      <!-- descripción -->
+      <label for="descripcion" class="control-label">Descripción del Producto</label>
+      <input type="text" class="form-control" id="descripcion_producto" name="descripcion"
+        placeholder="Características del producto">
+    </div>
+    <div class="form-group">
+      <!-- envase -->
+      <label for="envase" class="control-label">Tipo de envase</label>
+      <select class="form-control" id="envase_producto" name="envase">
+        <option value="NULL"></option>
+        <option value="LI">Litro</option>
+        <option value="LA">Lata</option>
+        <option value="PO">Porrón</option>
+        <option value="PA">Packx6</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <!-- tipo -->
+      <label for="tipo" class="control-label">Tipo de cerveza</label>
+      <select class="form-control" id="tipo_producto" name="tipo">
+        <option value="NULL"></option>
+        <option value="AR">Artesanal</option>
+        <option value="IN">Industrial</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <!-- Foto -->
+      <label for="foto" class="control-label">Foto del Producto</label>
+      <input type="file" class="form-control-file" id="foto_producto" name="foto"
+        placeholder="Foto del producto">
+    </div>
+    <div class="form-group">
+      <!-- origen -->
+      <label for="origen" class="control-label">Origen del Producto</label>
+      <input type="text" class="form-control" id="origen_producto" name="origen"
+        placeholder="Origen del producto">
+    </div>
+    <!-- 
+    private String otrasMarcas;
+    private Float precio;
+    private Integer stock;
+    private Integer vendidos;
+    private String descripcion;
+    private String envase;//--
+    private String tipo;//--
+    private String foto;
+    private String origen;//-- -->
+
+    <div class="form-group">
+      <!-- Submit Button -->
+      <button type="submit" class="btn btn-primary">Cargar</button>
+    </div>
+
+  </form>
+  <footer>
+    <div th:replace="fragments-navbar-footer :: footer"></div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+
+</body>
+
+</html>
