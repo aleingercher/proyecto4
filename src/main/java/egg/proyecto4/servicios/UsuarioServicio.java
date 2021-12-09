@@ -154,8 +154,8 @@ public class UsuarioServicio implements UserDetailsService {
         }
         
 	
-	//@Override
-	public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
+	@Override
+	public UserDetails loadUserByUsername (String email) throws UsernameNotFoundException {
 		try {
 			Usuario usuario = findByEmail(email);
 			User user;
@@ -172,10 +172,5 @@ public class UsuarioServicio implements UserDetailsService {
 		
 	}
         
-
-    @Override
-    public UserDetails loadUserByUsername(String string) throws UsernameNotFoundException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
 }

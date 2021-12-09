@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.thymeleaf.org" lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -20,7 +20,7 @@
 
 <body class="bg-dark">
   <header>
-    <div th:replace="fragments :: navbar"></div>
+    <div th:replace="fragments-navbar-footer :: navbar"></div>
   </header>
   <section>
     <div class="row g-0">
@@ -58,17 +58,22 @@
         </div>
         <div class="align-self-center w-100 px-lg-5 py-lg-4 p-4">
           <h1 class="font-weight-bold">Bienvenido a Barra Libre</h1>
-          <form class="mb-5">
+		<form class="mb-5" th:action="@{/logincheck}" method="POST">
+			<div th:if="${param.logout}" class="alert-success alert-dismissible fade show mt-3" role="alert">
+				<span>Has finalizado la sesión con exito.</span>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+			</div>
+          	<p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
             <div class="mb-4">
               <label for="exampleInputEmail1" class="form-label font-weight-bold">Email</label>
-              <input type="email" class="form-control bg-dark-x border-0" id="exampleInputEmail1"
-                placeholder="Ingresa tu email" aria-describedby="emailHelp">
+              <input type="text" class="form-control bg-dark-x border-0" id="exampleInputEmail1"
+                placeholder="Ingresa tu email" aria-describedby="emailHelp" name="email">
             </div>
             <div class="mb-4">
               <label for="exampleInputPassword1"
                 class="form-label font-weight-bold">Contraseña</label>
               <input type="password" class="form-control bg-dark-x border-0 mb-2"
-                placeholder="Ingresa tu contraseña" id="exampleInputPassword1">
+                placeholder="Ingresa tu contraseña" id="exampleInputPassword1" name="password">
               <a href="" id="emailHelp" class="form-text text-muted text-decoration-none">¿Has
                 olvidado tu contraseña?</a>
             </div>
@@ -84,7 +89,7 @@
           </div>
         </div>
         <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
-          <p class="d-inline-block mb-0">¿Todavia no tienes una cuenta?</p> <a href=""
+          <p class="d-inline-block mb-0">¿Todavia no tienes una cuenta?</p> <a th:href="@{/user/save}"
             class="text-light font-weight-bold text-decoration-none">Crea una ahora</a>
         </div>
       </div>
@@ -99,7 +104,7 @@
     integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
     crossorigin="anonymous"></script>
   <footer class="pie-pagina">
-    <div th:replace="fragments :: footer"></div>
+    <div th:replace="fragments-navbar-footer :: footer"></div>
   </footer>
 </body>
 

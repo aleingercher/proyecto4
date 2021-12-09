@@ -47,6 +47,14 @@ public class ProductoController {
 	@Autowired
 	ProductoServicio productoServi;
 	
+	//ENDPOINT VISTA CARGARPRODUCTOS
+	
+	@GetMapping("/cargarProductos")
+	public String cargaProductos() {
+		
+		return "cargarProductos"; 	
+	}
+	
 	//ENDPOINTS GET AND POST PARA GUARDAR PRODUCTOS
 	
 	@GetMapping("/cervezaSave")
@@ -310,4 +318,43 @@ public class ProductoController {
 
 		return "listarProductos";
 	}
+	
+	
+	//PARTE USER
+	
+	@GetMapping("/productoEspecifico")
+	public String productoEspecifico(ModelMap modal,String buscar) {
+		
+		//MANDAR PALABRA DEL BUSCADOR A LA VISTA
+		
+		modal.addAttribute("producto", buscar);
+		
+		return "producto";	
+	}
+	
+	@SuppressWarnings("null")
+	@GetMapping("/filtradoCategoria")
+	public String filtradoCategoria(ModelMap modal,String categoria) {
+		
+		List<Producto> productos = null;
+		
+		if(categoria.equals("CERVEZA")) {
+			
+			productos.addAll(cervezaServi.consultarCervezas());
+			
+		} else if(categoria.equals("VINO")) {
+			
+			productos.addAll(vinoServi.consultarVinos());
+			
+		} else {
+			
+			productos.addAll(espirituosaServi.consultarEspirituosas());
+		}
+		
+		
+		modal.addAttribute("productos", productos);
+		
+		return "filtradoCategoria";	
+	}
+	
 }

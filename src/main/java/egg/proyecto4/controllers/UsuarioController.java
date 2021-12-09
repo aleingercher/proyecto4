@@ -25,12 +25,12 @@ public class UsuarioController {
 	@GetMapping("/save")
 	public String userSave() {
 		
-		return"Registro";
+		return"registro";
 	}
 
 	
 	@PostMapping("/registrarUsuario")
-	public String registrar(ModelMap model,String nombre,String apellido, String email, String domicilio,@RequestParam(required = false) String detalleDomicilio, String localidad,Date nacimiento, String celular, String clave, String clave2) {
+	public String registrar(ModelMap model,String nombre,String apellido, String email,@RequestParam(required = false) String domicilio,@RequestParam(required = false) String detalleDomicilio, String localidad,Date nacimiento, String celular, String clave, String clave2) {
 		
 		try {
 			serviUsuario.RegistrarUsuario(nombre, apellido, email, domicilio, detalleDomicilio, localidad, nacimiento, celular, clave, clave2);
@@ -43,9 +43,9 @@ public class UsuarioController {
 			model.put("detalleDom", detalleDomicilio);
 			model.put("localidad", localidad);
 			model.put("celular", celular);
-			return "Registro";
+			return "registro";
 		}
-		return"index";
+		return"home";
 	}
 	
 	@GetMapping("modificar/{id}")

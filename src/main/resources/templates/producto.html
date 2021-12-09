@@ -18,15 +18,15 @@
 	</header>
 	<div  class="product bg-light">
 		<div  id="item" class="img-container">
-			<img id="imgProduct" src="Imagenes/cerveza.jpg" th:alt="${prod.imagen}">
+			<img id="imgProduct" src="@{'/recursos/' + ${producto.imagen}}" th:alt="${prod.imagen}">
 		</div>
 		<div id="item">
-			<h1 th:text="${prod.marca}">Marca</h1>
-			<p th:text="${prod.tipo}">Tipo</p>
-			<p th:text="${prod.envase}">Envase</p>
-			<p th:if="${prod.varietal != null}" th:text="${prod.varietal}">Varietal</p>
-			<p th:if="${prod.bodega != null}" th:text="${prod.bodega}">Bodega</p>
-			<p th:if="${prod.familia != null}" th:text="${prod.familia}">Familia</p>
+			<h1 th:text="${producto.marca}">Marca</h1>
+			<p th:text="${producto.tipo}">Tipo</p>
+			<p th:text="${producto.envase}">Envase</p>
+			<p th:if="${producto.varietal != null}" th:text="${producto.varietal}">Varietal</p>
+			<p th:if="${producto.bodega != null}" th:text="${producto.bodega}">Bodega</p>
+			<p th:if="${producto.familia != null}" th:text="${producto.familia}">Familia</p>
 			<h3>Precio</h3>
 			<a type="button" class="btn btn-outline-dark" href="#">Agregar a Carrito</a>
 			<a type="button" class="btn btn-outline-dark" href="#">Modificar Cantidad</a>			

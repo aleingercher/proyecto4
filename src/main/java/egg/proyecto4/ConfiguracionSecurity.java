@@ -34,7 +34,7 @@ public class ConfiguracionSecurity extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/*").permitAll()
                 .and().formLogin()
                 .loginPage("/login")
-                .usernameParameter("username")
+                .usernameParameter("email")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/home")
                 .loginProcessingUrl("/logincheck")
