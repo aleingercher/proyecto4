@@ -21,7 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import egg.proyecto4.entidades.Cerveza;
 import egg.proyecto4.entidades.Espirituosa;
 import egg.proyecto4.entidades.Producto;
@@ -50,28 +49,22 @@ public class ProductoController {
 	
 	//ENDPOINTS GET AND POST PARA GUARDAR PRODUCTOS
 	
-	@GetMapping("/cargarProductos")
-	public String cargaProductos() {
-		
-		return "cargarProductos"; 
-	}
-	
 	@GetMapping("/cervezaSave")
 	public String cerveza() {
 		
-		return "cervezaSave"; 	//Estas vistan se retornan a ellas mismas.
+		return "cargaCerveza"; 	//Estas vistan se retornan a ellas mismas.
 	}
 	
 	@GetMapping("/vinoSave")
 	public String vino() {
 		
-		return "vinoSave";		//Estas vistan se retornan a ellas mismas.
+		return "cargaVino";		//Estas vistan se retornan a ellas mismas.
 	}
 	
 	@GetMapping("/espirituosaSave")
 	public String espirituosa() {
 		
-		return "espirituosaSave";	//Estas vistan se retornan a ellas mismas.
+		return "cargaEspirituosa";	//Estas vistan se retornan a ellas mismas.
 	}
 	
 	@PostMapping("/cervezaSave")
@@ -98,9 +91,9 @@ public class ProductoController {
 			model.put("precio", precio);
 			model.put("stock", stock);
 			model.put("descripcion", descripcion);
-			return "cervezaSave";
+			return "cargaCerveza";
 		}
-		return "cervezaSave";
+		return "index";
 	}
 	
 	@PostMapping("/vinoSave")
@@ -127,9 +120,9 @@ public class ProductoController {
 			model.put("precio", precio);
 			model.put("stock", stock);
 			model.put("descripcion", descripcion);
-			return "cervezaSave";
+			return "cargaVino";
 		}
-		return "vinoSave";
+		return "index";
 	}
 	
 	@PostMapping("/espirituosaSave")
@@ -156,9 +149,9 @@ public class ProductoController {
 			model.put("precio", precio);
 			model.put("stock", stock);
 			model.put("descripcion", descripcion);
-			return "cervezaSave";
+			return "cargaEspirituosa";
 		}
-		return "espirituosaSave";
+		return "index";
 	}
 	
 	
@@ -173,23 +166,21 @@ public class ProductoController {
 		if(cerveza != null) {
 			
 			model.addAttribute("cerveza", cerveza);
-			return "cervezaUpdate";
 			
 		} else if (vino != null) {
 			
 			model.addAttribute("vino", vino);
-			return "vinoUpdate";
 			
 		} else {
 			
 			model.addAttribute("espirituosa", espirituosa);
-			return "espiritusaUpdate";
 		}
+		return "editarProductos";
 	}
 	
 	@PostMapping("/actualizar/{id}")
 	public String updatePerso(ModelMap model,@PathVariable("id") String id, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock, String descripcion, String envase, String tipo, String origen, @RequestParam(required = false) String familia, @RequestParam(required = false) String bodega, @RequestParam(required = false) String varietal) {
-		
+
 		//GUARDADO DE IMAGEN 
 		String img = null;
 		if (!imagen.isEmpty()) {
@@ -205,9 +196,9 @@ public class ProductoController {
 			}
 
 		}
-		
+
 		//ACTUALIZACION DE PRODUCTO
-		
+
 		Cerveza cerveza = cervezaServi.findById(id);
 		Vino vino = vinoServi.findById(id);
 		Espirituosa espirituosa = espirituosaServi.findById(id);
@@ -223,7 +214,7 @@ public class ProductoController {
 				model.put("stock", stock);
 				return "cervezaUpdate";
 			}
-			
+
 		} else if (vino != null) {
 
 			try {
@@ -235,7 +226,7 @@ public class ProductoController {
 				model.put("stock", stock);
 				return "vinoUpdate";
 			}
-			
+
 		} else {
 
 			try {
@@ -251,17 +242,17 @@ public class ProductoController {
 
 		return "listarProducto";
 	}
-	
+
 	@GetMapping("/listar")
 	public String listaProductos(ModelMap model) {
-		
+
 		List<Producto> productos = productoServi.findAllProductos();
 
 		model.put("productos", productos);
-		
+
 		return "listarProductos"; 	
 	}
-	
+
 	@GetMapping("/detalle/{id}")
 	public String detalle(@PathVariable("id") String id, Model model, RedirectAttributes attribute) throws errores {
 
@@ -269,33 +260,33 @@ public class ProductoController {
 		Vino vino = vinoServi.findById(id);
 		Espirituosa espirituosa = espirituosaServi.findById(id);
 
-		
+
 			if (cerveza != null) {
 
 				model.addAttribute("producto", cerveza);
 				model.addAttribute("titulo", "Detalle del Personaje: " + cerveza.getCategoria());
-				
+
 			} else if (vino != null) {
-				
+
 				model.addAttribute("producto", vino);
 				model.addAttribute("titulo", "Detalle del Personaje: " + vino.getCategoria());
-				
+
 			} else if (espirituosa != null) {
-				
+
 				model.addAttribute("producto", espirituosa);
 				model.addAttribute("titulo", "Detalle del Personaje: " + espirituosa.getCategoria());
-				
+
 			} else {
-				
+
 				model.addAttribute("error", "El id del Personaje no existe");
 				return "listarProductos";
 			}
 		return "detallePersonaje";
 	}
-	
+
 	@RequestMapping("/eliminar/{id}")
 	public String eliminar(ModelMap model, @PathVariable("id") String id) throws errores {
-		
+
 		Cerveza cerveza = cervezaServi.findById(id);
 		Vino vino = vinoServi.findById(id);
 		Espirituosa espirituosa = espirituosaServi.findById(id);
@@ -313,12 +304,10 @@ public class ProductoController {
 			espirituosaServi.eliminarEspirituosa(id);
 
 		}
-		
+
 		List<Producto> productos = productoServi.findAllProductos();
 		model.put("productos", productos);
 
 		return "listarProductos";
 	}
-	
-	
 }

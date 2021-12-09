@@ -22,7 +22,7 @@
   <header>
     <div th:replace="fragments-navbar-footer :: navbar"></div>
   </header>
-  <form>
+  <form th:action="@{/producto/cervezaSave}" method="POST" enctype="multipart/form-data">
     <div class="form-group">
       <!-- Marca cerveza -->
       <label for="marca" class="control-label">Marca de cerveza</label>
@@ -44,7 +44,7 @@
     <div class="form-group">
       <!-- Otras marcas -->
       <label for="Otra marca" class="control-label">Otra marca</label>
-      <input type="text" class="form-control" id="marca_producto_1" name="otraMarca"
+      <input type="text" class="form-control" id="marca_producto_1" name="otrasmarca"
         placeholder="Cerveza Internacional">
     </div>
 
@@ -75,7 +75,7 @@
       <!-- stock -->
       <label for="stock" class="control-label">Stock productos</label>
       <input type="number" class="form-control" id="stock_producto" name="stock"
-        placeholder="Stock de producto">
+        placeholder="Stock de producto" th:value="${stock}">
     </div>
     </div>
     <div class="form-group">
@@ -108,7 +108,7 @@
     <div class="form-group">
       <!-- Foto -->
       <label for="foto" class="control-label">Foto del Producto</label>
-      <input type="file" class="form-control-file" id="foto_producto" name="foto"
+      <input type="file" class="form-control-file" id="foto_producto" name="imagen"
         placeholder="Foto del producto">
     </div>
     <div class="form-group">

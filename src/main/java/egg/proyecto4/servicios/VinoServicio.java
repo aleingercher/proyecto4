@@ -58,7 +58,7 @@ public class VinoServicio {
         Vino vino = new Vino();
         
         vino.setBodega(bodega);
-        vino.setCategoria(Categoria_e.CERVEZA);
+        vino.setCategoria(Categoria_e.VINO);
         vino.setDescripcion(descripcion);
         vino.setEnvase(envase);
         vino.setFoto(foto);
