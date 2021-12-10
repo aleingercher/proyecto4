@@ -4,10 +4,6 @@
     box-sizing: border-box;
 }
 
-body{
-    font-family: sans-serif;
-}
-
 /* BARRA DE NAVEGACION*/
 .navbar-collapse{
     flex-grow: 0;
@@ -15,8 +11,7 @@ body{
 
 header{
     width: 100%;
-    /*height: 100vh;*/
-    background-image: linear-gradient(45deg,#769aa138,#685e8538), url(imagenes/portada.jpg);
+    background-image: linear-gradient(45deg,#769aa138,#685e8538), url(portada.jpg);
     background: rgb(158, 151, 151);
     background-size: cover;
     background-position: center;
@@ -66,10 +61,61 @@ nav ul li a:hover{
     font-family: 'Domine', serif;
     text-shadow: 2px 2px 0 black;
 }
+
+/* END BARRA DE NAVEGACIÓN*/
+
+
 /* BODY */
 
+body{
+    font-family: sans-serif;
+}
+body{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(45deg,#769aa138,#685e8538), url(../imagenes/portada.jpg);
+    background-size: cover;
+    background-position: center;
+    }
+    .header-cont{
+        max-width: 600px;
+        height: 100%;
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
 
-/*pie de pagina*/
+    .header-cont img{
+        width: 500px;
+        height: 500px;
+        margin-top: 50px;
+    }
+
+    .header-cont h1{
+        font-size: 80px;
+        color: black;
+        background-color: rgba(255,255,255,0.6);
+        border-radius: 20px;
+        text-transform: uppercase;
+        font-weight: 300;
+        font-family: 'Domine', serif;
+    }
+    
+    .header-cont h2{
+        font-size: 60px;
+        color:black;
+        background-color: rgba(255,255,255,0.6);
+        border-radius: 20px;
+        text-transform: uppercase;
+        font-weight: 300;
+        margin: 30px;
+        font-family: 'Domine', serif;
+    }
+
+/*PIE DE PÁGINA*/
 .pie-pagina{
     width: 100%;
     background-color: #000000;
@@ -134,3 +180,4 @@ nav ul li a:hover{
         padding: 35px 0px;
     }
 }
+/* END PIE DE PÁGINA */
