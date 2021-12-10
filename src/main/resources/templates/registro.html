@@ -22,28 +22,28 @@
     <header>
         <div th:replace="fragments-navbar-footer :: navbar"></div>
     </header>
-    <form class="form-registro" th:action="user/registrarUsuario">
+    <form class="form-registro" th:action="@{/user/registrarUsuario}" method="POST">
         <h4 class="titulo">Registro Usurario:</h4>
         <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
         <div class="mb-3">
             <label for="email">EMAIL:</label>
             <input class="form-control" type="email" name="email" id="email"
-                placeholder="Ingrese su mail " th:value="user.email">
+                placeholder="Ingrese su mail " th:value="${email}">
             <label for="nombre">NOMBRE:</label>
             <input class="form-control" type="text" name="nombre" id="nombre"
-                placeholder="Ingrese su nombre " th:value="user.nombre">
+                placeholder="Ingrese su nombre " th:value="${nombre}">
             <label for="apellido">APELLIDO:</label>
             <input class="form-control" type="text" name="apellido" id="apellido"
-                placeholder="Ingrese su apellido " th:value="user.apellido">
+                placeholder="Ingrese su apellido " th:value="${apellido}">
             <label for="celular">TELEFONO:</label>
             <input class="form-control" type="tel" name="celular" id="celular"
-                placeholder="Ingrese su numero de telefono " th:value="user.celular">
+                placeholder="Ingrese su numero de telefono " th:value="${celular}">
             <label for="localidad">LOCALIDAD:</label>
             <input class="form-control" type="text" name="localidad" id="localidad"
-                placeholder="Ingrese la localidad donde vive " th:value="user.localidad">
-            <label for="direccion">DIRECCION:</label>
-            <input class="form-control" type="text" name="direccion" id="direccion"
-                placeholder="Ingrese la direccion donde vive " th:value="user.direccion">
+                placeholder="Ingrese la localidad donde vive " th:value="${localidad}">
+            <label for="domicilio">DOMICILIO:</label>
+            <input class="form-control" type="text" name="domicilio" id="domicilio"
+                placeholder="Ingrese la direccion donde vive " th:value="${domicilio}">
             <label for="clave">CONTRASEÑA:</label>
             <input class="form-control" type="password" name="clave" id="clave"
                 placeholder="Ingrese su contraseña">
