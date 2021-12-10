@@ -22,7 +22,7 @@
 
 <body>
     <header>
-        <div th:replace="fragments-home :: user"></div>
+        <div th:replace="fragments-navbar-footer :: navbar"></div>
     </header>
     <div sec:authorize="!isAuthenticated()" th:replace="fragments-home :: user"></div>
     <div sec:authorize="hasRole('ROLE_USER')" th:replace="fragments-home :: user"></div>

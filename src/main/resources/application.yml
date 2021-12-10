@@ -9,6 +9,11 @@ spring:
                     starttls:
                         required: true
                         enable: true
+    
+        username: matiicastagno007@gmail.com
+        password: bjqohmosaoydzedi
+    main:
+      allow-bean-definition-overriding: true
     datasource:
         url: jdbc:mysql://localhost:3306/proyecto4?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
         username: root
@@ -23,10 +28,7 @@ spring:
               dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     thymeleaf:
         cache: false
-    server:
-    error:
-        whitelabel:
-        enabled: false
+
     servlet:
         multipart:
             max-file-size: 5MB
@@ -39,7 +41,10 @@ spring:
     logging.level.org.springframework.web: DEBUG
     logging.level.org.hibernate: ERROR
     
-    
+server:
+    error:
+        whitelabel:
+          enabled: false
 
 
     
