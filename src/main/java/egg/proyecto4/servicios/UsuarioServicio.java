@@ -1,6 +1,7 @@
 package egg.proyecto4.servicios;
 
 import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -18,7 +19,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-
 import egg.proyecto4.entidades.Usuario;
 import egg.proyecto4.enums.Role_e;
 import egg.proyecto4.errores.errores;
@@ -31,6 +31,9 @@ public class UsuarioServicio implements UserDetailsService {
 
 	@Autowired
     private UsuarioRepositorio usuarioRepo; 
+	
+	@Autowired
+	private EnvioMail senderService;
 	
 		private void validar(String nombre,String apellido, String email, String domicilio, String localidad, String celular, String clave, String clave2) throws errores {
 		
@@ -111,6 +114,8 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setRole(Role_e.USER.toString());
 		
 		usuarioRepo.save(usuario);
+		
+		senderService.sendEmaill(email);
 	}
 	
 		public void ModificarUsuario(String id,String nombre,String apellido, String email, String domicilio,String detalleDomicilio, String localidad, String celular, String clave, String clave2) throws errores {

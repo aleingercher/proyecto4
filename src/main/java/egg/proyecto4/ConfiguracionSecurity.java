@@ -33,16 +33,16 @@ public class ConfiguracionSecurity extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests().antMatchers("/*").permitAll()
                 .and().formLogin()
-                .loginPage("/login")
-                .usernameParameter("email")
-                .passwordParameter("password")
-                .defaultSuccessUrl("/home")
-                .loginProcessingUrl("/logincheck")
-                .failureUrl("/login?error=error")
-                .permitAll()
+                	  .loginPage("/login")
+                	  .usernameParameter("email")
+                	  .passwordParameter("password")
+                	  .defaultSuccessUrl("/home")
+                	  .loginProcessingUrl("/logincheck")
+                	  .failureUrl("/login?error=error")
+                	  .permitAll()
                 .and().logout()
-                .logoutUrl("/logout")
-                .logoutSuccessUrl("/login?logout")
+                	  .logoutUrl("/logout")
+                	  .logoutSuccessUrl("/login?logout")
                 .and().csrf().disable();
 
     }

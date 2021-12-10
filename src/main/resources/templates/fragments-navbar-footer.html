@@ -14,10 +14,10 @@
             <a class="nav-link" th:href="@{/nosotros}">NOSOTROS</a>
           </li>
           <li class="nav-item">
-            <a sec:authorize="!isAuthenticated()" class="nav-link" th:href="@{/auth/login}">INGRESAR</a>
+            <a sec:authorize="!isAuthenticated()" class="nav-link" th:href="@{/login}">INGRESAR</a>
           </li>
-          <li class="nav-item">
-            <a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">LOGOUT</a>
+		<li class="nav-item">
+			<a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">SALIR</a>
           </li>
         </ul>
       </div>
@@ -30,7 +30,7 @@
               <div class="box">
                   <figure>
                       <a href="#">
-                          <img src="../static/Imagenes/ARRA LIRE.png" alt="Logo de SLee Dw">
+                          <img src="../static/imagenes/ARRA LIRE.png" alt="Logo de SLee Dw">
                       </a>
                   </figure>
               </div>

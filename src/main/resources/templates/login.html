@@ -58,11 +58,11 @@
         </div>
         <div class="align-self-center w-100 px-lg-5 py-lg-4 p-4">
           <h1 class="font-weight-bold">Bienvenido a Barra Libre</h1>
-		<form class="mb-5" th:action="@{/logincheck}" method="POST">
-			<div th:if="${param.logout}" class="alert-success alert-dismissible fade show mt-3" role="alert">
+          <div th:if="${param.logout}" class="alert-success alert-dismissible fade show mt-3" role="alert">
 				<span>Has finalizado la sesión con exito.</span>
 				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
 			</div>
+		<form class="mb-5" th:action="@{/logincheck}" method="POST">
           	<p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
             <div class="mb-4">
               <label for="exampleInputEmail1" class="form-label font-weight-bold">Email</label>
