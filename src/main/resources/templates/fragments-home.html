@@ -34,7 +34,7 @@
         <p class="card-text">DESCRIPCION DE LA BEBIDA.</p>
       </div>
       <div class="card-footer">
-        <a href="index.html"><button type="button" class="btn btn-primary">VINOS</button></a>
+        <a th:href="@{/producto/filtradoCategoria}"><button type="button" class="btn btn-primary">VINOS</button></a>
       </div>
     </div>
     <div class="card">
@@ -44,7 +44,7 @@
         <p class="card-text">DESCRIPCION DE LA BEBIDA</p>
       </div>
       <div class="card-footer">
-        <a href="index.html"><button type="button" class="btn btn-primary">CERVEZAS</button></a>
+        <a th:href="@{/producto/filtradoCategoria}"><button type="button" class="btn btn-primary">CERVEZAS</button></a>
       </div>
     </div>
     <div class="card">
@@ -54,7 +54,7 @@
         <p class="card-text">DESCRIPCION DE LA BEBIDA</p>
       </div>
       <div class="card-footer">
-        <a href="index.html"><button type="button" class="btn btn-primary">ESPIRITUOSAS</button></a>
+        <a th:href="@{/producto/filtradoCategoria}"><button type="button" class="btn btn-primary">ESPIRITUOSAS</button></a>
       </div>
     </div>
   </div>
@@ -66,8 +66,8 @@
 			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
 		</div>
 		<div class="block-mid bg-dark bg-success p-2" style="--bs-bg-opacity: .75;">
-			<a id="btn" href="/producto/cargarProductos" class="btn btn-outline-warning">Cargar Producto</a>
-			<a id="btn" href="/producto/listar" class="btn btn-outline-warning">Listar Productos</a>
+			<a id="btn" th:href="@{/producto/cargarProductos}" class="btn btn-outline-warning">Cargar Producto</a>
+			<a id="btn" th:href="@{/producto/listar}" class="btn btn-outline-warning">Listar Productos</a>
 		</div>
 	</div>
 </div>
