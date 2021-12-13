@@ -1,0 +1,55 @@
+body {
+    background: #bbb;
+}
+
+.hide {
+    display: none;
+}
+
+.cards {
+    display: grid;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, 270px);
+    gap: 20px;
+    justify-content: center;
+}
+
+.card {
+    margin: 0 auto;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.card img {
+    max-height: 200px;
+    height: 300px !important;
+    object-fit: cover;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.botones {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.cantidad {
+    width: 100%;
+    border: none;
+    text-align: center;
+}
+
+@media screen and (min-width: 600px) {
+
+
+    /* .card-group {
+        display: flex;
+        justify-content: space-around;
+    } */
+}
