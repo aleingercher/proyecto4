@@ -14,6 +14,12 @@ public class MainController {
 		return"index";
 	}
 	
+	@GetMapping("/index")
+	public String indexx() {
+		
+		return"index";
+	}
+	
 	@GetMapping("/home")
 	public String home() {
 		
@@ -24,5 +30,11 @@ public class MainController {
 	public String menor() {
 		
 		return "menor";
+	}
+	
+	@GetMapping("/nosotros")
+	public String nosotros() {
+		
+		return "nosotros";
 	}
 }
