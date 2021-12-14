@@ -31,7 +31,7 @@
       <div class="form-group mt-2">
         <label for="marca" class="control-label">Marca de VINO</label>
         <select class="form-control" id="marca_producto" name="marca">
-          <option selected="selected" disabled="true">Seleccione la marca</option>
+          <option selected="selected" disabled="true">...</option>
           <option th:each="VinoMarca : ${T(egg.proyecto4.enums.VinoMarca_e).values()}"
             th:value="${VinoMarca}" th:text="${VinoMarca.displayValue}"></option>
         </select>
@@ -50,30 +50,29 @@
         <!-- Precio -->
         <label for="Precio" class="control-label">Precio producto</label>
         <input type="number" class="form-control" id="precio_producto" name="precio"
-          controls="false" placeholder="Precio de producto">
+          placeholder="...">
       </div>
       <div class="form-group">
         <!-- stock -->
         <label for="stock" class="control-label">Stock productos</label>
         <input type="number" class="form-control" id="stock_producto" name="stock"
-          placeholder="Stock de producto">
+          placeholder="...">
       </div>
 
       <div class="form-group">
         <!-- descripción -->
         <label for="descripcion" class="control-label">Descripción del Producto</label>
         <input type="text" class="form-control" id="descripcion_producto" name="descripcion"
-          placeholder="Características del producto">
+          placeholder="...">
       </div>
 
       <div class="form-group">
         <!-- envase -->
         <label for="envase" class="control-label">Tipo de envase</label>
         <select class="form-control" id="envase_producto" name="envase">
-          <option value="NULL"></option>
-          <option value="LI">Litro</option>
-          <option value="BOT">Botella 750 ml</option>
-          <option value="LAT">Lata</option>
+        	<option selected="selected" disabled="true">...</option>
+          	<option th:each="VinoEnvase : ${T(egg.proyecto4.enums.VinoEnvase_e).values()}"
+            th:value="${VinoEnvase}" th:text="${VinoEnvase.displayValue}"></option>
         </select>
       </div>
 
@@ -84,7 +83,8 @@
         <!-- tipo -->
         <label for="tipo" class="control-label">Tipo de vino</label>
         <select class="form-control" id="tipo_producto" name="tipo">
-          <option th:each="VinoTipo : ${T(egg.proyecto4.enums.VinoTipo_e).values()}"
+        	<option selected="selected" disabled="true">...</option>
+          	<option th:each="VinoTipo : ${T(egg.proyecto4.enums.VinoTipo_e).values()}"
             th:value="${VinoTipo}" th:text="${VinoTipo.displayValue}"></option>
         </select>
       </div>
@@ -93,63 +93,51 @@
         <!-- Foto -->
         <label for="foto" class="control-label">Foto del Producto</label>
         <input type="file" class="form-control-file" id="foto_producto" name="imagen"
-          placeholder="Foto del producto">
+          placeholder="...">
       </div>
       <div class="form-group">
         <!-- origen -->
-        <label for="origen" class="control-label">Origen del Producto</label>
-        <input type="text" class="form-control" id="origen_producto" name="origen"
-          placeholder="Origen del producto">
+         <label for="origen" class="control-label">Origen del Producto</label>
+        <select class="form-control" id="origen" name="origen">
+        	<option selected="selected" disabled="true">...</option>
+          	<option th:each="Origen : ${T(egg.proyecto4.enums.Origen_e).values()}"
+            th:value="${Origen}" th:text="${Origen.displayValue}"></option>
+        </select>
       </div>
       <div class="form-group">
         <!-- bodega -->
-        <label for="tipo" class="control-label">Bodega</label>
-        <select class="form-control" id="bodega_vino" name="bodega" aria-placeholder="">
-          <option value="NULL"></option>
-          <option value="ALT">Altavista</option>
-          <option value="AND">Andeluna</option>
-          <option value="ATA">Atamisque</option>
-          <option value="CAT">Catena Zapata</option>
-          <option value="MAL">El Maleante</option>
-          <option value="HUA">Huarpes</option>
-          <option value="NOR">Norton</option>
-          <option value="PIA">Piatelli</option>
-          <option value="RIC">Riccitelli</option>
+        <label for="bodega" class="control-label">Bodega</label>
+        <select class="form-control" id="bodega" name="bodega">
+          <option selected="selected" disabled="true">...</option>
+          	<option th:each="Bodega : ${T(egg.proyecto4.enums.VinoBodega_e).values()}"
+            th:value="${Bodega}" th:text="${Bodega.displayValue}"></option>
         </select>
       </div>
       <div class="form-group">
         <!-- Varietal -->
-        <label for="tipo" class="control-label">Varietal Tinto</label>
-        <select class="form-control" id="varietal_vino" name="varietal">
-          <option value="NULL"></option>
-          <option value="MAL">Malbec</option>
-          <option value="CAB">Cabernet</option>
-          <option value="BON">Bonarda</option>
-          <option value="MER">Merlot</option>
-          <option value="PIN">Pinto Noir</option>
-          <option value="CAR">Carmenere</option>
+        <label for="varietalTinto" class="control-label">Varietal Tinto</label>
+        <select class="form-control" id="varietalTinto" name="varietal">
+          <option selected="selected" disabled="true">...</option>
+          	<option th:each="VarietalTinto : ${T(egg.proyecto4.enums.VinoVarietalTinto_e).values()}"
+            th:value="${VarietalTinto}" th:text="${VarietalTinto.displayValue}"></option>
         </select>
       </div>
       <div class="form-group">
         <!-- Varietal rosado-->
-        <label for="tipo" class="control-label">Varietal Rosado</label>
-        <select class="form-control" id="varietal_rosado_vino" name="varietalRosado">
-          <option value="NULL"></option>
-          <option value="BRU">Brut</option>
-          <option value="BRN">Brut Nature</option>
-          <option value="DUL">Dulce</option>
-          <option value="EXB">Extra Brut</option>
-          <option value="ROS">Rose</option>
+        <label for="varietalRosado" class="control-label">Varietal Rosado</label>
+        <select class="form-control" id="varietalRosado" name="varietal">
+          <option selected="selected" disabled="true">...</option>
+          	<option th:each="VarietalRosado : ${T(egg.proyecto4.enums.VinoVarietalRosado_e).values()}"
+            th:value="${VarietalRosado}" th:text="${VarietalRosado.displayValue}"></option>
         </select>
       </div>
       <div class="form-group">
         <!-- Varietal blanco -->
-        <label for="tipo" class="control-label">Varietal Blanco</label>
-        <select class="form-control" id="varietal_blanco_vino" name="varietalBlanco">
-          <option value="NULL"></option>
-          <option value="CHA">Chardonnay</option>
-          <option value="SUB">Suavignon Blanc</option>
-          <option value="TOR">Torrontes</option>
+        <label for="varietalBlanco" class="control-label">Varietal Blanco</label>
+        <select class="form-control" id="varietalBlanco" name="varietal">
+          <option selected="selected" disabled="true">...</option>
+          	<option th:each="VarietalBlanco : ${T(egg.proyecto4.enums.VinoVarietalBlanco_e).values()}"
+            th:value="${VarietalBlanco}" th:text="${VarietalBlanco.displayValue}"></option>
         </select>
       </div>
       <!-- 
