@@ -10,11 +10,11 @@
     rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="CSS/maqueta.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link rel="stylesheet" href="/css/maqueta.css"> -->
+
   <link href="https://fonts.googleapis.com/css2?family=Domine&family=Permanent+Marker&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="/css/carga.css">
   <script src="https://kit.fontawesome.com/e84be291c7.js" crossorigin="anonymous"></script>
 </head>
 
@@ -22,142 +22,137 @@
   <header>
     <div th:replace="fragments-navbar-footer :: navbar"></div>
   </header>
-  <form th:action="@{/producto/vinoSave}" method="POST" enctype="multipart/form-data">
-    <div class="form-group">
+
+  <div class="container w-50">
+    <h2 class="text-center">carga de vinos</h2>
+    <form th:action="@{/producto/vinoSave}" method="POST" enctype="multipart/form-data">
+
       <!-- Marca Vino -->
-      <label for="marca" class="control-label">Marca de VINO</label>
-      <select class="form-control" id="marca_producto" name="marca">
-        <option value="NULL"></option>
-        <option value="SJ">Santa Julia</option>
-        <option value="AM">Alma Mora</option>
-        <option value="TRA">Trapiche</option>
-        <option value="TRU">Trumpeter</option>
-        <option value="VIN">Viña de Balbo</option>
-        <option value="RUT">Rutini</option>
-        <option value="LUI">Luigi Bosca</option>
-        <option value="DAD">Dadá</option>
-        <option value="NOR">Norton</option>
-        <option value="LPE">Las Perdices</option>
-      </select>
-    </div>
+      <div class="form-group mt-2">
+        <label for="marca" class="control-label">Marca de VINO</label>
+        <select class="form-control" id="marca_producto" name="marca">
+          <option selected="selected" disabled="true">Seleccione la marca</option>
+          <option th:each="VinoMarca : ${T(egg.proyecto4.enums.VinoMarca_e).values()}"
+            th:value="${VinoMarca}" th:text="${VinoMarca.displayValue}"></option>
+        </select>
+      </div>
 
 
 
-    <div class="form-group">
-      <!-- Otras marcas -->
-      <label for="Otra marca" class="control-label">Otra marca</label>
-      <input type="text" class="form-control" id="marca_producto_1" name="otrasmarca"
-        placeholder="Marca de vino nueva">
-    </div>
+      <div class="form-group mt-2">
+        <!-- Otras marcas -->
+        <label for="Otra marca" class="control-label">Otra marca</label>
+        <input type="text" class="form-control" id="marca_producto_1" name="otrasmarca"
+          placeholder="Marca de vino nueva">
+      </div>
 
-    <div class="form-group">
-      <!-- Precio -->
-      <label for="Precio" class="control-label">Precio producto</label>
-      <input type="number" class="form-control" id="precio_producto" name="precio"
-        placeholder="Precio de producto">
-    </div>
-    <!-- /*como se pone variable float*/ -->
-    <div class="form-group">
-      <!-- stock -->
-      <label for="stock" class="control-label">Stock productos</label>
-      <input type="number" class="form-control" id="stock_producto" name="stock"
-        placeholder="Stock de producto">
-    </div>
-    </div>
-    <div class="form-group">
-      <!-- descripción -->
-      <label for="descripcion" class="control-label">Descripción del Producto</label>
-      <input type="text" class="form-control" id="descripcion_producto" name="descripcion"
-        placeholder="Características del producto">
-    </div>
+      <div class="form-group">
+        <!-- Precio -->
+        <label for="Precio" class="control-label">Precio producto</label>
+        <input type="number" class="form-control" id="precio_producto" name="precio"
+          placeholder="Precio de producto">
+      </div>
+      <div class="form-group">
+        <!-- stock -->
+        <label for="stock" class="control-label">Stock productos</label>
+        <input type="number" class="form-control" id="stock_producto" name="stock"
+          placeholder="Stock de producto">
+      </div>
 
-    <div class="form-group">
-      <!-- envase -->
-      <label for="envase" class="control-label">Tipo de envase</label>
-      <select class="form-control" id="envase_producto" name="envase">
-        <option value="NULL"></option>
-        <option value="LI">Litro</option>
-        <option value="BOT">Botella 750 ml</option>
-        <option value="LAT">Lata</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <!-- descripción -->
+        <label for="descripcion" class="control-label">Descripción del Producto</label>
+        <input type="text" class="form-control" id="descripcion_producto" name="descripcion"
+          placeholder="Características del producto">
+      </div>
 
-    <div class="form-group">
-      <!-- tipo -->
-      <label for="tipo" class="control-label">Tipo de vino</label>
-      <select class="form-control" id="tipo_producto" name="tipo">
-        <option value="NULL"></option>
-        <option value="BLA">Blanco</option>
-        <option value="TIN">Tinto</option>
-        <option value="ESP">Espumante</option>
-        <option value="ROS">Rosado</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <!-- envase -->
+        <label for="envase" class="control-label">Tipo de envase</label>
+        <select class="form-control" id="envase_producto" name="envase">
+          <option value="NULL"></option>
+          <option value="LI">Litro</option>
+          <option value="BOT">Botella 750 ml</option>
+          <option value="LAT">Lata</option>
+        </select>
+      </div>
 
-    <div class="form-group">
-      <!-- Foto -->
-      <label for="foto" class="control-label">Foto del Producto</label>
-      <input type="file" class="form-control-file" id="foto_producto" name="imagen"
-        placeholder="Foto del producto">
-    </div>
-    <div class="form-group">
-      <!-- origen -->
-      <label for="origen" class="control-label">Origen del Producto</label>
-      <input type="text" class="form-control" id="origen_producto" name="origen"
-        placeholder="Origen del producto">
-    </div>
-    <div class="form-group">
-      <!-- bodega -->
-      <label for="tipo" class="control-label">Bodega</label>
-      <select class="form-control" id="bodega_vino" name="bodega">
-        <option value="NULL"></option>
-        <option value="ALT">Altavista</option>
-        <option value="AND">Andeluna</option>
-        <option value="ATA">Atamisque</option>
-        <option value="CAT">Catena Zapata</option>
-        <option value="MAL">El Maleante</option>
-        <option value="HUA">Huarpes</option>
-        <option value="NOR">Norton</option>
-        <option value="PIA">Piatelli</option>
-        <option value="RIC">Riccitelli</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <!-- Varietal -->
-      <label for="tipo" class="control-label">Varietal Tinto</label>
-      <select class="form-control" id="varietal_vino" name="varietal">
-        <option value="NULL"></option>
-        <option value="MAL">Malbec</option>
-        <option value="CAB">Cabernet</option>
-        <option value="BON">Bonarda</option>
-        <option value="MER">Merlot</option>
-        <option value="PIN">Pinto Noir</option>
-        <option value="CAR">Carmenere</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <!-- Varietal rosado-->
-      <label for="tipo" class="control-label">Varietal Rosado</label>
-      <select class="form-control" id="varietal_rosado_vino" name="varietalRosado">
-        <option value="NULL"></option>
-        <option value="BRU">Brut</option>
-        <option value="BRN">Brut Nature</option>
-        <option value="DUL">Dulce</option>
-        <option value="EXB">Extra Brut</option>
-        <option value="ROS">Rose</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <!-- Varietal blanco -->
-      <label for="tipo" class="control-label">Varietal Blanco</label>
-      <select class="form-control" id="varietal_blanco_vino" name="varietalBlanco">
-        <option value="NULL"></option>
-        <option value="CHA">Chardonnay</option>
-        <option value="SUB">Suavignon Blanc</option>
-        <option value="TOR">Torrontes</option>
-      </select>
-    </div>
-    <!-- 
+      <div class="form-group">
+        <!-- ESTE ES EL MODELO DE COMO FUNCIONA!!!!!!! -->
+        <!-- tipo -->
+        <!-- tipo -->
+        <!-- tipo -->
+        <label for="tipo" class="control-label">Tipo de vino</label>
+        <select class="form-control" id="tipo_producto" name="tipo">
+          <option th:each="VinoTipo : ${T(egg.proyecto4.enums.VinoTipo_e).values()}"
+            th:value="${VinoTipo}" th:text="${VinoTipo.displayValue}"></option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <!-- Foto -->
+        <label for="foto" class="control-label">Foto del Producto</label>
+        <input type="file" class="form-control-file" id="foto_producto" name="imagen"
+          placeholder="Foto del producto">
+      </div>
+      <div class="form-group">
+        <!-- origen -->
+        <label for="origen" class="control-label">Origen del Producto</label>
+        <input type="text" class="form-control" id="origen_producto" name="origen"
+          placeholder="Origen del producto">
+      </div>
+      <div class="form-group">
+        <!-- bodega -->
+        <label for="tipo" class="control-label">Bodega</label>
+        <select class="form-control" id="bodega_vino" name="bodega" aria-placeholder="">
+          <option value="NULL"></option>
+          <option value="ALT">Altavista</option>
+          <option value="AND">Andeluna</option>
+          <option value="ATA">Atamisque</option>
+          <option value="CAT">Catena Zapata</option>
+          <option value="MAL">El Maleante</option>
+          <option value="HUA">Huarpes</option>
+          <option value="NOR">Norton</option>
+          <option value="PIA">Piatelli</option>
+          <option value="RIC">Riccitelli</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <!-- Varietal -->
+        <label for="tipo" class="control-label">Varietal Tinto</label>
+        <select class="form-control" id="varietal_vino" name="varietal">
+          <option value="NULL"></option>
+          <option value="MAL">Malbec</option>
+          <option value="CAB">Cabernet</option>
+          <option value="BON">Bonarda</option>
+          <option value="MER">Merlot</option>
+          <option value="PIN">Pinto Noir</option>
+          <option value="CAR">Carmenere</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <!-- Varietal rosado-->
+        <label for="tipo" class="control-label">Varietal Rosado</label>
+        <select class="form-control" id="varietal_rosado_vino" name="varietalRosado">
+          <option value="NULL"></option>
+          <option value="BRU">Brut</option>
+          <option value="BRN">Brut Nature</option>
+          <option value="DUL">Dulce</option>
+          <option value="EXB">Extra Brut</option>
+          <option value="ROS">Rose</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <!-- Varietal blanco -->
+        <label for="tipo" class="control-label">Varietal Blanco</label>
+        <select class="form-control" id="varietal_blanco_vino" name="varietalBlanco">
+          <option value="NULL"></option>
+          <option value="CHA">Chardonnay</option>
+          <option value="SUB">Suavignon Blanc</option>
+          <option value="TOR">Torrontes</option>
+        </select>
+      </div>
+      <!-- 
     private String otrasMarcas;
     private Float precio;
     private Integer stock;
@@ -168,12 +163,13 @@
     private String foto;
     private String origen;//-- -->
 
-    <div class="form-group">
-      <!-- Submit Button -->
-      <button type="submit" class="btn btn-primary">Cargar</button>
-    </div>
+      <div class="form-group">
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary">Cargar</button>
+      </div>
 
-  </form>
+    </form>
+  </div>
   <footer>
     <div th:replace="fragments-navbar-footer :: footer"></div>
   </footer>
