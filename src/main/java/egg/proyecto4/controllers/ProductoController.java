@@ -26,6 +26,8 @@ import egg.proyecto4.entidades.Espirituosa;
 import egg.proyecto4.entidades.Producto;
 import egg.proyecto4.entidades.Vino;
 import egg.proyecto4.enums.Categoria_e;
+import egg.proyecto4.enums.VinoMarca_e;
+import egg.proyecto4.enums.VinoTipo_e;
 import egg.proyecto4.errores.errores;
 import egg.proyecto4.servicios.CervezaServicio;
 import egg.proyecto4.servicios.EspirituosaServicio;
@@ -66,7 +68,6 @@ public class ProductoController {
 	
 	@GetMapping("/vinoSave")
 	public String vino() {
-		
 		return "cargaVino";		//Estas vistan se retornan a ellas mismas.
 	}
 	
@@ -106,7 +107,7 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/vinoSave")
-	public String vino (ModelMap model, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock, String descripcion,String bodega, String varietal, String envase, String tipo, String origen) {
+	public String vino (ModelMap model, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock,          String descripcion,String bodega, String varietal, String envase, String tipo, String origen) {
 		String img = null;
 		if (!imagen.isEmpty()) {
 			// Path directorioImg = Paths.get("src//main//resources//static//imagenes");
@@ -121,7 +122,7 @@ public class ProductoController {
 			}
 
 		}
-
+                
 		try {
 			vinoServi.guardarVino(descripcion, envase, varietal, bodega, img, marca, origen, otrasmarca, tipo, precio, stock);
 		} catch (Exception e) {
