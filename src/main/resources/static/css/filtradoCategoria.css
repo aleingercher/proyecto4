@@ -6,7 +6,7 @@ body {
     display: none;
 }
 
-.cards {
+#cards {
     display: grid;
     margin: 0 auto;
     grid-template-columns: repeat(auto-fill, 270px);

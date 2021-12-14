@@ -26,4 +26,9 @@ public class ProductoServicio {
 	 public void eliminar(Producto producto) {
 	        productoRepositorio.delete(producto);
 	 }
+	 
+	 public List<Producto> findByCategoria(String categoria) {
+		 
+		 return productoRepositorio.findByCategoria(categoria);
+	 }
 }

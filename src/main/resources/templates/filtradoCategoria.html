@@ -40,14 +40,14 @@
             </div>
         </form>
 
-        <div class="cards">
-            <div class="card ">
-                <img src="https://http2.mlstatic.com/D_NQ_NP_832598-MLA44820751956_022021-O.jpg"
-                    class="card-img-top" alt="..." />
+        <div id="cards" >
+            <div class="card" th:each="prod:${productos}">
+                <img th:src="@{'/recursos/' + ${prod.foto}}" th:alt="${prod.foto}"
+                    class="card-img-top"/>
                 <div class="card-body titulo text-center text-uppercase">
-                    <span class="categoria">Vino</span>
-                    <span class="marca">Alma mora</span>
-                    <span class="tipo">Malbec</span>
+                    <span class="categoria" th:text="${prod.categoria}">Categoria</span>
+                    <span class="marca" th:text="${prod.marca}">Marca</span>
+                    <span class="tipo" th:text="${prod.tipo}">Tipo</span>
                 </div>
                 <h2 class="precio align-self-center my-3">$400</h2>
 
@@ -60,26 +60,7 @@
                     <button type="submit" class="btn btn-dark m-2">agregar al carrito</button>
                 </form>
             </div>
-            <div class="card ">
-                <img src="https://www.brancastore.com.ar/269-large_default/fernet-branca-botella-edicion-175-aniversario-750ml.jpg"
-                    class="card-img-top" alt="..." />
-                <div class="card-body titulo text-center text-uppercase">
-                    <span class="categoria">Cerveza</span>
-                    <span class="marca">Andes</span>
-                    <span class="tipo">Roja</span>
-                </div>
-                <h2 class="precio align-self-center my-3">$400</h2>
-
-                <form action="" class="formulario ">
-                    <div class="botones">
-                        <button class="btn btn-dark menos">-</button>
-                        <input class="cantidad fs-3 align-self-center" value="0" />
-                        <button class="btn btn-dark mas">+</button>
-                    </div>
-                    <button type="submit" class="agregarCarrito btn btn-dark m-2">agregar al
-                        carrito</button>
-                </form>
-            </div>
+            
         </div>
     </div>
 
@@ -92,7 +73,7 @@
 
     <script>
         // para filtrar cards
-        const contenedor = document.querySelector('.cards');
+        const contenedor = document.querySelector('#cards');
         const search = document.querySelector('#search');
         const cards = document.querySelectorAll('.card');
         const cardsElement = Array.from(cards);
