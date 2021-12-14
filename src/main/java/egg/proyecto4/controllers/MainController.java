@@ -11,13 +11,7 @@ public class MainController {
 	@GetMapping("")
 	public String index() {
 		
-		return"index";
-	}
-	
-	@GetMapping("/index")
-	public String indexx() {
-		
-		return"index";
+		return "index";
 	}
 	
 	@GetMapping("/home")

@@ -1,13 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-}
-
-body {
-	font-family: sans-serif;
-	width: 100vw;
-	height: 100vh;
+	font-family: 'Quicksand', sans-serif;
 }
 
 /* BARRA DE NAVEGACION*/
@@ -17,8 +14,7 @@ body {
 
 header {
 	width: 100%;
-	background-image: linear-gradient(45deg, #769aa138, #685e8538),
-		url(../imagenes/portada.jpg);
+	background-image: linear-gradient(45deg, #769aa138, #685e8538), url(portada.jpg);
 	background: rgb(158, 151, 151);
 	background-size: cover;
 	background-position: center;
@@ -68,14 +64,17 @@ nav ul li a:hover {
 	font-family: 'Domine', serif;
 	text-shadow: 2px 2px 0 black;
 }
-/* BODY */
 
-/*pie de pagina*/
+/* END BARRA DE NAVEGACIÓN*/
+
+/*PIE DE PÁGINA*/
+
+footer {
+}
 .pie-pagina {
 	width: 100%;
 	background-color: #000000;
 }
-
 .pie-pagina .grupo-1 {
 	width: 100%;
 	max-width: 1200px;
@@ -93,7 +92,7 @@ nav ul li a:hover {
 	align-items: center;
 }
 .pie-pagina .grupo-1 .box figure img {
-	width: 250px !important;
+	width: 250px;
 }
 .pie-pagina .grupo-1 .box h2 {
 	color: #fff;
@@ -136,3 +135,4 @@ nav ul li a:hover {
 		padding: 35px 0px;
 	}
 }
+/* END PIE DE PÁGINA */
