@@ -10,9 +10,8 @@
     rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="CSS/maqueta.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- <link rel="stylesheet" href="/css/maqueta.css"> -->
+  <link rel="stylesheet" href="/css/carga.css">
   <link href="https://fonts.googleapis.com/css2?family=Domine&family=Permanent+Marker&display=swap"
     rel="stylesheet">
   <script src="https://kit.fontawesome.com/e84be291c7.js" crossorigin="anonymous"></script>
@@ -22,118 +21,101 @@
   <header>
     <div th:replace="fragments-navbar-footer :: navbar"></div>
   </header>
-  <form th:action="@{/producto/cervezaSave}" method="POST" enctype="multipart/form-data">
-    <div class="form-group">
+  <div class="container w-50">
+    <h2 class="text-center">carga de Cervezas</h2>
+    <form th:action="@{/producto/cervezaSave}" method="POST" enctype="multipart/form-data">
+
       <!-- Marca cerveza -->
-      <label for="marca" class="control-label">Marca de cerveza</label>
-      <select class="form-control" id="marca_producto" name="marca">
-        <option value="NULL"></option>
-        <option value="QU">Quilmes</option>
-        <option value="CO">Corona</option>
-        <option value="BR">Brahma</option>
-        <option value="AN">Andes</option>
-        <option value="IMP">Imperial</option>
-        <option value="STE">Stella</option>
-        <option value="HE">Heineken</option>
-        <option value="SH">Schneider</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <label for="marca" class="control-label">Marca de cerveza</label>
+        <select class="form-control" id="marca_producto" name="marca">
+          <option selected="selected" disabled="true">...</option>
+          <option th:each="CervezaMarca : ${T(egg.proyecto4.enums.CervezaMarca_e).values()}"
+            th:value="${CervezaMarca}" th:text="${CervezaMarca.displayValue}"></option>
+        </select>
+      </div>
 
-
-
-    <div class="form-group">
       <!-- Otras marcas -->
-      <label for="Otra marca" class="control-label">Otra marca</label>
-      <input type="text" class="form-control" id="marca_producto_1" name="otrasmarca"
-        placeholder="Cerveza Internacional">
-    </div>
+      <div class="form-group">
+        <label for="Otra marca" class="control-label">Otra marca</label>
+        <input type="text" class="form-control" id="marca_producto_1" name="otrasmarca"
+          placeholder="...">
+      </div>
 
-    <div class="form-group">
-      <!-- Familia cerveza -->
-      <label for="familia" class="control-label">Familia de cerveza</label>
-      <select class="form-control" id="familia_producto" name="familia">
-        <option value="NULL"></option>
-        <option value="GO">Golden</option>
-        <option value="NE">Negra</option>
-        <option value="ST">Stout</option>
-        <option value="Re">Red</option>
-        <option value="IP">Ipa</option>
-        <option value="AP">Apa</option>
-        <option value="HO">Honey</option>
-        <option value="LA">Lager</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <!-- Familia cerveza -->
+        <label for="familia" class="control-label">Tipo de cerveza</label>
+        <select class="form-control" id="familia_producto" name="familia">
+          <option selected="selected" disabled="true">...</option>
+          <option th:each="CervezaFamilia : ${T(egg.proyecto4.enums.CervezaFamilia_e).values()}"
+            th:value="${CervezaFamilia}" th:text="${CervezaFamilia.displayValue}"></option>
+        </select>
+      </div>
 
-    <div class="form-group">
       <!-- Precio -->
-      <label for="Precio" class="control-label">Precio producto</label>
-      <input type="number" class="form-control" id="precio_producto" name="precio"
-        placeholder="Precio de producto">
-    </div>
-    <!-- /*como se pone variable float*/ -->
-    <div class="form-group">
+      <div class="form-group">
+        <label for="Precio" class="control-label">Precio del producto</label>
+        <input type="number" class="form-control" id="precio_producto" name="precio"
+          placeholder="...">
+      </div>
+
       <!-- stock -->
-      <label for="stock" class="control-label">Stock productos</label>
-      <input type="number" class="form-control" id="stock_producto" name="stock"
-        placeholder="Stock de producto" th:value="${stock}">
-    </div>
-    </div>
-    <div class="form-group">
-      <!-- descripción -->
-      <label for="descripcion" class="control-label">Descripción del Producto</label>
-      <input type="text" class="form-control" id="descripcion_producto" name="descripcion"
-        placeholder="Características del producto">
-    </div>
-    <div class="form-group">
+      <div class="form-group">
+        <label for="stock" class="control-label">Stock inicial productos</label>
+        <input type="number" class="form-control" id="stock_producto" name="stock" placeholder="..."
+          th:value="${stock}">
+      </div>
+
+      <div class="form-group">
+        <!-- descripción -->
+        <label for="descripcion" class="control-label">Características del producto</label>
+        <input type="text" class="form-control" id="descripcion_producto" name="descripcion"
+          placeholder="...">
+      </div>
+
       <!-- envase -->
-      <label for="envase" class="control-label">Tipo de envase</label>
-      <select class="form-control" id="envase_producto" name="envase">
-        <option value="NULL"></option>
-        <option value="LI">Litro</option>
-        <option value="LA">Lata</option>
-        <option value="PO">Porrón</option>
-        <option value="PA">Packx6</option>
-      </select>
-    </div>
-    <div class="form-group">
+      <div class="form-group">
+        <label for="envase" class="control-label">Tipo de envase</label>
+        <select class="form-control" id="envase_producto" name="envase">
+          <option selected="selected" disabled="true">...</option>
+          <option th:each="CervezaEnvase : ${T(egg.proyecto4.enums.CervezaEnvase_e).values()}"
+            th:value="${CervezaEnvase}" th:text="${CervezaEnvase.displayValue}"></option>
+        </select>
+      </div>
+
       <!-- tipo -->
-      <label for="tipo" class="control-label">Tipo de cerveza</label>
-      <select class="form-control" id="tipo_producto" name="tipo">
-        <option value="NULL"></option>
-        <option value="AR">Artesanal</option>
-        <option value="IN">Industrial</option>
-      </select>
-    </div>
+      <div class="form-group">
+        <label for="tipo" class="control-label">Tipo de cerveza</label>
+        <select class="form-control" id="tipo_producto" name="tipo">
+          <option selected="selected" disabled="true">...</option>
+          <option th:each="CervezaTipo : ${T(egg.proyecto4.enums.CervezaTipo_e).values()}"
+            th:value="${CervezaTipo}" th:text="${CervezaTipo.displayValue}"></option>
+        </select>
+      </div>
 
-    <div class="form-group">
       <!-- Foto -->
-      <label for="foto" class="control-label">Foto del Producto</label>
-      <input type="file" class="form-control-file" id="foto_producto" name="imagen"
-        placeholder="Foto del producto">
-    </div>
-    <div class="form-group">
+      <div class="form-group">
+        <label for="foto" class="control-label">Foto del Producto</label>
+        <br />
+        <input type="file" class="form-control-file" id="foto_producto" name="imagen"
+          placeholder="Foto del producto">
+      </div>
+
       <!-- origen -->
-      <label for="origen" class="control-label">Origen del Producto</label>
-      <input type="text" class="form-control" id="origen_producto" name="origen"
-        placeholder="Origen del producto">
-    </div>
-    <!-- 
-    private String otrasMarcas;
-    private Float precio;
-    private Integer stock;
-    private Integer vendidos;
-    private String descripcion;
-    private String envase;//--
-    private String tipo;//--
-    private String foto;
-    private String origen;//-- -->
+      <div class="form-group">
+        <label for="origen" class="control-label">Origen del Producto</label>
+        <input type="text" class="form-control" id="origen_producto" name="origen"
+          placeholder="...">
+      </div>
 
-    <div class="form-group">
       <!-- Submit Button -->
-      <button type="submit" class="btn btn-primary">Cargar</button>
-    </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-dark">Cargar</button>
+      </div>
 
-  </form>
+    </form>
+  </div>
+
   <footer>
     <div th:replace="fragments-navbar-footer :: footer"></div>
   </footer>
