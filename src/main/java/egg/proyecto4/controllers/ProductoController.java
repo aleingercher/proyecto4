@@ -2,13 +2,12 @@ package egg.proyecto4.controllers;
 
 import java.io.IOException;
 
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.Optional;
 
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,9 +24,7 @@ import egg.proyecto4.entidades.Cerveza;
 import egg.proyecto4.entidades.Espirituosa;
 import egg.proyecto4.entidades.Producto;
 import egg.proyecto4.entidades.Vino;
-import egg.proyecto4.enums.Categoria_e;
-import egg.proyecto4.enums.VinoMarca_e;
-import egg.proyecto4.enums.VinoTipo_e;
+
 import egg.proyecto4.errores.errores;
 import egg.proyecto4.servicios.CervezaServicio;
 import egg.proyecto4.servicios.EspirituosaServicio;
@@ -49,6 +46,7 @@ public class ProductoController {
 	
 	@Autowired
 	ProductoServicio productoServi;
+
 	
 	//ENDPOINT VISTA CARGARPRODUCTOS
 	
@@ -62,6 +60,8 @@ public class ProductoController {
 	
 	@GetMapping("/cervezaSave")
 	public String cerveza() {
+		
+		
 		
 		return "cargaCerveza"; 	//Estas vistan se retornan a ellas mismas.
 	}
