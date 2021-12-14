@@ -25,6 +25,7 @@ import egg.proyecto4.entidades.Cerveza;
 import egg.proyecto4.entidades.Espirituosa;
 import egg.proyecto4.entidades.Producto;
 import egg.proyecto4.entidades.Vino;
+import egg.proyecto4.enums.Categoria_e;
 import egg.proyecto4.errores.errores;
 import egg.proyecto4.servicios.CervezaServicio;
 import egg.proyecto4.servicios.EspirituosaServicio;
@@ -303,29 +304,31 @@ public class ProductoController {
 		return "producto";	
 	}
 	
-	@SuppressWarnings("null")
-	@GetMapping("/filtradoCategoria")
-	public String filtradoCategoria(ModelMap modal,@RequestParam(required = false) String categoria) {
+	@GetMapping("/filtradoVino")
+	public String filtradoVino(ModelMap modal) {
+	
+		List<Vino> vino= vinoServi.consultarVinos();
+		modal.addAttribute("productos", vino);
 		
-		List<Producto> productos = null;
-		
-		if(categoria.equals("CERVEZA")) {
-			
-			productos.addAll(cervezaServi.consultarCervezas());
-			
-		} else if(categoria.equals("VINO")) {
-			
-			productos.addAll(vinoServi.consultarVinos());
-			
-		} else {
-			
-			productos.addAll(espirituosaServi.consultarEspirituosas());
-		}
-		
-		
-		modal.addAttribute("productos", productos);
-		
-		return "filtradoCategoria.html";	
+		return "filtradoCategoria";	
 	}
 	
+	@GetMapping("/filtradoCerveza")
+	public String filtradoCerveza (ModelMap modal) {
+		
+		List<Cerveza> cerveza= cervezaServi.consultarCervezas();
+		modal.addAttribute("productos", cerveza);
+		
+		return "filtradoCategoria";
+	}
+	
+	@GetMapping("/filtradoEspirituosa")
+	public String filtradoEspirituosa (ModelMap modal) {
+		
+		List<Espirituosa> espirituosa= espirituosaServi.consultarEspirituosas();
+		modal.addAttribute("productos", espirituosa);
+		
+		return "filtradoCategoria";
+	}
+
 }
