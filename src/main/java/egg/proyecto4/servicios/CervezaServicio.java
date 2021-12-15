@@ -37,7 +37,7 @@ public class CervezaServicio {
             throw new errores("Debe haber stock.");
         } 
 
-        Pattern p1 = Pattern.compile("^[a-zA-Z0-9]+$");
+        Pattern p1 = Pattern.compile("^[a-zA-Z0-9 ]+$");
 
         Matcher mDescripcion = p1.matcher(descripcion);
 

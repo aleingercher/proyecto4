@@ -95,7 +95,7 @@ public class ProductoController {
 		}
 
 		try {
-			cervezaServi.guardarCerveza(descripcion, familia, envase, img, marca, origen, otrasmarca, tipo, precio, stock);
+			cervezaServi.guardarCerveza(descripcion, envase, familia, img, marca, origen, otrasmarca, tipo, precio, stock);
 		} catch (Exception e) {
 			model.put("error", e.getMessage());
 			model.put("precio", precio);
