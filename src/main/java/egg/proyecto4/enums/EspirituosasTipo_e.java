@@ -7,9 +7,11 @@ public enum EspirituosasTipo_e {
 	WHISKY("Whysky"),
 	BOURBON("Bourbon"),
 	TEQUILA("Tequila"),
+        MEZCAL("Mezcal"),
 	GIN("Gin"),
 	FERNET("Fernet"),
-	APERITIVO("Aperitivo");
+	APERITIVO("Aperitivo"),
+        VERMUT("Vermut");
 	
     private final String displayValue;
 

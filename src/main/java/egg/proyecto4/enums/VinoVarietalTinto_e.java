@@ -9,6 +9,9 @@ public enum VinoVarietalTinto_e {
 	BONARDA("Bonarda"),
 	MERLOT("Merlot"),
 	PINOT_NOIR("Pinot Noir"),
+        SYRAH("Syrah"),
+        TEMPRANILLO("Tempranillo"),
+        BLEND("Blend"),
 	CARMENERE("Carmenere");
 	
     private final String displayValue;

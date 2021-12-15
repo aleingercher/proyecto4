@@ -8,6 +8,7 @@ public enum CervezaFamilia_e {
     STOUT("Stout"),
     APA("APA"),
     IPA("IPA"),
+    AMBAR("Ambar"),
     HONEY("Honey");
 
     private final String displayValue;

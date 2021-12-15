@@ -7,8 +7,19 @@ public enum EspirituosasMarca_e {
 	FINLANDIA("Finlandia"),
 	SMIRNOFF("Smirnoff"),
 	BULLDOG("Bulldog"),
-	BRANCA("branca"),
+	BRANCA("Branca"),
+        VITONE("Vitone"),
+        MIL_OCHO("1882"),
+        CINZANO("Cinzano"),
+        AMARGO_OBRERO("Amargo Obrero"),
+        APEROL("Aperol"),
+        GANCIA("Gancia"),
+        MARCELA("Marcela"),
+        CAMPARI("Campari"),
+        CYNAR("Cynar"),
+        RAMAZZOTTI("Ramazzotti"),
 	BAILEYS("Baileys");
+        
 
     private final String displayValue;
 

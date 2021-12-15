@@ -6,6 +6,8 @@ public enum CervezaMarca_e {
     ANDES("Andes"),
     BRAHMA("Brahma"),
     CORONA("Corona"),
+    SOL("Sol"),
+    CRISTAL("Cristal"),
     HEINEKEN("Heineken"),
     IMPERIAL("Imperial"),
     QUILMES("Quilmes"),
