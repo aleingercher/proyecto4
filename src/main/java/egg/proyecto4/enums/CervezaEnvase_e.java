@@ -4,7 +4,8 @@ public enum CervezaEnvase_e {
 
     LITRO("Litro"),
     LATA("Lata"),
-    PORRON("Porron"),
+    CAJON("Cajón de Birra"),
+    PORRON("Porrón"),
     PACKx6("Pack de 6");
 
     private final String displayValue;

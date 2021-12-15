@@ -6,7 +6,9 @@ public enum VinoVarietalBlanco_e {
 	
 	CHARDONNAY("Chardonnay"),
 	SUAVIGNON("Suavignon"),
-	TORRONTES("Torrontes");
+        MOSCATEL("Moscatel"),
+        CHENIN("Chenin"),
+        TORRONTES("Torrontes");
 
     private final String displayValue;
 
