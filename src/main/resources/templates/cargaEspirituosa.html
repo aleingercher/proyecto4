@@ -28,7 +28,7 @@
 				<option selected="selected" disabled="true">...</option>
 
 				<option
-					th:each="EspirituosaTipo : ${T(egg.proyecto4.enums.EspirituosaTipo_e).values()}"
+					th:each="EspirituosaTipo : ${T(egg.proyecto4.enums.EspirituosasTipo_e).values()}"
 					th:value="${EspirituosaTipo}" th:text="${EspirituosaTipo.displayValue}">
 				</option>
 			</select>
@@ -40,7 +40,7 @@
 			<select class="form-control" id="marca" name="marca">
 				<option selected="selected" disabled="true">...</option>
 				<option
-					th:each="EspirituosaMarca : ${T(egg.proyecto4.enums.EspirituosaMarca_e).values()}"
+					th:each="EspirituosaMarca : ${T(egg.proyecto4.enums.EspirituosasMarca_e).values()}"
 					th:value="${EspirituosaMarca}" th:text="${EspirituosaMarca.displayValue}">
 				</option>
 			</select>
@@ -82,7 +82,7 @@
 			<select class="form-control" id="envase" name="envase">
 				<option selected="selected" disabled="true">...</option>
 				<option
-					th:each="EspirituosaEnvase : ${T(egg.proyecto4.enums.EspirituosaEnvase_e).values()}"
+					th:each="EspirituosaEnvase : ${T(egg.proyecto4.enums.EspirituosasEnvase_e).values()}"
 					th:value="${EspirituosaEnvase}" th:text="${EspirituosaEnvase.displayValue}">
 				</option>
 			</select>
