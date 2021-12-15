@@ -1,6 +1,24 @@
 package egg.proyecto4.enums;
 
 public enum CervezaFamilia_e {
-	
-	GOLDEN, RED, NEGRA, STOUT, APA, IPA, HONEY, LAGER;
+
+    RUBIA("Rubia"),
+    ROJA("Roja"),
+    NEGRA("Negra"),
+    STOUT("Stout"),
+    APA("APA"),
+    IPA("IPA"),
+    AMBAR("Ambar"),
+    HONEY("Honey");
+
+    private final String displayValue;
+
+    private CervezaFamilia_e(String displayValue) {
+        this.displayValue = displayValue;
+    }
+
+    public String getDisplayValue() {
+        return displayValue;
+    }
 }
+

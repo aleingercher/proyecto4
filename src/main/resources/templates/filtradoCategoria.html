@@ -9,12 +9,13 @@
         rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
         crossorigin="anonymous" />
+    <link rel="stylesheet" href="/css/navbar-footer.css">
+    <link rel="stylesheet" href="/css/filtradoCategoria.css">
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
         href="https://fonts.googleapis.com/css2?family=Domine&family=Permanent+Marker&display=swap"
         rel="stylesheet" />
-    <link rel="stylesheet" href="css/filtradoCategoria.css">
     <script src="https://kit.fontawesome.com/e84be291c7.js" crossorigin="anonymous"></script>
     <style>
 
@@ -49,12 +50,12 @@
                     <span class="marca" th:text="${prod.marca}">Marca</span>
                     <span class="tipo" th:text="${prod.tipo}">Tipo</span>
                 </div>
-                <h2 class="precio align-self-center my-3">$400</h2>
+                <h2 class="precio align-self-center my-3" th:text="'$' +${prod.precio}">Precio</h2>
 
-                <form action="" class="formulario ">
+                <form class="formulario"  method="GET">
                     <div class="botones">
                         <button class="btn btn-dark menos">-</button>
-                        <input class="cantidad fs-3 align-self-center" value="0" />
+                        <input class="cantidad fs-3 align-self-center" th:value="0" />
                         <button class="btn btn-dark mas">+</button>
                     </div>
                     <button type="submit" class="btn btn-dark m-2">agregar al carrito</button>
