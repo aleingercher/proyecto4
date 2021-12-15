@@ -54,7 +54,8 @@
       <div class="col-lg-5 bg-dark d-flex flex-column align-items-end min-vh-100">
         
         <div class="align-self-center w-100 px-lg-5 py-lg-4 p-4">
-          <h1 class="font-weight-bold">Bienvenido a Barra Libre</h1>
+          <h1 class="font-weight-bold mb-4 text-center">Ingresa y date el gusto</h1>
+          <hr class="mb-4">
           <div th:if="${param.logout}" class="alert-success alert-dismissible fade show mt-3"
             role="alert">
             <span>Has finalizado la sesión con exito.</span>
@@ -87,9 +88,11 @@
                 class="fab fa-facebook-f lead mr-2"></i> Facebook</button>
           </div>
         </div>
+        
         <div class="text-center px-lg-5 pt-lg-3 pb-lg-4 p-4 mt-auto w-100">
-          <p class="d-inline-block mb-0">¿Todavia no tienes una cuenta?</p> <a
-            th:href="@{/user/save}" class="text-light font-weight-bold text-decoration-none">Crea
+        	<hr class="mb-4">
+          <p class="d-inline-block mb-4">¿Todavia no tienes una cuenta?</p> <a
+            th:href="@{/user/save}" class="text-primary font-weight-bold text-decoration-none">Crea
             una ahora</a>
         </div>
       </div>
