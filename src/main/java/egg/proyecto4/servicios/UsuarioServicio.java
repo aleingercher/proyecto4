@@ -63,8 +63,9 @@ public class UsuarioServicio implements UserDetailsService {
 		Pattern p1 = Pattern.compile("^[a-zA-Z]+$");										//Patron para inputs de solo caracteres. EJ:Nombre, apellido.
 		Pattern p2 = Pattern.compile("^[0-9]+$");											//Patron para inputs de solo numeros. EJ: documento, telefono, nroTarjeta.
 		Pattern p3 = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+[.][A-Za-z]{2,}$");	//Patron para inputs que reciban solamente MAILS.
-		Pattern p4 = Pattern.compile("^[A-Z][A-Za-z0-9]+$");								//Patron para inputs para que reciba caracteres y nmros con la condicion de que el 1er caracter sea en MAY y letra.
-		Pattern p5 = Pattern.compile("^[a-z0-9]+[ ]{1}[0-9]+$");								//Patron para inputs solamente de direcciones de casas. 
+		Pattern p4 = Pattern.compile("^[A-Z][A-Za-z0-9 ]+$");								//Patron para inputs para que reciba caracteres y nmros con la condicion de que el 1er caracter sea en MAY y letra.
+		Pattern p5 = Pattern.compile("^[a-z0-9]+[ ]{1}[0-9]+$");
+		Pattern p6 = Pattern.compile("^[A-Z][A-Za-z0-9]+$");
 		
 		
 		Matcher mNombre = p1.matcher(nombre);
@@ -73,7 +74,7 @@ public class UsuarioServicio implements UserDetailsService {
 		Matcher mLocalidad = p4.matcher(localidad);
 		Matcher mCelular = p2.matcher(celular);
 		Matcher mEmail = p3.matcher(email);
-		Matcher mClave = p4.matcher(clave);
+		Matcher mClave = p6.matcher(clave);
 		
 		if(!mNombre.find()) {
 			throw new errores("Ingrese solo valores alfabeticos en (Nombre)");

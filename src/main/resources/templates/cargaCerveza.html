@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.thymeleaf.org" lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -24,7 +24,7 @@
   <div class="container w-50">
     <h2 class="text-center">carga de Cervezas</h2>
     <form th:action="@{/producto/cervezaSave}" method="POST" enctype="multipart/form-data">
-
+		<p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
       <!-- Marca cerveza -->
       <div class="form-group">
         <label for="marca" class="control-label">Marca de cerveza</label>
@@ -44,7 +44,7 @@
 
       <div class="form-group">
         <!-- Familia cerveza -->
-        <label for="familia" class="control-label">Tipo de cerveza</label>
+        <label for="familia" class="control-label">Familia de cerveza</label>
         <select class="form-control" id="familia_producto" name="familia">
           <option selected="selected" disabled="true">...</option>
           <option th:each="CervezaFamilia : ${T(egg.proyecto4.enums.CervezaFamilia_e).values()}"
@@ -56,7 +56,7 @@
       <div class="form-group">
         <label for="Precio" class="control-label">Precio del producto</label>
         <input type="number" class="form-control" id="precio_producto" name="precio"
-          placeholder="...">
+          placeholder="..." th:value="${precio}">
       </div>
 
       <!-- stock -->
@@ -68,9 +68,9 @@
 
       <div class="form-group">
         <!-- descripción -->
-        <label for="descripcion" class="control-label">Características del producto</label>
+        <label for="descripcion" class="control-label">Descripción del producto</label>
         <input type="text" class="form-control" id="descripcion_producto" name="descripcion"
-          placeholder="...">
+          placeholder="..." th:value="${descripcion}">
       </div>
 
       <!-- envase -->
