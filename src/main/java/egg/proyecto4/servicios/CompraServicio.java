@@ -55,7 +55,7 @@ public class CompraServicio {
         compra.setEnvio(envio);
         compra.setMedioPago(medioPago);
         compra.setPrecioTotal(precioTotal);
-        compra.setProducto(producto);
+        //compra.setProducto(producto);
         compra.setUsuario(usuario);
         compraRepo.save(compra);
 
