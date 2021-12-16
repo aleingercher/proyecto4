@@ -30,16 +30,11 @@
 }
 
 .img-1 {
-	background-image: url('../imagenes/estantes.jpg');
+	background-image: url('../imagenes/Login1.jpg');
 	background-size: cover;
 	background-position: center;
 }
 
-.img-2 {
-	background-image: url('../imagenes/portada.jpg');
-	background-size: cover;
-	background-position: center;
-}
 
 .mb-4 {
 	color: white;

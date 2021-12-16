@@ -102,6 +102,7 @@ nav ul li a:hover {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
+	line-height: 90%;
 }
 .pie-pagina .grupo-1 .box figure {
 	width: 100%;
