@@ -92,7 +92,7 @@ nav ul li a:hover {
 .pie-pagina .grupo-1 {
 	width: 100%;
 	max-width: 1200px;
-	margin: 10px auto;
+	margin: 0 auto;
 	display: flex;
 	justify-content: space-around;
 	padding: 25px 0 0 0;

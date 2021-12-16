@@ -103,11 +103,11 @@ public class ProductoController {
 			model.put("descripcion", descripcion);
 			return "cargaCerveza";
 		}
-		return "home";
+		return "redirect:/home";
 	}
 	
 	@PostMapping("/vinoSave")
-	public String vino (ModelMap model, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock,          String descripcion,String bodega, String varietal, String envase, String tipo, String origen) {
+	public String vino (ModelMap model, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock,          @RequestParam(required = false) String descripcion, String bodega, String varietal, String envase, String tipo, String origen) {
 		String img = null;
 		if (!imagen.isEmpty()) {
 			// Path directorioImg = Paths.get("src//main//resources//static//imagenes");
@@ -120,11 +120,10 @@ public class ProductoController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
                 
 		try {
-			vinoServi.guardarVino(descripcion, envase, varietal, bodega, img, marca, origen, otrasmarca, tipo, precio, stock);
+			vinoServi.guardarVino( descripcion, envase, varietal, bodega, img, marca, origen, otrasmarca, tipo, precio, stock);
 		} catch (Exception e) {
 			model.put("error", e.getMessage());
 			model.put("precio", precio);
@@ -132,7 +131,8 @@ public class ProductoController {
 			model.put("descripcion", descripcion);
 			return "cargaVino";
 		}
-		return "home";
+                
+		return "redirect:/home";
 	}
 	
 	@PostMapping("/espirituosaSave")
@@ -161,7 +161,7 @@ public class ProductoController {
 			model.put("descripcion", descripcion);
 			return "cargaEspirituosa";
 		}
-		return "home";
+		return "redirect:/home";
 	}
 	
 	

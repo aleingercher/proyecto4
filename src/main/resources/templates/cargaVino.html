@@ -10,10 +10,10 @@
     rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
     crossorigin="anonymous">
-  <link rel="stylesheet" href="/css/navbar-footer.css">
-  <link rel="stylesheet" href="/css/carga.css">
   <link href="https://fonts.googleapis.com/css2?family=Domine&family=Permanent+Marker&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="/css/navbar-footer.css">
+  <link rel="stylesheet" href="/css/carga.css">
   <script src="https://kit.fontawesome.com/e84be291c7.js" crossorigin="anonymous"></script>
 </head>
 
@@ -25,7 +25,7 @@
   <div class="container w-50">
     <h2 class="text-center">carga de vinos</h2>
     <form th:action="@{/producto/vinoSave}" method="POST" enctype="multipart/form-data">
-
+      <p th:if="${error != null}" th:text="${error}" class="text-warning"></p>
       <!-- Marca Vino -->
       <div class="form-group mt-2">
         <label for="marca" class="control-label">Marca de VINO</label>
@@ -38,117 +38,114 @@
 
 
 
+      <!-- Otras marcas -->
       <div class="form-group mt-2">
-        <!-- Otras marcas -->
         <label for="Otra marca" class="control-label">Otra marca</label>
         <input type="text" class="form-control" id="marca_producto_1" name="otrasmarca"
           placeholder="Marca de vino nueva">
       </div>
 
+      <!-- Precio -->
       <div class="form-group">
-        <!-- Precio -->
         <label for="Precio" class="control-label">Precio producto</label>
         <input type="number" class="form-control" id="precio_producto" name="precio"
           placeholder="...">
       </div>
+
+      <!-- stock -->
       <div class="form-group">
-        <!-- stock -->
         <label for="stock" class="control-label">Stock productos</label>
         <input type="number" class="form-control" id="stock_producto" name="stock"
           placeholder="...">
       </div>
 
+      <!-- descripción -->
       <div class="form-group">
-        <!-- descripción -->
         <label for="descripcion" class="control-label">Descripción del Producto</label>
         <input type="text" class="form-control" id="descripcion_producto" name="descripcion"
           placeholder="...">
       </div>
 
+      <!-- envase -->
       <div class="form-group">
-        <!-- envase -->
         <label for="envase" class="control-label">Tipo de envase</label>
         <select class="form-control" id="envase_producto" name="envase">
-        	<option selected="selected" disabled="true">...</option>
-          	<option th:each="VinoEnvase : ${T(egg.proyecto4.enums.VinoEnvase_e).values()}"
+          <option selected="selected" disabled="true">...</option>
+          <option th:each="VinoEnvase : ${T(egg.proyecto4.enums.VinoEnvase_e).values()}"
             th:value="${VinoEnvase}" th:text="${VinoEnvase.displayValue}"></option>
         </select>
       </div>
 
-    <form id="f1" name="f1">
-	      <div class="form-group">
-	        <!-- ESTE ES EL MODELO DE COMO FUNCIONA!!!!!!! -->
-	        <!-- tipo -->
-	        <label for="tipo" class="control-label">Tipo de vino</label>
-	        <select class="form-control" id="tipo" name=" " onchange="cambia_varietal()">
-	        	<option selected="selected" disabled="true">...</option>
-	          	<option th:each="VinoTipo : ${T(egg.proyecto4.enums.VinoTipo_e).values()}"
-	            th:value="${VinoTipo}" th:text="${VinoTipo.displayValue}"></option>
-	        </select>
-	      </div>
-	      <div class="form-group">
-	        <!-- Varietal -->
-	        <label for="varietal" class="control-label">Varietal</label>
-	        <select class="form-control" id="varietal" name=" ">
-	        
-	          <option selected="selected" disabled="true">...</option>
-	          <option th:value="0">	</option>
-	          
-	        </select>
-	      </div>
-    </form>
 
+      <!-- Foto -->
       <div class="form-group">
-        <!-- Foto -->
         <label for="foto" class="control-label">Foto del Producto</label>
         <input type="file" class="form-control-file" id="foto_producto" name="imagen"
           placeholder="...">
       </div>
+
+      <!-- origen -->
       <div class="form-group">
-        <!-- origen -->
-         <label for="origen" class="control-label">Origen del Producto</label>
+        <label for="origen" class="control-label">Origen del Producto</label>
         <select class="form-control" id="origen" name="origen">
-        	<option selected="selected" disabled="true">...</option>
-          	<option th:each="Origen : ${T(egg.proyecto4.enums.Origen_e).values()}"
+          <option selected="selected" disabled="true">...</option>
+          <option th:each="Origen : ${T(egg.proyecto4.enums.Origen_e).values()}"
             th:value="${Origen}" th:text="${Origen.displayValue}"></option>
         </select>
       </div>
+
+      <!-- bodega -->
       <div class="form-group">
-        <!-- bodega -->
         <label for="bodega" class="control-label">Bodega</label>
         <select class="form-control" id="bodega" name="bodega">
           <option selected="selected" disabled="true">...</option>
-          	<option th:each="Bodega : ${T(egg.proyecto4.enums.VinoBodega_e).values()}"
+          <option th:each="Bodega : ${T(egg.proyecto4.enums.VinoBodega_e).values()}"
             th:value="${Bodega}" th:text="${Bodega.displayValue}"></option>
         </select>
       </div>
+
+      <!-- tipo -->
       <div class="form-group">
+        <label for="tipo" class="control-label">Tipo de vino</label>
+        <select class="form-control" id="tipo" name="tipo">
+          <option selected="selected" disabled="true">...</option>
+          <option th:each="VinoTipo : ${T(egg.proyecto4.enums.VinoTipo_e).values()}"
+            th:value="${VinoTipo}" th:text="${VinoTipo.displayValue}"></option>
+        </select>
+      </div>
+
+      <!-- Varietal -->
+      <div class="form-group hide" id='vtinto'>
         <!-- Varietal -->
         <label for="varietalTinto" class="control-label">Varietal Tinto</label>
         <select class="form-control" id="varietalTinto" name="varietal">
           <option selected="selected" disabled="true">...</option>
-          	<option th:each="VarietalTinto : ${T(egg.proyecto4.enums.VinoVarietalTinto_e).values()}"
-            th:value="${VarietalTinto}" th:text="${VarietalTinto.displayValue}"></option>
+          <option th:each="VarietalTinto : ${T(egg.proyecto4.enums.VinoVarietalTinto_e).values()}"
+            th:value="${VarietalTinto}" th:text="${VarietalTinto.displayValue}">
+          </option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="form-group hide" id='vrosado'>
         <!-- Varietal rosado-->
         <label for="varietalRosado" class="control-label">Varietal Rosado</label>
         <select class="form-control" id="varietalRosado" name="varietal">
           <option selected="selected" disabled="true">...</option>
-          	<option th:each="VarietalRosado : ${T(egg.proyecto4.enums.VinoVarietalRosado_e).values()}"
-            th:value="${VarietalRosado}" th:text="${VarietalRosado.displayValue}"></option>
+          <option th:each="VarietalRosado : ${T(egg.proyecto4.enums.VinoVarietalRosado_e).values()}"
+            th:value="${VarietalRosado}" th:text="${VarietalRosado.displayValue}">
+          </option>
         </select>
       </div>
-      <div class="form-group">
+      <div class="form-group hide" id='vblanco'>
         <!-- Varietal blanco -->
         <label for="varietalBlanco" class="control-label">Varietal Blanco</label>
         <select class="form-control" id="varietalBlanco" name="varietal">
           <option selected="selected" disabled="true">...</option>
-          	<option th:each="VarietalBlanco : ${T(egg.proyecto4.enums.VinoVarietalBlanco_e).values()}"
-            th:value="${VarietalBlanco}" th:text="${VarietalBlanco.displayValue}"></option>
+          <option th:each="VarietalBlanco : ${T(egg.proyecto4.enums.VinoVarietalBlanco_e).values()}"
+            th:value="${VarietalBlanco}" th:text="${VarietalBlanco.displayValue}">
+          </option>
         </select>
       </div>
+
       <div class="form-group">
         <!-- Submit Button -->
         <button type="submit" class="btn btn-primary">Cargar</button>
@@ -156,53 +153,58 @@
 
     </form>
   </div>
+
   <footer>
     <div th:replace="fragments-navbar-footer :: footer"></div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
-	<script>
-		
-		var tipo_Tinto = ["EL ENCANTO","LA CHORRERA","LA PEDRERA","LA VICTORIA"];
-		var tipo_BLANCO = T(egg.proyecto4.enums.VinoVarietalBlanco_e).values();
-		var tipo_ROSADO = T(egg.proyecto4.enums.VinoVarietalRosado_e).values();
-		var tipo_ESPUMANTE = T(egg.proyecto4.enums.VinoVarietalEspumante_e).values();
-		
-		
-		function cambia_varietal(){
-			
-			//tomamos el valor del select tipo elegido
-			var tipo
- 			tipo = document.getElementById('tipo').value
- 			
- 			//verificamos si el tipo está definido
- 			if (tipo != 0) { 
-				//si estaba definido, entonces coloco las opciones del tipo correspondiente. 
-      	 		//selecciono el array del tipo adecuado 
-				mis_varietales = eval("tipo_" + tipo)
-				
-				//calculo el numero de varietales 
-		      	 num_varietales = mis_varietales.length 
-		      	 //marco el número de varietales en el select 
-		      	 document.f1.varietal.length = num_varietales 
-		      	 //para cada varietal del array, lo introduzco en el select 
-		      	 for(i=0;i<num_varietales;i++){ 
-		         	 document.f1.varietal.options[i].value=mis_varietales[i] 
-		         	 document.f1.varietal.options[i].text=mis_varietales[i] 
-		      	 }
-		      	 
-		    } else { 
-		      	 //si no había tipo seleccionado, elimino los varietales del select 
-		      	 document.f1.varietal.length = 1 
-		      	 //coloco un guión en la única opción que he dejado 
-		      	 document.f1.varietales.options[0].value = " " 
-		      	 document.f1.varietales.options[0].text = "SIN ASIGNAR" 
-   	   		} 
-		} 
-		
-	</script>
-
 </body>
+
+<script>
+  const varietalCondicional = document.querySelector('#varietalCondicional');
+  const tipo = document.querySelector('#tipo');
+  const tinto = document.querySelector('#vtinto');
+  const blanco = document.querySelector('#vblanco');
+  const rosado = document.querySelector('#vrosado');
+
+  const hideOthers = (e) => {
+    e.siblings
+  }
+
+  tipo.addEventListener('change', (e) => {
+    let t = e.target.value;
+
+    switch (t) {
+      case 'TINTO':
+        tinto.classList.remove('hide')
+        blanco.classList.add('hide')
+        rosado.classList.add('hide')
+
+        break;
+      case 'BLANCO':
+        blanco.classList.remove('hide')
+        tinto.classList.add('hide')
+        rosado.classList.add('hide')
+        break;
+      case 'ROSADO':
+        rosado.classList.remove('hide')
+        blanco.classList.add('hide')
+        tinto.classList.add('hide')
+        break;
+      case 'ESPUMANTE':
+        rosado.classList.add('hide')
+        blanco.classList.add('hide')
+        tinto.classList.add('hide')
+        break;
+
+      default:
+        break;
+    }
+
+
+  })
+</script>
 
 </html>
