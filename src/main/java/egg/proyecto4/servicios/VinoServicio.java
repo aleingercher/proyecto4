@@ -17,11 +17,9 @@ public class VinoServicio {
     @Autowired
     private VinoRepositorio vinoRepo;
 
-    private void validar(String descripcion, String envase, String varietal, String bodega, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
+    private void validar( String envase, String varietal, String bodega, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
 
-        if (descripcion == null || descripcion.isEmpty()) {
-            throw new errores("La descripción no puede estar vacía.");
-        } else if (envase == null || envase.isEmpty()) {
+        if (envase == null || envase.isEmpty()) {
             throw new errores("Debe seleccionar un envase para la cerveza.");
         } else if (varietal == null || varietal.isEmpty()) {
             throw new errores("Debe seleccionar un tipo de varietal.");
@@ -39,21 +37,21 @@ public class VinoServicio {
             throw new errores("Debe seleccionar una bodega.");
         }
 
-        Pattern p1 = Pattern.compile("^[a-zA-Z0-9]+$");
-
-        Matcher mDescripcion = p1.matcher(descripcion);
-
-        if (!mDescripcion.find()) {
-            throw new errores("Ingrese solo caracteres y valores númericos");
-        }
+//        Pattern p1 = Pattern.compile("^[a-zA-Z0-9]+$");
+//
+//        Matcher mDescripcion = p1.matcher(descripcion);
+//
+//        if (!mDescripcion.find()) {
+//            throw new errores("Ingrese solo caracteres y valores númericos");
+//        }
 
     }
     
     //Guardar Vino
     @Transactional
-    public void guardarVino(String descripcion, String envase, String varietal, String bodega, String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
+    public void guardarVino( String descripcion, String envase, String varietal, String bodega, String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
 
-        validar(descripcion,envase,varietal,bodega,marca,origen,tipo,precio,stock);
+        validar(envase,varietal,bodega,marca,origen,tipo,precio,stock);
         
         Vino vino = new Vino();
         
@@ -81,7 +79,7 @@ public class VinoServicio {
     @Transactional
     public void modificarVino (String id,String descripcion, String envase, String varietal, String bodega, String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
         
-        validar(descripcion,envase,varietal,bodega,marca,origen,tipo,precio,stock);
+        validar(envase,varietal,bodega,marca,origen,tipo,precio,stock);
         
         Vino vino = vinoRepo.findById(id).get();
         

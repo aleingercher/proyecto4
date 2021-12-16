@@ -34,7 +34,7 @@
   <div class="container">
     <div class="row d-flex justify-content-around my-3">
       <div class="col-12 col-sm-3 card-products">
-        <a th:href="@{/producto/filtradoVino}">
+        <a th:href="@{/producto/filtradoCerveza}">
           <img src="imagenes/cerveza.jpg" alt="espirituosas">
           <div class="card-content">
             <h5 class="title">CERVEZA</h5>
@@ -50,7 +50,7 @@
         </a>
       </div>
       <div class="col-12 col-sm-3 card-products">
-        <a th:href="@{/producto/filtradoVino}">
+        <a th:href="@{/producto/filtradoEspirituosa}">
           <img src="imagenes/espirituosas.jpg" alt="cerveza">
           <div class="card-content">
             <h5 class="title">BEBIDAS ESPIRITUOSAS</h5>
@@ -58,9 +58,9 @@
         </a>
       </div>
     </div>
-   </div>
+  </div>
 </div>
-    <!-- <div class="card-group gap-2">
+<!-- <div class="card-group gap-2">
       <div class="card">
         <img src="imagenes/vino.jpg" class="card-img-top" alt="...">
         <div class="card-body">
@@ -96,19 +96,19 @@
       </div>
     </div>
   </div> -->
-  
+
 
 <div th:fragment="admin">
-    <div id="flex-center">
-      <div "${error != null}" th:text="${error}"
-        class="alert-success alert-dismissible fade show mt-3" role="alert">
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-      </div>
-      <div class="block-mid bg-dark bg-success p-2" style="--bs-bg-opacity: .75;">
-        <a id="btn" th:href="@{/producto/cargarProductos}" class="btn btn-outline-warning">Cargar
-          Producto</a>
-        <a id="btn" th:href="@{/producto/listar}" class="btn btn-outline-warning">Listar
-          Productos</a>
-      </div>
+  <div id="flex-center">
+    <div "${error != null}" th:text="${error}"
+      class="alert-success alert-dismissible fade show mt-3" role="alert">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
+    <div class="block-mid bg-dark bg-success p-2" style="--bs-bg-opacity: .75;">
+      <a id="btn" th:href="@{/producto/cargarProductos}" class="btn btn-outline-warning">Cargar
+        Producto</a>
+      <a id="btn" th:href="@{/producto/listar}" class="btn btn-outline-warning">Listar
+        Productos</a>
+    </div>
+  </div>
 </div>
