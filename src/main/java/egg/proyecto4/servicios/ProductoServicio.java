@@ -6,6 +6,7 @@ import egg.proyecto4.entidades.Espirituosa;
 import egg.proyecto4.entidades.Producto;
 import egg.proyecto4.entidades.Vino;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,23 +14,40 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProductoServicio {
 
-//	@Autowired
-//	private CervezaServicio cervezaServi;
-//	
-//	@Autowired
-//	private VinoServicio vinoServi;
-//	
-//	@Autowired
-//	private EspirituosaServicio espirituosaServi;
-//	
-//
-//	 public List<Producto> findAllProductos() {
-//	    
-//		List<Producto> productos = null;
-//	     
-//	    List<Espirituosa> espirituosa= espirituosaServi.consultarEspirituosas();
-//		List<Cerveza> cerveza= cervezaServi.consultarCervezas();
-//		List<Vino> vino= vinoServi.consultarVinos();
-//		 
+	@Autowired
+	private CervezaServicio cervezaServi;
+	
+	@Autowired
+	private VinoServicio vinoServi;
+	
+	@Autowired
+	private EspirituosaServicio espirituosaServi;
+	
+
+	public List<Producto> findAllProductos() {
+	    
+		ArrayList<Producto> productos = new ArrayList<Producto>();
+	     
+	    List<Espirituosa> espirituosa= espirituosaServi.consultarEspirituosas();
+		List<Cerveza> cerveza= cervezaServi.consultarCervezas();
+		List<Vino> vino= vinoServi.consultarVinos();
+		
+		for (Producto c : cerveza) {
+            
+			productos.add(c);
+        }
+		
+		for (Producto v : vino) {
+            
+			productos.add(v);
+        }
+		
+		for (Producto e : espirituosa) {
+            
+			productos.add(e);
+        }
+		
+		return productos;
+	}	 
  
 }
