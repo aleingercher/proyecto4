@@ -38,16 +38,42 @@
       </tr>
     </thead>
     <tbody>
-      <tr th:each="prod:${productos}">
-        <td th:text="${prod.marca}">Marca</td>
-        <td th:text="${prod.envase}">Envase</td>
-        <td th:text="${prod.tipo}">Tipo</td>
-        <td th:text="${prod.stock}">Stock</td>
+      <tr th:each="cerveza:${cervezas}">
+        <td th:text="${cerveza.marca}">Marca</td>
+        <td th:text="${cerveza.envase}">Envase</td>
+        <td th:text="${cerveza.tipo}">Tipo</td>
+        <td th:text="${cerveza.stock}">Stock</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" class="btn btn-primary"><a th:href="@{/producto/detalle/__${prod.id}__}">Descripción</a></button>
-            <button type="button" class="btn btn-warning"><a th:href="@{/producto/editar/__${prod.id}__}">Editar</a></button>
-            <button type="button" class="btn btn-danger"><a th:href="@{/producto/eliminar/__${prod.id}__}">Eliminar</a></button>
+            <button type="button" class="btn btn-primary"><a th:href="@{/producto/detalleCerveza/__${cerveza.id}__}">Descripción</a></button>
+            <button type="button" class="btn btn-warning"><a th:href="@{/producto/editar/__${cerveza.id}__}">Editar</a></button>
+            <button type="button" class="btn btn-danger"><a th:href="@{/producto/eliminarCerveza/__${cerveza.id}__}">Eliminar</a></button>
+          </div>
+        </td>
+      </tr>
+      <tr th:each="vino:${vinos}">
+        <td th:text="${vino.marca}">Marca</td>
+        <td th:text="${vino.envase}">Envase</td>
+        <td th:text="${vino.tipo}">Tipo</td>
+        <td th:text="${vino.stock}">Stock</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-primary"><a th:href="@{/producto/detalleVino/__${vino.id}__}">Descripción</a></button>
+            <button type="button" class="btn btn-warning"><a th:href="@{/producto/editar/__${vino.id}__}">Editar</a></button>
+            <button type="button" class="btn btn-danger"><a th:href="@{/producto/eliminarVino/__${vino.id}__}">Eliminar</a></button>
+          </div>
+        </td>
+      </tr>
+      <tr th:each="espirituosa:${espirituosas}">
+        <td th:text="${espirituosa.marca}">Marca</td>
+        <td th:text="${espirituosa.envase}">Envase</td>
+        <td th:text="${espirituosa.tipo}">Tipo</td>
+        <td th:text="${espirituosa.stock}">Stock</td>
+        <td>
+          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <button type="button" class="btn btn-primary"><a th:href="@{/producto/detalleEspirituosa/__${espirituosa.id}__}">Descripción</a></button>
+            <button type="button" class="btn btn-warning"><a th:href="@{/producto/editar/__${espirituosa.id}__}">Editar</a></button>
+            <button type="button" class="btn btn-danger"><a th:href="@{/producto/eliminarEspirituosa/__${espirituosa.id}__}">Eliminar</a></button>
           </div>
         </td>
       </tr>
