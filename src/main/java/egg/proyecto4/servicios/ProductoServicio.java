@@ -31,9 +31,5 @@ public class ProductoServicio {
 //		List<Cerveza> cerveza= cervezaServi.consultarCervezas();
 //		List<Vino> vino= vinoServi.consultarVinos();
 //		 
-//		 
-//		
-//		return productos;
-//	 }
-//	 
+ 
 }
