@@ -15,6 +15,7 @@ public class ProductoServicio {
 	private ProductoRepositorio productoRepositorio;
 	
 	 public List<Producto> consultarProductos() {
+                
 	        return productoRepositorio.findAll();
 	    }
 	 
