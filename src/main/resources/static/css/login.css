@@ -9,6 +9,12 @@
 	background-color: var(--dark-x);
 }
 
+
+.bg-grey{
+	background-color: rgb(121, 121, 121);
+}
+
+
 .formClass {
 	background-color: #555;
 	color: white;
@@ -17,6 +23,7 @@
 #emailHelp {
 	color: lightblue;
 }
+
 .btn {
 	min-height: 3.125rem;
 	font-weight: 600;
@@ -28,7 +35,7 @@
 }
 .form-control:focus {
 	background-color: var(--dark-x);
-	color: white;
+	color: none;
 	outline: none;
 }
 
