@@ -1,5 +1,6 @@
 body {
-	background-color: #444;
+	background-color: rgb(68, 68, 68);
+	
 }
 
 .buscador {
@@ -89,6 +90,19 @@ body {
 	background: linear-gradient(to top, black, transparent);
 }
 
+.block-mid{
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    border-radius:0.5rem;
+   	border: 2px solid rgb(65, 65, 65);
+    border-collapse: collapse;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
 @media screen and (min-width: 600px) {
 	.carousel-item {
 		position: relative;
@@ -103,6 +117,7 @@ body {
 	}
 }
 
+
 @media screen and (max-width: 600px) {
 	.buscador .table {
 		width: 250px;
@@ -115,3 +130,6 @@ body {
 		right: 270px;
 	}
 }
+
+
+

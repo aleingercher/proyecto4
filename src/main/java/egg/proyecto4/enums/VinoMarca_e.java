@@ -2,23 +2,20 @@ package egg.proyecto4.enums;
 
 public enum VinoMarca_e {
 
-    SANTA_JULIA("Santa Julia"),
-    ALMA_MORA("Alma Mora"),
-    TRAPICHE("Trapiche"),
-    TRUMPETER("Trumpeter"),
-    VINAS_BALBO("Viñas de Balbo"),
-    RUTINI("Rutini"),
-    LUIGI_BOSCA("Luigi Bosca"),
-    DADA("Dada"),
-    LA_IRIDE("La Iride"),
-    MALAMADO("Malamado"),
-    NORTON("Norton"),
-    ESTANCIA_MENDOZA("Estancia Mendoza"),
-    DONA_PAULA("Doña Paula"),
-    NIETO("Nieto Senetiner"),
-    EMILIA("Emilia"),
-    LATITUD("Latitud 33"),
-    LAS_PERDICES("Las Perdices");
+    
+    ALMA_MORA("Alma Mora"),/**/
+    ALTOS("Altos del Plata"),/**/
+    CABALLERO("Caballero"),/**/
+    CAFAYATE("Cafayate"),/**/
+    CINCO("Cinco Sentidos"),/**/
+    DESIERTO("Desierto 25"),/**/
+    ESCORIHUELA("Escorihuela"),/**/
+    FINCA("Finca Flichman"),/**/
+    LUIGI_BOSCA("Luigi Bosca"),/**/
+    TRAPICHE("Trapiche"),/**/
+    TRASLA("Tras la Piedra"),/**/
+    ZUCCARDI("Zuccardi"),/**/
+    SANTA_JULIA("Santa Julia");/**/
 
     private final String displayValue;
 
