@@ -167,29 +167,47 @@ public class ProductoController {
 	
 	//ENDPOINTS GET AND POST PARA MODIFICAR PRODUCTOS
 	
-	@GetMapping("/editar/{id}")
-	public String editar(@PathVariable("id") String id, Model model) {
+	@GetMapping("/editarCerveza/{id}")
+	public String editarCerveza(@PathVariable("id") String id, Model model) {
 		
 		Cerveza cerveza = cervezaServi.findById(id);
-		Vino vino = vinoServi.findById(id);
-		Espirituosa espirituosa = espirituosaServi.findById(id);
 		if(cerveza != null) {
 			
-			model.addAttribute("cerveza", cerveza);
+			model.addAttribute("prod", cerveza);
+			model.addAttribute("categoriaC", cerveza.getCategoria());
 			
-		} else if (vino != null) {
+		}
+		return "editarProductos";
+	}
+	
+	@GetMapping("/editarVino/{id}")
+	public String editarVino(@PathVariable("id") String id, Model model) {
+		
+		Vino vino = vinoServi.findById(id);
+		
+		if (vino != null) {
 			
-			model.addAttribute("vino", vino);
+			model.addAttribute("prod", vino);
+			model.addAttribute("categoriaV", vino.getCategoria());
 			
-		} else {
+		}
+		return "editarProductos";
+	}
+	
+	@GetMapping("/editarEspirituosa/{id}")
+	public String editarEspirituosa(@PathVariable("id") String id, Model model) {
+		
+		Espirituosa espirituosa = espirituosaServi.findById(id);
+		if(espirituosa != null) {
 			
-			model.addAttribute("espirituosa", espirituosa);
+			model.addAttribute("prod", espirituosa);
+			model.addAttribute("categoriaE", espirituosa.getCategoria());
 		}
 		return "editarProductos";
 	}
 	
 	@PostMapping("/actualizar/{id}")
-	public String updateProducto(ModelMap model,@PathVariable("id") String id, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock, String descripcion, String envase, String tipo, String origen, @RequestParam(required = false) String familia, @RequestParam(required = false) String bodega, @RequestParam(required = false) String varietal) {
+	public String updateProducto(ModelMap model,@PathVariable("id") String id, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio,@RequestParam(required = false) Integer stock,@RequestParam(required = false) String descripcion, String envase, String tipo, String origen, @RequestParam(required = false) String familia, @RequestParam(required = false) String bodega, @RequestParam(required = false) String varietal) {
 
 		//GUARDADO DE IMAGEN 
 		String img = null;
@@ -222,7 +240,7 @@ public class ProductoController {
 				model.put("descripcion", descripcion);
 				model.put("precio", precio);
 				model.put("stock", stock);
-				return "cervezaUpdate";
+				return "editarProductos";
 			}
 
 		} else if (vino != null) {
@@ -234,7 +252,7 @@ public class ProductoController {
 				model.put("descripcion", descripcion);
 				model.put("precio", precio);
 				model.put("stock", stock);
-				return "vinoUpdate";
+				return "editarProductos";
 			}
 
 		} else {
@@ -246,11 +264,11 @@ public class ProductoController {
 				model.put("descripcion", descripcion);
 				model.put("precio", precio);
 				model.put("stock", stock);
-				return "espirituosaUpdate";
+				return "editarProductos";
 			}
 		}
 
-		return "listarProducto";
+		return "redirect:/producto/listar";
 	}
 
 	@GetMapping("/listar")
@@ -262,7 +280,7 @@ public class ProductoController {
 		model.addAttribute("cervezas", cerveza);
 		List<Vino> vino= vinoServi.consultarVinos();
 		model.addAttribute("vinos", vino);
-
+		
 		return "listarProductos"; 	
 	}
 
