@@ -4,14 +4,15 @@ public enum EspirituosasTipo_e {
 
 	VODKA("Vodka"),
 	RON("Ron"),
+        PINA("Piña Colada"),
 	WHISKY("Whysky"),
-	BOURBON("Bourbon"),
+	//BOURBON("Bourbon"),
 	TEQUILA("Tequila"),
-        MEZCAL("Mezcal"),
+        //MEZCAL("Mezcal"),
 	GIN("Gin"),
-	FERNET("Fernet"),
-	APERITIVO("Aperitivo"),
-        VERMUT("Vermut");
+        FERNET("Fernet"),
+	APERITIVO("Aperitivo");
+        //VERMUT("Vermut");
 	
     private final String displayValue;
 
