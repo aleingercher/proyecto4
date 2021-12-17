@@ -9,8 +9,19 @@
 	background-color: var(--dark-x);
 }
 
+
 .bg-grey{
 	background-color: rgb(121, 121, 121);
+}
+
+
+.formClass {
+	background-color: #555;
+	color: white;
+}
+
+#emailHelp {
+	color: lightblue;
 }
 
 .btn {

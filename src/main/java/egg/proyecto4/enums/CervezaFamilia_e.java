@@ -6,10 +6,10 @@ public enum CervezaFamilia_e {
     ROJA("Roja"),
     NEGRA("Negra"),
     STOUT("Stout"),
-    APA("APA"),
-    IPA("IPA"),
-    AMBAR("Ambar"),
-    HONEY("Honey");
+    //APA("APA"),
+    IPA("IPA");
+    //AMBAR("Ambar"),
+    //HONEY("Honey");
 
     private final String displayValue;
 

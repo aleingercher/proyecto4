@@ -2,11 +2,11 @@ package egg.proyecto4.enums;
 
 public enum CervezaEnvase_e {
 
-    LITRO("Litro"),
+    //LITRO("Litro"),
     LATA("Lata"),
-    CAJON("Cajón de Birra"),
+   // CAJON("Cajón de Birra"),
     PORRON("Porrón"),
-    PACKx6("Pack de 6");
+    PACKx6("Six-Pack de latas");
 
     private final String displayValue;
 
