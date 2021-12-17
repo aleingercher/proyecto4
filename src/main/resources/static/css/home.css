@@ -1,5 +1,6 @@
 body {
-	background-color: #444;
+	background-color: rgb(68, 68, 68);
+	
 }
 
 .carousel-item {
@@ -63,3 +64,16 @@ body {
 		transform: translateY(-50%);
 	}
 }
+.block-mid{
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    border-radius:0.5rem;
+   	border: 2px solid rgb(65, 65, 65);
+    border-collapse: collapse;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
