@@ -38,6 +38,43 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
+    <script>
+        const searchInput = document.querySelector('#search');
+        const rows = document.querySelectorAll('tbody tr')
+        const rowsArray = Array.from(rows)
+        const table = document.querySelector('.table')
+
+
+        searchInput.addEventListener('keyup', (e) => {
+            let q = e.target.value.toLowerCase();
+
+            rowsArray.map(row => {
+
+                let tds = row.children;
+                let text = '';
+                for (let i = 0; i < 3; i++) {
+                    text = text + tds[i].outerText.toLowerCase() + ' ';
+                }
+
+                if (q == '') { }
+                return !text.includes(q) || q == '' ? row.style.display = 'none' : row.style.display = '';
+            })
+        })
+
+        searchInput.addEventListener('focus', () => {
+            table.style.display = 'table';
+
+            rowsArray.map(row => {
+                row.style.display = 'none';
+            })
+
+        })
+        searchInput.addEventListener('blur', () => {
+            table.style.display = 'none'
+
+        })
+
+    </script>
 </body>
 
 </html>
