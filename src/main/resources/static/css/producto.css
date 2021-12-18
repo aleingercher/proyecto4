@@ -3,6 +3,12 @@
 .img-container {
     padding: 10px;
     width: 45%;
+    max-width: 50%;
+}
+
+.img-containeR {
+    padding: 10px;
+    width: 30%;
 }
 
 .product{
@@ -28,6 +34,7 @@
     padding-right: 25px;
     padding-bottom: 15px;
     float: left;
+    max-width: 50%;
 }
 
 .medios{   
@@ -37,9 +44,17 @@
    	border: 1px solid lightslategray;
     border-collapse: collapse;
     overflow: hidden;
+   
 }
 
 #marcas {
-    height: 75px;
-    width: 75px;
+	
+    height: 50px;
+    width: 50px;
+}
+
+.grupo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

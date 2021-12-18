@@ -17,12 +17,15 @@
       <tbody>
         <tr th:each="cerveza:${cervezas}">
         	
-	          <td th:text="${cerveza.tipo}"><a th:href="@{/producto/cervezaEspecifico/__${cerveza.id}__}"></a></td>
+	          <td th:text="${cerveza.tipo}"></td>
 	          <td th:text="${cerveza.marca}">Marca</td>
 	          <td th:text="${cerveza.varietal}">flia</td>
 	          <td th:text="${cerveza.envase}">envase</td>
 	          <td th:text="${cerveza.precio}">$</td>
-        	
+	          <!-- ESTE BOTON ESTA PUESTO PARA PODER IR A LA VISTA producto.html, SE TENDRIA QUE SACAR-->
+	          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+           			 <a type="button" class="btn btn-primary" th:href="@{/producto/cervezaEspecifico/__${cerveza.id}__}"><i data-feather="info"></i></a>
+	          </div>
         </tr>
         <tr th:each="vino:${vinos}" th:href="@{/producto/vinoEspecifico/__${vino.id}__}">
 	          <td th:text="${vino.tipo}"></td>
@@ -139,7 +142,7 @@
         </div>
       </div>
     </div>
-  </div> -->
+  </div>-->
 
 
 <div th:fragment="admin">
