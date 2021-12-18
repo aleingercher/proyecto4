@@ -1,0 +1,49 @@
+body {
+	min-height: 100vh;
+}
+
+.content {
+	background-image: linear-gradient(45deg, #769aa138, #685e8538),
+		url(../imagenes/portada.jpg);
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+
+.header-cont > * {
+	z-index: 1000;
+}
+
+.content::after {
+	background-color: rgba(255, 255, 255, 0.3);
+	content: '';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	z-index: 1;
+}
+
+.header-cont {
+	max-width: 500px;
+	margin: auto;
+	padding: 50px 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	text-transform: uppercase;
+	z-index: 10000;
+}
+
+.header-cont h1 {
+	font-family: 'Cormorant Garamond', serif;
+	font-weight: 600;
+	color: black;
+}
+
+.header-cont img {
+	width: 50%;
+	margin-top: 50px;
+}
