@@ -22,7 +22,7 @@
     <div th:replace="fragments-navbar-footer :: navbar"></div>
   </header>
   <div class="container w-50">
-    <h2 class="text-center">carga de Cervezas</h2>
+    <h2 class="text-center">Carga de Cervezas</h2>
     <form th:action="@{/producto/cervezaSave}" method="POST" enctype="multipart/form-data">
 		<p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
       <!-- Marca cerveza -->
@@ -116,7 +116,7 @@
     </form>
   </div>
 
-  <footer>
+  <footer class="pie-pagina">
     <div th:replace="fragments-navbar-footer :: footer"></div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"

@@ -16,16 +16,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Domine&family=Permanent+Marker&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/e84be291c7.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 
 <body>
   <header>
     <div th:replace="fragments-navbar-footer :: navbar"></div>
   </header>
-  <form class="example" action="action_page.php">
+  <!--Barra Buscador-->
+  <div class="content-barra">
+  <form class="example buscador buscador-fondo" action="action_page.php">
     <input type="text" placeholder="Search.." name="search">
     <button type="submit"><i class="fa fa-search"></i></button>
   </form>
+  </div>
+  
+
   <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
   <table class="table table-dark table-hover">
     <thead>
@@ -45,9 +51,9 @@
         <td th:text="${cerveza.stock}">Stock</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" class="btn btn-primary"><a th:href="@{/producto/detalleCerveza/__${cerveza.id}__}">Descripción</a></button>
-            <button type="button" class="btn btn-warning"><a th:href="@{/producto/editarCerveza/__${cerveza.id}__}">Editar</a></button>
-            <button type="button" class="btn btn-danger"><a th:href="@{/producto/eliminarCerveza/__${cerveza.id}__}">Eliminar</a></button>
+            <a type="button" class="btn btn-primary" th:href="@{/producto/detalleCerveza/__${cerveza.id}__}"><i data-feather="info"></i></a>
+            <a type="button" class="btn btn-secondary" th:href="@{/producto/editarCerveza/__${cerveza.id}__}"><i data-feather="edit"></i></a>
+            <a type="button" class="btn btn-danger" th:href="@{/producto/eliminarCerveza/__${cerveza.id}__}"><i data-feather="delete"></i></a>
           </div>
         </td>
       </tr>
@@ -58,9 +64,9 @@
         <td th:text="${vino.stock}">Stock</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" class="btn btn-primary"><a th:href="@{/producto/detalleVino/__${vino.id}__}">Descripción</a></button>
-            <button type="button" class="btn btn-warning"><a th:href="@{/producto/editarVino/__${vino.id}__}">Editar</a></button>
-            <button type="button" class="btn btn-danger"><a th:href="@{/producto/eliminarVino/__${vino.id}__}">Eliminar</a></button>
+            <a type="button" class="btn btn-primary" th:href="@{/producto/detalleVino/__${vino.id}__}"><i data-feather="info"></i></a>
+            <a type="button" class="btn btn-secondary" th:href="@{/producto/editarVino/__${vino.id}__}"><i data-feather="edit"></i></a>
+            <a type="button" class="btn btn-danger" th:href="@{/producto/eliminarVino/__${vino.id}__}"><i data-feather="delete"></i></a>
           </div>
         </td>
       </tr>
@@ -71,20 +77,24 @@
         <td th:text="${espirituosa.stock}">Stock</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <button type="button" class="btn btn-primary"><a th:href="@{/producto/detalleEspirituosa/__${espirituosa.id}__}">Descripción</a></button>
-            <button type="button" class="btn btn-warning"><a th:href="@{/producto/editarEspirituosa/__${espirituosa.id}__}">Editar</a></button>
-            <button type="button" class="btn btn-danger"><a th:href="@{/producto/eliminarEspirituosa/__${espirituosa.id}__}">Eliminar</a></button>
+            <a type="button" class="btn btn-primary" th:href="@{/producto/detalleEspirituosa/__${espirituosa.id}__}"><i data-feather="info"></i></a>
+            <a type="button" class="btn btn-secondary" th:href="@{/producto/editarEspirituosa/__${espirituosa.id}__}"><i data-feather="edit"></i></a>
+            <a type="button" class="btn btn-danger" th:href="@{/producto/eliminarEspirituosa/__${espirituosa.id}__}"><i data-feather="delete"></i></a>
           </div>
         </td>
       </tr>
     </tbody>
   </table>
-  <footer>
+  <div class="content"></div>
+   <footer class="pie-pagina">
     <div th:replace="fragments-navbar-footer :: footer"></div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"></script>
+    <script>
+      feather.replace()
+    </script>
 </body>
 
 </html>
