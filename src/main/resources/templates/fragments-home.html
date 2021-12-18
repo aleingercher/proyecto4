@@ -15,75 +15,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Vino</td>
-          <td>Alma Mora</td>
-          <td>Malbec</td>
-          <td>750ml</td>
-          <td>500</td>
-        </tr>
-        <tr>
-          <td>Fernet</td>
-          <td>Branca</td>
-          <td></td>
-          <td>litro</td>
-          <td>600</td>
-        </tr>
-        <tr>
-          <td>Cerveza</td>
-          <td>Quilmes</td>
-          <td>Rubia</td>
-          <td>lata 473 ml</td>
-          <td>2</td>
-        </tr>
-        <tr>
-          <td>Cerveza</td>
-          <td>Andes</td>
-          <td>Roja</td>
-          <td>lata 743 ml</td>
-          <td>200</td>
-        </tr>
-        <tr>
-          <td>Cerveza</td>
-          <td>Andes</td>
-          <td>Roja</td>
-          <td>lata 743 ml</td>
-          <td>200</td>
-        </tr>
-        <tr>
-          <td>Cerveza</td>
-          <td>Andes</td>
-          <td>Roja</td>
-          <td>lata 743 ml</td>
-          <td>200</td>
-        </tr>
-        <tr>
-          <td>Cerveza</td>
-          <td>Andes</td>
-          <td>Roja</td>
-          <td>lata 743 ml</td>
-          <td>200</td>
-        </tr>
-        <tr>
-          <td>Cerveza</td>
-          <td>Andes</td>
-          <td>Roja</td>
-          <td>lata 743 ml</td>
-          <td>200</td>
-        </tr>
-        <tr>
-          <td>Cerveza</td>
-          <td>Andes</td>
-          <td>Roja</td>
-          <td>lata 743 ml</td>
-          <td>200</td>
-        </tr>
-        <tr>
-          <td>Cerveza</td>
-          <td>Andes</td>
-          <td>Roja</td>
-          <td>lata 743 ml</td>
-          <td>200</td>
+        <tr th:each="prod:${productos}">
+          <td th:text="${prod.tipo}">Tipo</td>
+          <td th:text="${prod.marca}">Marca</td>
+          <td th:text="${prod.varietal}">flia</td>
+          <td th:text="${prod.envase}">envase</td>
+          <td th:text="${prod.precio}">$</td>
         </tr>
       </tbody>
     </table>
