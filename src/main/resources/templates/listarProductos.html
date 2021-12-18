@@ -40,7 +40,7 @@
       <tr>
         <th scope="col">Marca</th>
         <th scope="col">Envase</th>
-        <th scope="col">Tipo</th>
+        <th scope="col">Familia/Varietal</th>
         <th scope="col">Stock</th>
         <th scope="col">Acción</th>
       </tr>
@@ -49,7 +49,7 @@
       <tr th:each="cerveza:${cervezas}">
         <td th:text="${cerveza.marca}">Marca</td>
         <td th:text="${cerveza.envase}">Envase</td>
-        <td th:text="${cerveza.tipo}">Tipo</td>
+        <td th:text="${cerveza.varietal}">Tipo</td>
         <td th:text="${cerveza.stock}">Stock</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">
@@ -67,7 +67,7 @@
       <tr th:each="vino:${vinos}">
         <td th:text="${vino.marca}">Marca</td>
         <td th:text="${vino.envase}">Envase</td>
-        <td th:text="${vino.tipo}">Tipo</td>
+        <td th:text="${vino.varietal}">Tipo</td>
         <td th:text="${vino.stock}">Stock</td>
         <td>
           <div class="btn-group" role="group" aria-label="Basic mixed styles example">

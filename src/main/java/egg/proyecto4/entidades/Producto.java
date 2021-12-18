@@ -30,7 +30,8 @@ public class Producto implements Serializable {
     private String tipo;//--
     private String foto;
     private String origen;//--
-
+    private String varietal;
+    
     // GETTERS / SETTERS
 
     public String getId() {
@@ -128,5 +129,13 @@ public class Producto implements Serializable {
     public void setOrigen(String origen) {
         this.origen = origen;
     }
+
+	public String getVarietal() {
+		return varietal;
+	}
+
+	public void setVarietal(String varietal) {
+		this.varietal = varietal;
+	}
    
 }

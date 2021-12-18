@@ -45,7 +45,7 @@
       <div class="form-group">
         <!-- Familia cerveza -->
         <label for="familia" class="control-label">Familia de cerveza</label>
-        <select class="form-control" id="familia_producto" name="familia">
+        <select class="form-control" id="familia_producto" name="varietal">
           <option selected="selected" disabled="true">...</option>
           <option th:each="CervezaFamilia : ${T(egg.proyecto4.enums.CervezaFamilia_e).values()}"
             th:value="${CervezaFamilia}" th:text="${CervezaFamilia.displayValue}"></option>

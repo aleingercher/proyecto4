@@ -6,15 +6,6 @@ import javax.persistence.Entity;
 public class Cerveza extends Producto {
 
     
-    private String familia;//--
-
-    public String getFamilia() {
-        return familia;
-    }
-
-    public void setFamilia(String familia) {
-        this.familia = familia;
-    }
 
     
 }

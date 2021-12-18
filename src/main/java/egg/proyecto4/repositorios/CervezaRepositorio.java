@@ -9,6 +9,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CervezaRepositorio extends JpaRepository<Cerveza, String> {
 
-    @Query("SELECT f FROM Cerveza f WHERE f.familia = :familia")
-    public Cerveza findByFamilia(@Param("familia") String familia);
 }
