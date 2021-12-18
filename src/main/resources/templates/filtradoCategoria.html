@@ -41,18 +41,21 @@
             </div>
         </form>
 
-        <div id="cards" >
+        <div id="cards">
             <div class="card" th:each="prod:${productos}">
                 <img th:src="@{'/recursos/' + ${prod.foto}}" th:alt="${prod.foto}"
-                    class="card-img-top"/>
+                    class="card-img-top" />
                 <div class="card-body titulo text-center text-uppercase">
                     <span class="categoria" th:text="${prod.categoria}">Categoria</span>
                     <span class="marca" th:text="${prod.marca}">Marca</span>
-                    <span class="tipo" th:text="${prod.tipo}">Tipo</span>
+                    <!-- <span class="tipo"
+                        th:text="${prod.categoria}? == 'VINO' ? ${prod.varietal}  : '' ">Familia</span> -->
+                    <!-- <span class="varietal"
+                        th:text="${prod.categoria} == 'VINO' ? ${prod.varietal}  : '' ">Familia</span> -->
                 </div>
                 <h2 class="precio align-self-center my-3" th:text="'$' +${prod.precio}">Precio</h2>
 
-                <form class="formulario"  method="GET">
+                <form class="formulario" method="GET">
                     <div class="botones">
                         <button class="btn btn-dark menos">-</button>
                         <input class="cantidad fs-3 align-self-center" th:value="0" />
@@ -61,7 +64,7 @@
                     <button type="submit" class="btn btn-dark m-2">agregar al carrito</button>
                 </form>
             </div>
-            
+
         </div>
     </div>
 

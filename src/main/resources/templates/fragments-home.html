@@ -1,7 +1,7 @@
 <div th:fragment="user">
 
   <div class="buscador">
-    <i class="icono fas fa-search"></i>
+    <i class="icono fa fa-search"></i>
     <input autocomplete="off" type="text" name="search" id="search"
       placeholder="Ingrese su busqueda">
     <table class="table">
@@ -194,8 +194,9 @@
       class="alert-success alert-dismissible fade show mt-3" role="alert">
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
     </div>
-    <div class="block-mid" >
-      <a id="btn" th:href="@{/producto/cargarProductos}" class="btn btn-outline-warning btn-lg">Cargar
+    <div class="block-mid">
+      <a id="btn" th:href="@{/producto/cargarProductos}"
+        class="btn btn-outline-warning btn-lg">Cargar
         Producto</a>
       <a id="btn" th:href="@{/producto/listar}" class="btn btn-outline-warning btn-lg">Listar
         Productos</a>
