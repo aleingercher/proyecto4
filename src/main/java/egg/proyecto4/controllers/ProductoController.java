@@ -78,7 +78,7 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/cervezaSave")
-	public String cerveza (ModelMap model, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock, String descripcion,String familia, String envase, String tipo, String origen) {
+	public String cerveza (ModelMap model, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock, String descripcion,String varietal, String envase, String tipo, String origen) {
 		String img = null;
 		if (!imagen.isEmpty()) {
 			// Path directorioImg = Paths.get("src//main//resources//static//imagenes");
@@ -95,7 +95,7 @@ public class ProductoController {
 		}
 
 		try {
-			cervezaServi.guardarCerveza(descripcion, envase, familia, img, marca, origen, otrasmarca, tipo, precio, stock);
+			cervezaServi.guardarCerveza(descripcion, envase, varietal, img, marca, origen, otrasmarca, tipo, precio, stock);
 		} catch (Exception e) {
 			model.put("error", e.getMessage());
 			model.put("precio", precio);
@@ -207,7 +207,7 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/actualizar/{id}")
-	public String updateProducto(ModelMap model,@PathVariable("id") String id, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio,@RequestParam(required = false) Integer stock,@RequestParam(required = false) String descripcion, String envase, String tipo, String origen, @RequestParam(required = false) String familia, @RequestParam(required = false) String bodega, @RequestParam(required = false) String varietal) {
+	public String updateProducto(ModelMap model,@PathVariable("id") String id, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio,@RequestParam(required = false) Integer stock,@RequestParam(required = false) String descripcion, String envase, String tipo, String origen, @RequestParam(required = false) String varietal, @RequestParam(required = false) String bodega) {
 
 		//GUARDADO DE IMAGEN 
 		String img = null;
@@ -234,7 +234,7 @@ public class ProductoController {
 		if (cerveza != null) {
 
 			try {
-				cervezaServi.modificarCerveza(descripcion, envase, familia, img, marca, origen, otrasmarca, tipo, id, precio, stock);
+				cervezaServi.modificarCerveza(descripcion, envase, varietal, img, marca, origen, otrasmarca, tipo, id, precio, stock);
 			} catch (Exception e) {
 				model.put("error", e.getMessage());
 				model.put("descripcion", descripcion);
@@ -358,8 +358,8 @@ public class ProductoController {
 	
 	//PARTE USER
 	
-	@GetMapping("/vinoEspecifico")
-	public String vinoEspecifico(ModelMap model,String id) {
+	@GetMapping("/vinoEspecifico/{id}")
+	public String vinoEspecifico(ModelMap model,@PathVariable("id") String id) {
 		
 		//MANDAR PALABRA DEL BUSCADOR A LA VISTA
 		
@@ -378,8 +378,8 @@ public class ProductoController {
 		return "producto";	
 	}
 	
-	@GetMapping("/cervezaEspecifico")
-	public String cervezaEspecifico(ModelMap model,String id) {
+	@GetMapping("/cervezaEspecifico/{id}")
+	public String cervezaEspecifico(ModelMap model,@PathVariable("id") String id) {
 		
 		//MANDAR PALABRA DEL BUSCADOR A LA VISTA
 		
@@ -398,8 +398,8 @@ public class ProductoController {
 		return "producto";	
 	}
 	
-	@GetMapping("/espirituosaEspecifico")
-	public String espirituosaEspecifico(ModelMap model,String id) {
+	@GetMapping("/espirituosaEspecifico/{id}")
+	public String espirituosaEspecifico(ModelMap model,@PathVariable("id") String id) {
 		
 		//MANDAR PALABRA DEL BUSCADOR A LA VISTA
 		

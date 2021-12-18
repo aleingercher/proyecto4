@@ -10,7 +10,8 @@
 		rel="stylesheet"
 		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
 		crossorigin="anonymous">
-	<link rel="stylesheet" href="/css/navbar-footer.css">
+	<link rel="stylesheet" href="/css/detalleProducto.css">
+	
 </head>
 
 <body>
@@ -56,8 +57,8 @@
 					th:src="@{'/recursos/' + ${prod.foto}}" th:alt="${prod.foto}"
 					style="max-width: 25%;">
 				<ul class="list-group">
-					<li class="list-group-item" th:text="'ID: ' +${prod.id}"></li>
 					<li class="list-group-item" th:text="'MARCA: ' +${prod.marca}"></li>
+					<li class="list-group-item" th:text="'FAMILIA/VARIETAL: ' +${prod.varietal}"></li>
 					<li th:if="${prod.otrasMarcas} != ''" class="list-group-item"
 						th:text="'OTRAS MARCAS: ' +${prod.otrasMarcas}">
 					</li>
@@ -68,6 +69,7 @@
 					<li class="list-group-item" th:text="'ENVASE: ' +${prod.envase}"></li>
 					<li class="list-group-item" th:text="'ORIGEN: ' +${prod.origen}"></li>
 					<li class="list-group-item" th:text="'VENDIDOS: ' +${prod.vendidos}"></li>
+					<li class="list-group-item" th:text="'ID: ' +${prod.id}"></li>
 				</ul>
 			</div>
 		</div>

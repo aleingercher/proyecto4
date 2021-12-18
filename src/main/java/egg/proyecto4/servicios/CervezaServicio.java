@@ -17,13 +17,13 @@ public class CervezaServicio {
     @Autowired
     private CervezaRepositorio cervezaRepo;
 
-    private void validar(String descripcion, String envase, String familia, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
+    private void validar(String descripcion, String envase, String varietal, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
 
         if (descripcion == null || descripcion.isEmpty()) {
             throw new errores("La descripción no puede estar vacía.");
         } else if (envase == null || envase.isEmpty()) {
             throw new errores("Debe seleccionar un envase para la cerveza.");
-        } else if (familia == null || familia.isEmpty()) {
+        } else if (varietal == null || varietal.isEmpty()) {
             throw new errores("Debe seleccionar un tipo de familia.");
         } else if (marca == null || marca.isEmpty()) {
             throw new errores("Debe seleccionar una marca.");
@@ -49,16 +49,16 @@ public class CervezaServicio {
 
     //Guardar Cerveza 
     @Transactional
-    public void guardarCerveza(String descripcion, String envase, String familia, String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
+    public void guardarCerveza(String descripcion, String envase, String varietal, String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
 
-        validar(descripcion, envase, familia, marca, origen, tipo, precio, stock);
+        validar(descripcion, envase, varietal, marca, origen, tipo, precio, stock);
 
         Cerveza cerveza = new Cerveza();
         
         cerveza.setCategoria(Categoria_e.CERVEZA);
         cerveza.setDescripcion(descripcion);
         cerveza.setEnvase(envase);
-        cerveza.setFamilia(familia);
+        cerveza.setVarietal(varietal);
         cerveza.setFoto(foto);
         cerveza.setMarca(marca);
         cerveza.setOrigen(origen);
@@ -74,16 +74,16 @@ public class CervezaServicio {
 
     //Modificar Cerveza
     @Transactional
-    public void modificarCerveza(String descripcion, String envase, String familia, String foto, String marca, String origen, String otrasMarcas, String tipo, String id, Float precio, Integer stock) throws errores {
+    public void modificarCerveza(String descripcion, String envase, String varietal, String foto, String marca, String origen, String otrasMarcas, String tipo, String id, Float precio, Integer stock) throws errores {
 
-        validar(descripcion, envase, familia, marca, origen, tipo, precio, stock);
+        validar(descripcion, envase, varietal, marca, origen, tipo, precio, stock);
 
         Cerveza cerveza = cervezaRepo.findById(id).get();
         
         cerveza.setCategoria(Categoria_e.CERVEZA);
         cerveza.setDescripcion(descripcion);
         cerveza.setEnvase(envase);
-        cerveza.setFamilia(familia);
+        cerveza.setVarietal(varietal);
         cerveza.setFoto(foto);
         cerveza.setMarca(marca);
         cerveza.setOrigen(origen);
