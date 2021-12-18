@@ -2,7 +2,6 @@
 	padding: 0;
 	margin: 0;
 	box-sizing: border-box;
-	text-align: center;
 }
 
 .content {
@@ -13,6 +12,8 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+
+	text-align: center;
 }
 
 .botonera {
