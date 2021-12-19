@@ -9,11 +9,9 @@
 	background-color: var(--dark-x);
 }
 
-
-.bg-grey{
+.bg-grey {
 	background-color: rgb(121, 121, 121);
 }
-
 
 .formClass {
 	background-color: #555;
@@ -40,7 +38,7 @@
 }
 
 .img-1 {
-	background-image: url('../imagenes/Login1.jpg');
+	background-image: url('../imagenes/Login/Login1.jpg');
 	background-size: cover;
 	background-position: center;
 }

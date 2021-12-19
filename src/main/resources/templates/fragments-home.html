@@ -1,46 +1,54 @@
 <div th:fragment="user">
 
   <div class="buscador">
-    <i class="icono fa fa-search"></i>
+    <i class="icono fa fa-search" onclick="rowClickedCerveza(this.getAttribute('class'))"></i>
     <input autocomplete="off" type="text" name="search" id="search"
       placeholder="Ingrese su busqueda">
     <table class="table">
       <thead>
         <tr>
-          <th>Tipo</th>
           <th>Marca</th>
-          <th>flia</th>
+          <th>Tipo</th>
           <th>envase</th>
           <th>$</th>
         </tr>
       </thead>
       <tbody>
-        <tr th:each="cerveza:${cervezas}">
-        	
-	          <td th:text="${cerveza.tipo}"></td>
-	          <td th:text="${cerveza.marca}">Marca</td>
-	          <td th:text="${cerveza.varietal}">flia</td>
-	          <td th:text="${cerveza.envase}">envase</td>
-	          <td th:text="${cerveza.precio}">$</td>
-	          <!-- ESTE BOTON ESTA PUESTO PARA PODER IR A LA VISTA producto.html, SE TENDRIA QUE SACAR-->
-	          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-           			 <a type="button" class="btn btn-primary" th:href="@{/producto/cervezaEspecifico/__${cerveza.id}__}"><i data-feather="info"></i></a>
-	          </div>
+        <tr th:each="cerveza:${cervezas}" style="cursor: pointer" th:idcerve="${cerveza.id}">
+
+          <td th:text="${cerveza.marca}">Marca</td>
+          <td th:text="${cerveza.varietal}">flia</td>
+          <td th:text="${cerveza.envase}">envase</td>
+          <td th:text="${cerveza.precio}">$</td>
+          <!-- ESTE BOTON ESTA PUESTO PARA PODER IR A LA VISTA producto.html, SE TENDRIA QUE SACAR-->
+          <!-- <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+            <a type="button" class="btn btn-primary"
+              th:href="@{/producto/cervezaEspecifico/__${cerveza.id}__}"><i
+                data-feather="info"></i></a>
+          </div> -->
         </tr>
+<<<<<<< HEAD
         <tr th:each="vino:${vinos}">
 	          <td th:text="${vino.tipo}"></td>
 	          <td th:text="${vino.marca}">Marca</td>
 	          <td th:text="${vino.varietal}">flia</td>
 	          <td th:text="${vino.envase}">envase</td>
 	          <td th:text="${vino.precio}">$</td>
+=======
+        <tr th:each="vino:${vinos}" th:href="@{/producto/vinoEspecifico/__${vino.id}__}">
+          <td th:text="${vino.marca}">Marca</td>
+          <td th:text="${vino.varietal}">flia</td>
+          <td th:text="${vino.envase}">envase</td>
+          <td th:text="${vino.precio}">$</td>
+>>>>>>> 92007f8fe082aa7eeb38f602fbe35d921be925e6
         </tr>
         <tr th:each="prod:${espirituosas}">
-        	<a th:href="@{/producto/espirituosaEspecifico/__${prod.id}__}">
-	          <td th:text="${prod.tipo}"></td>
-	          <td th:text="${prod.marca}">Marca</td>
-	          <td th:text="${prod.envase}">envase</td>
-	          <td th:text="${prod.precio}">$</td>
-        	</a>
+          <a th:href="@{/producto/espirituosaEspecifico/__${prod.id}__}">
+            <td th:text="${prod.marca}">Marca</td>
+            <td th:text="${prod.tipo}">Flia</td>
+            <td th:text="${prod.envase}">envase</td>
+            <td th:text="${prod.precio}">$</td>
+          </a>
         </tr>
       </tbody>
     </table>
@@ -106,6 +114,8 @@
       </div>
     </div>
   </div>
+
+
 </div>
 <!-- <div class="card-group gap-2">
       <div class="card">
