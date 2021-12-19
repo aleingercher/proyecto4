@@ -17,11 +17,9 @@ public class EspirituosaServicio {
     @Autowired
     private EspirituosaRepositorio espirituosaRepo;
     
-    private void validar(String descripcion, String envase, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
+    private void validar( String envase, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
         
-        if (descripcion == null || descripcion.isEmpty()) {
-            throw new errores("La descripción no puede estar vacía.");
-        } else if (envase == null || envase.isEmpty()) {
+        if (envase == null || envase.isEmpty()) {
             throw new errores("Debe seleccionar un envase para la cerveza.");
         } else if (marca == null || marca.isEmpty()) {
             throw new errores("Debe seleccionar una marca.");
@@ -35,13 +33,6 @@ public class EspirituosaServicio {
             throw new errores("Debe haber stock.");
         } 
 
-        Pattern p1 = Pattern.compile("^[a-zA-Z0-9]+$");
-
-        Matcher mDescripcion = p1.matcher(descripcion);
-
-        if (!mDescripcion.find()) {
-            throw new errores("Ingrese solo caracteres y valores númericos");
-        }
     }
     
     
@@ -49,7 +40,7 @@ public class EspirituosaServicio {
     @Transactional
     public void guardarEspirituosa (String descripcion, String envase,String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
         
-        validar(descripcion,envase,marca,origen,tipo,precio,stock);
+        validar(envase,marca,origen,tipo,precio,stock);
         
         Espirituosa espirituosa = new Espirituosa();
         
@@ -73,7 +64,7 @@ public class EspirituosaServicio {
     @Transactional
     public void modificarEspirituosa(String descripcion, String envase,String foto, String marca, String origen, String otrasMarcas, String tipo, String id, Float precio, Integer stock) throws errores {
         
-        validar(descripcion,envase,marca,origen,tipo,precio,stock);
+        validar(envase,marca,origen,tipo,precio,stock);
         
         Espirituosa espirituosa = espirituosaRepo.findById(id).get();
         

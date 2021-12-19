@@ -20,6 +20,10 @@
 	line-height: 40px;
 }
 
+.form-registro label {
+	margin-top: 7px;
+}
+
 /* .fieldContainer {
 	width: 80% !important;
 } */
