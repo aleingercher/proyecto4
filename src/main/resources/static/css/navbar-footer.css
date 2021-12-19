@@ -125,19 +125,19 @@ nav ul li a:hover {
 }
 
 .box.siguenos {
-	align-items: end;
+	align-items: center;
 	margin-right: 10px;
 }
 
 .box.siguenos h2 {
-	text-align: right;
+	text-align: center;
 	margin-right: 10px;
 }
 
 .pie-pagina .grupo-1 .red-social a {
 	display: inline-block;
 	text-decoration: none;
-	width: 45px;
+	width: 45px;	
 	height: 45px;
 	line-height: 45px;
 	color: #fff;
