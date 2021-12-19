@@ -6,6 +6,7 @@
 
 body {
 	font-family: sans-serif;
+	background-color: #555;
 }
 
 .card-group .card {
@@ -17,8 +18,8 @@ body {
 .card-group .card img {
 	height: 300%;
 }
+
 .content {
-	background-color: #555;
 	width: 100%;
 	height: 50vh;
 }

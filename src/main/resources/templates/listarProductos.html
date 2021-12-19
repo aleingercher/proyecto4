@@ -25,83 +25,86 @@
   <header>
     <div th:replace="fragments-navbar-footer :: navbar"></div>
   </header>
-  <!--Barra Buscador-->
-  <div class="content-barra">
-    <form class="example buscador buscador-fondo" action="action_page.php">
-      <input type="text" placeholder="Search.." name="search">
-      <button type="submit"><i class="fa fa-search"></i></button>
-    </form>
+  <div class="container">
+    <!--Barra Buscador-->
+    <div class="content-barra">
+      <form class="example buscador buscador-fondo" action="action_page.php">
+        <input type="text" placeholder="Search.." name="search">
+        <button type="submit"><i class="fa fa-search"></i></button>
+      </form>
+    </div>
+
+
+    <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+    <table class="table table-dark table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Marca</th>
+          <th scope="col">Envase</th>
+          <th scope="col">Familia/Varietal</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Acción</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr th:each="cerveza:${cervezas}">
+          <td th:text="${cerveza.marca}">Marca</td>
+          <td th:text="${cerveza.envase}">Envase</td>
+          <td th:text="${cerveza.varietal}">Tipo</td>
+          <td th:text="${cerveza.stock}">Stock</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <a type="button" class="btn btn-primary"
+                th:href="@{/producto/detalleCerveza/__${cerveza.id}__}"><i
+                  data-feather="info"></i></a>
+              <a type="button" class="btn btn-secondary"
+                th:href="@{/producto/editarCerveza/__${cerveza.id}__}"><i
+                  data-feather="edit"></i></a>
+              <a type="button" class="btn btn-danger"
+                th:href="@{/producto/eliminarCerveza/__${cerveza.id}__}"><i
+                  data-feather="delete"></i></a>
+            </div>
+          </td>
+        </tr>
+        <tr th:each="vino:${vinos}">
+          <td th:text="${vino.marca}">Marca</td>
+          <td th:text="${vino.envase}">Envase</td>
+          <td th:text="${vino.varietal}">Tipo</td>
+          <td th:text="${vino.stock}">Stock</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <a type="button" class="btn btn-primary"
+                th:href="@{/producto/detalleVino/__${vino.id}__}"><i data-feather="info"></i></a>
+              <a type="button" class="btn btn-secondary"
+                th:href="@{/producto/editarVino/__${vino.id}__}"><i data-feather="edit"></i></a>
+              <a type="button" class="btn btn-danger"
+                th:href="@{/producto/eliminarVino/__${vino.id}__}"><i data-feather="delete"></i></a>
+            </div>
+          </td>
+        </tr>
+        <tr th:each="espirituosa:${espirituosas}">
+          <td th:text="${espirituosa.marca}">Marca</td>
+          <td th:text="${espirituosa.envase}">Envase</td>
+          <td th:text="${espirituosa.tipo}">Tipo</td>
+          <td th:text="${espirituosa.stock}">Stock</td>
+          <td>
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+              <a type="button" class="btn btn-primary"
+                th:href="@{/producto/detalleEspirituosa/__${espirituosa.id}__}"><i
+                  data-feather="info"></i></a>
+              <a type="button" class="btn btn-secondary"
+                th:href="@{/producto/editarEspirituosa/__${espirituosa.id}__}"><i
+                  data-feather="edit"></i></a>
+              <a type="button" class="btn btn-danger"
+                th:href="@{/producto/eliminarEspirituosa/__${espirituosa.id}__}"><i
+                  data-feather="delete"></i></a>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="content"></div>
   </div>
-
-
-  <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
-  <table class="table table-dark table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Marca</th>
-        <th scope="col">Envase</th>
-        <th scope="col">Familia/Varietal</th>
-        <th scope="col">Stock</th>
-        <th scope="col">Acción</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr th:each="cerveza:${cervezas}">
-        <td th:text="${cerveza.marca}">Marca</td>
-        <td th:text="${cerveza.envase}">Envase</td>
-        <td th:text="${cerveza.varietal}">Tipo</td>
-        <td th:text="${cerveza.stock}">Stock</td>
-        <td>
-          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <a type="button" class="btn btn-primary"
-              th:href="@{/producto/detalleCerveza/__${cerveza.id}__}"><i
-                data-feather="info"></i></a>
-            <a type="button" class="btn btn-secondary"
-              th:href="@{/producto/editarCerveza/__${cerveza.id}__}"><i data-feather="edit"></i></a>
-            <a type="button" class="btn btn-danger"
-              th:href="@{/producto/eliminarCerveza/__${cerveza.id}__}"><i
-                data-feather="delete"></i></a>
-          </div>
-        </td>
-      </tr>
-      <tr th:each="vino:${vinos}">
-        <td th:text="${vino.marca}">Marca</td>
-        <td th:text="${vino.envase}">Envase</td>
-        <td th:text="${vino.varietal}">Tipo</td>
-        <td th:text="${vino.stock}">Stock</td>
-        <td>
-          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <a type="button" class="btn btn-primary"
-              th:href="@{/producto/detalleVino/__${vino.id}__}"><i data-feather="info"></i></a>
-            <a type="button" class="btn btn-secondary"
-              th:href="@{/producto/editarVino/__${vino.id}__}"><i data-feather="edit"></i></a>
-            <a type="button" class="btn btn-danger"
-              th:href="@{/producto/eliminarVino/__${vino.id}__}"><i data-feather="delete"></i></a>
-          </div>
-        </td>
-      </tr>
-      <tr th:each="espirituosa:${espirituosas}">
-        <td th:text="${espirituosa.marca}">Marca</td>
-        <td th:text="${espirituosa.envase}">Envase</td>
-        <td th:text="${espirituosa.tipo}">Tipo</td>
-        <td th:text="${espirituosa.stock}">Stock</td>
-        <td>
-          <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-            <a type="button" class="btn btn-primary"
-              th:href="@{/producto/detalleEspirituosa/__${espirituosa.id}__}"><i
-                data-feather="info"></i></a>
-            <a type="button" class="btn btn-secondary"
-              th:href="@{/producto/editarEspirituosa/__${espirituosa.id}__}"><i
-                data-feather="edit"></i></a>
-            <a type="button" class="btn btn-danger"
-              th:href="@{/producto/eliminarEspirituosa/__${espirituosa.id}__}"><i
-                data-feather="delete"></i></a>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="content"></div>
   <footer class="pie-pagina">
     <div th:replace="fragments-navbar-footer :: footer"></div>
   </footer>
