@@ -78,7 +78,7 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/cervezaSave")
-	public String cerveza (ModelMap model, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock, String descripcion,String familia, String envase, String tipo, String origen) {
+	public String cerveza (ModelMap model, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock, String descripcion,String varietal, String envase, String tipo, String origen) {
 		String img = null;
 		if (!imagen.isEmpty()) {
 			// Path directorioImg = Paths.get("src//main//resources//static//imagenes");
@@ -95,7 +95,7 @@ public class ProductoController {
 		}
 
 		try {
-			cervezaServi.guardarCerveza(descripcion, envase, familia, img, marca, origen, otrasmarca, tipo, precio, stock);
+			cervezaServi.guardarCerveza(descripcion, envase, varietal, img, marca, origen, otrasmarca, tipo, precio, stock);
 		} catch (Exception e) {
 			model.put("error", e.getMessage());
 			model.put("precio", precio);
@@ -103,11 +103,11 @@ public class ProductoController {
 			model.put("descripcion", descripcion);
 			return "cargaCerveza";
 		}
-		return "home";
+		return "redirect:/home";
 	}
 	
 	@PostMapping("/vinoSave")
-	public String vino (ModelMap model, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock,          String descripcion,String bodega, String varietal, String envase, String tipo, String origen) {
+	public String vino (ModelMap model, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock,          @RequestParam(required = false) String descripcion, String bodega, String varietal, String envase, String tipo, String origen) {
 		String img = null;
 		if (!imagen.isEmpty()) {
 			// Path directorioImg = Paths.get("src//main//resources//static//imagenes");
@@ -120,11 +120,10 @@ public class ProductoController {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
 		}
                 
 		try {
-			vinoServi.guardarVino(descripcion, envase, varietal, bodega, img, marca, origen, otrasmarca, tipo, precio, stock);
+			vinoServi.guardarVino( descripcion, envase, varietal, bodega, img, marca, origen, otrasmarca, tipo, precio, stock);
 		} catch (Exception e) {
 			model.put("error", e.getMessage());
 			model.put("precio", precio);
@@ -132,7 +131,8 @@ public class ProductoController {
 			model.put("descripcion", descripcion);
 			return "cargaVino";
 		}
-		return "home";
+                
+		return "redirect:/home";
 	}
 	
 	@PostMapping("/espirituosaSave")
@@ -161,35 +161,53 @@ public class ProductoController {
 			model.put("descripcion", descripcion);
 			return "cargaEspirituosa";
 		}
-		return "home";
+		return "redirect:/home";
 	}
 	
 	
 	//ENDPOINTS GET AND POST PARA MODIFICAR PRODUCTOS
 	
-	@GetMapping("/editar/{id}")
-	public String editar(@PathVariable("id") String id, Model model) {
+	@GetMapping("/editarCerveza/{id}")
+	public String editarCerveza(@PathVariable("id") String id, Model model) {
 		
 		Cerveza cerveza = cervezaServi.findById(id);
-		Vino vino = vinoServi.findById(id);
-		Espirituosa espirituosa = espirituosaServi.findById(id);
 		if(cerveza != null) {
 			
-			model.addAttribute("cerveza", cerveza);
+			model.addAttribute("prod", cerveza);
+			model.addAttribute("categoriaC", cerveza.getCategoria());
 			
-		} else if (vino != null) {
+		}
+		return "editarProductos";
+	}
+	
+	@GetMapping("/editarVino/{id}")
+	public String editarVino(@PathVariable("id") String id, Model model) {
+		
+		Vino vino = vinoServi.findById(id);
+		
+		if (vino != null) {
 			
-			model.addAttribute("vino", vino);
+			model.addAttribute("prod", vino);
+			model.addAttribute("categoriaV", vino.getCategoria());
 			
-		} else {
+		}
+		return "editarProductos";
+	}
+	
+	@GetMapping("/editarEspirituosa/{id}")
+	public String editarEspirituosa(@PathVariable("id") String id, Model model) {
+		
+		Espirituosa espirituosa = espirituosaServi.findById(id);
+		if(espirituosa != null) {
 			
-			model.addAttribute("espirituosa", espirituosa);
+			model.addAttribute("prod", espirituosa);
+			model.addAttribute("categoriaE", espirituosa.getCategoria());
 		}
 		return "editarProductos";
 	}
 	
 	@PostMapping("/actualizar/{id}")
-	public String updatePerso(ModelMap model,@PathVariable("id") String id, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio, Integer stock, String descripcion, String envase, String tipo, String origen, @RequestParam(required = false) String familia, @RequestParam(required = false) String bodega, @RequestParam(required = false) String varietal) {
+	public String updateProducto(ModelMap model,@PathVariable("id") String id, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio,@RequestParam(required = false) Integer stock,@RequestParam(required = false) String descripcion, String envase, String tipo, String origen, @RequestParam(required = false) String varietal, @RequestParam(required = false) String bodega) {
 
 		//GUARDADO DE IMAGEN 
 		String img = null;
@@ -216,13 +234,13 @@ public class ProductoController {
 		if (cerveza != null) {
 
 			try {
-				cervezaServi.modificarCerveza(descripcion, envase, familia, img, marca, origen, otrasmarca, tipo, id, precio, stock);
+				cervezaServi.modificarCerveza(descripcion, envase, varietal, img, marca, origen, otrasmarca, tipo, id, precio, stock);
 			} catch (Exception e) {
 				model.put("error", e.getMessage());
 				model.put("descripcion", descripcion);
 				model.put("precio", precio);
 				model.put("stock", stock);
-				return "cervezaUpdate";
+				return "editarProductos";
 			}
 
 		} else if (vino != null) {
@@ -234,7 +252,7 @@ public class ProductoController {
 				model.put("descripcion", descripcion);
 				model.put("precio", precio);
 				model.put("stock", stock);
-				return "vinoUpdate";
+				return "editarProductos";
 			}
 
 		} else {
@@ -246,61 +264,156 @@ public class ProductoController {
 				model.put("descripcion", descripcion);
 				model.put("precio", precio);
 				model.put("stock", stock);
-				return "espirituosaUpdate";
+				return "editarProductos";
 			}
 		}
 
-		return "listarProducto";
+		return "redirect:/producto/listar";
 	}
 
 	@GetMapping("/listar")
 	public String listaProductos(ModelMap model) {
 
-		List<Producto> productos = productoServi.consultarProductos();
-		model.put("productos", productos);
-
+		List<Espirituosa> espirituosa= espirituosaServi.consultarEspirituosas();
+		model.addAttribute("espirituosas", espirituosa);
+		List<Cerveza> cerveza= cervezaServi.consultarCervezas();
+		model.addAttribute("cervezas", cerveza);
+		List<Vino> vino= vinoServi.consultarVinos();
+		model.addAttribute("vinos", vino);
+		
 		return "listarProductos"; 	
 	}
 
-	@GetMapping("/detalle/{id}")
-	public String detalle(@PathVariable("id") String id, Model model, RedirectAttributes attribute) throws errores {
+	@GetMapping("/detalleCerveza/{id}")
+	public String detalleCerveza(@PathVariable("id") String id, Model model, RedirectAttributes attribute) throws errores {
 
 		try {
-				Producto producto = productoServi.findById(id);
-		
-				model.addAttribute("prod", producto);
+				Cerveza cerveza = cervezaServi.findById(id);
+				model.addAttribute("prod", cerveza);
+				model.addAttribute("titulo", "DETALLE DEL PRODUCTO CERVEZA:");
+				
 		} catch(Exception e) {
 			model.addAttribute("error", e.getMessage());
-			List<Producto> productos = productoServi.consultarProductos();
-			model.addAttribute("productos", productos);
 			return "listarProductos";
 		}
 				
 		return "detalleProductos";
 	}
 
-	@RequestMapping("/eliminar/{id}")
-	public String eliminar(ModelMap model, @PathVariable("id") String id) throws errores {
+	@GetMapping("/detalleVino/{id}")
+	public String detalleVino(@PathVariable("id") String id, Model model, RedirectAttributes attribute) throws errores {
 
-		Producto producto = productoServi.findById(id);
-		
-		productoServi.eliminar(producto);
-
-		List<Producto> productos = productoServi.consultarProductos();
-		model.put("productos", productos);
-
-		return "listarProductos";
+		try {
+				Vino vino = vinoServi.findById(id);
+				model.addAttribute("prod", vino);
+				model.addAttribute("titulo", "DETALLE DEL PRODUCTO VINO:");
+				
+		} catch(Exception e) {
+			model.addAttribute("error", e.getMessage());
+			return "listarProductos";
+		}
+				
+		return "detalleProductos";
 	}
 	
+	@GetMapping("/detalleEspirituosa/{id}")
+	public String detalleEspirituosa(@PathVariable("id") String id, Model model, RedirectAttributes attribute) throws errores {
+
+		try {
+				Espirituosa espirituosa = espirituosaServi.findById(id);
+				model.addAttribute("prod", espirituosa);
+				model.addAttribute("titulo", "DETALLE DEL PRODUCTO ESPIRITUOSA:");
+
+		} catch(Exception e) {
+			model.addAttribute("error", e.getMessage());
+			return "listarProductos";
+		}
+				
+		return "detalleProductos";
+	}
+	
+	@RequestMapping("/eliminarCerveza/{id}")
+	public String eliminarCerveza(ModelMap model, @PathVariable("id") String id) throws errores {
+		
+		cervezaServi.eliminarCerveza(id);
+
+		return "redirect:/producto/listar";
+	}
+	
+	@RequestMapping("/eliminarVino/{id}")
+	public String eliminarVino(ModelMap model, @PathVariable("id") String id) throws errores {
+		
+		vinoServi.eliminarVino(id);
+		
+		return "redirect:/producto/listar";
+	}
+	
+	@RequestMapping("/eliminarEspirituosa/{id}")
+	public String eliminarEspirituosa(ModelMap model, @PathVariable("id") String id) throws errores {
+		
+		espirituosaServi.eliminarEspirituosa(id);
+		
+		return "redirect:/producto/listar";
+	}
 	
 	//PARTE USER
 	
-	@GetMapping("/productoEspecifico")
-	public String productoEspecifico(ModelMap modal,String buscar) {
+	@GetMapping("/vinoEspecifico/{id}")
+	public String vinoEspecifico(ModelMap model,@PathVariable("id") String id) {
 		
 		//MANDAR PALABRA DEL BUSCADOR A LA VISTA
 		
-		modal.addAttribute("producto", buscar);
+		try {
+			Vino vino = vinoServi.findById(id);
+			model.addAttribute("producto", vino);
+			//model.addAttribute("titulo", "DETALLE DEL PRODUCTO VINO:");
+			
+		} catch(Exception e) {
+		
+			model.addAttribute("error", e.getMessage());
+		
+			return "redirect:/home";
+	}
+		
+		return "producto";	
+	}
+	
+	@GetMapping("/cervezaEspecifico/{id}")
+	public String cervezaEspecifico(ModelMap model,@PathVariable("id") String id) {
+		
+		//MANDAR PALABRA DEL BUSCADOR A LA VISTA
+		
+		try {
+			Cerveza cerveza = cervezaServi.findById(id);
+			model.addAttribute("producto", cerveza);
+			//model.addAttribute("titulo", "DETALLE DEL PRODUCTO CERVEZA:");
+			
+		} catch(Exception e) {
+		
+			model.addAttribute("error", e.getMessage());
+		
+			return "redirect:/home";
+	}
+		
+		return "producto";	
+	}
+	
+	@GetMapping("/espirituosaEspecifico/{id}")
+	public String espirituosaEspecifico(ModelMap model,@PathVariable("id") String id) {
+		
+		//MANDAR PALABRA DEL BUSCADOR A LA VISTA
+		
+		try {
+			Espirituosa espirituosa = espirituosaServi.findById(id);
+			model.addAttribute("producto", espirituosa);
+			//model.addAttribute("titulo", "DETALLE DEL PRODUCTO ESPIRITUOSA:");
+			
+		} catch(Exception e) {
+		
+			model.addAttribute("error", e.getMessage());
+		
+			return "redirect:/home";
+	}
 		
 		return "producto";	
 	}

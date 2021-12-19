@@ -2,96 +2,216 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/navbar-footer.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Domine&family=Permanent+Marker&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/e84be291c7.js" crossorigin="anonymous"></script>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/detalleProducto.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Domine&family=Permanent+Marker&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/e84be291c7.js" crossorigin="anonymous"></script>
 
-    <title>Editar producto</title>
-    <style>
-        .habilitado {
-            pointer-events: all;
-        }
+	<title>Editar producto</title>
+	<style>
+		.habilitado {
+			pointer-events: all;
+		}
 
-        .inHabilitado {
-            pointer-events: none;
-        }
-    </style>
+		.inHabilitado {
+			pointer-events: none;
+		}
+	</style>
 </head>
 
 <body class="bg-dark text-white">
-    <header>
-        <div th:replace="fragments-navbar-footer :: navbar"></div>
-    </header>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<div class="container-fluid">
+			<div class="left">
+				<a class="navbar-brand" th:href="@{/home}"> <img src="../../imagenes/Logo Basico.jpeg" alt=""></a>
+				<h3>BARRA LIBRE</h3>
+			</div>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#MENU">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="right collapse navbar-collapse " id="MENU">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/home}">HOME</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/nosotros}">NOSOTROS</a>
+					</li>
+					<li class="nav-item">
+						<a sec:authorize="!isAuthenticated()" class="nav-link" th:href="@{/login}">INGRESAR</a>
+					</li>
+					<li class="nav-item">
+						<a sec:authorize="isAuthenticated()" class="nav-link" th:href="@{/logout}">SALIR</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
 
-    <div class="container mt-4">
-        <form>
+	<div class="container mt-4">
+		<form th:action="@{/producto/actualizar/__${prod.id}__}" method="POST" enctype="multipart/form-data">
 
-            <div class="row mb-3">
-                <label for="tipo" class="col-sm-2 col-form-label">tipo</label>
-                <div class="col-sm-10">
-                    <select class="form-select" aria-label="tipo de bebida">
-                        <option selected>Seleccione el tipo de bebida</option>
-                        <option value="#">#</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="familia" class="col-sm-2 col-form-label">familia</label>
-                <div class="col-sm-10">
-                    <select class="form-select" aria-label="familia de cerveza">
-                        <option selected>Seleccione la familia de la cerveza</option>
-                        <option value="#">#</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="varietal" class="col-sm-2 col-form-label">varietal</label>
-                <div class="col-sm-10">
-                    <select class="form-select" aria-label="varietal">
-                        <option selected>Seleccione el varietal</option>
-                        <option value="#">#</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="varietal" class="col-sm-2 col-form-label">varietal</label>
-                <div class="col-sm-10">
-                    <select class="form-select" aria-label="varietal">
-                        <option selected>Seleccione el varietal</option>
-                        <option value="#">#</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row mb-3">
-                <label for="varietal" class="col-sm-2 col-form-label">varietal</label>
-                <div class="col-sm-10">
-                    <select class="form-select" aria-label="varietal">
-                        <option selected>Seleccione el varietal</option>
-                        <option value="#">#</option>
-                    </select>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Sign in</button>
-        </form>
-    </div>
+			<div class="row mb-3">
+				<label for="tipo" class="col-sm-2 col-form-label">tipo</label>
+				<div class="col-sm-10">
+					<select class="form-select" aria-label="tipo" name="tipo">
+						<option selected>Seleccione el tipo de bebida</option>
+						<option th:if="${categoriaC != null}"
+							th:each="CervezaTipo : ${T(egg.proyecto4.enums.CervezaTipo_e).values()}"
+							th:value="${CervezaTipo}" th:text="${CervezaTipo.displayValue}"></option>
+						<option th:if="${categoriaV != null}"
+							th:each="VinoTipo : ${T(egg.proyecto4.enums.VinoTipo_e).values()}" th:value="${VinoTipo}"
+							th:text="${VinoTipo.displayValue}"></option>
+						<option th:if="${categoriaE != null}"
+							th:each="EspirituosaTipo : ${T(egg.proyecto4.enums.EspirituosasTipo_e).values()}"
+							th:value="${EspirituosaTipo}" th:text="${EspirituosaTipo.displayValue}"></option>
+					</select>
+				</div>
+			</div>
 
-    <footer class="pie-pagina">
-        <div th:replace="fragments-navbar-footer :: footer"></div>
-    </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
-        crossorigin="anonymous"></script>
+			<div class="row mb-3">
+				<label for="marca" class="col-sm-2 col-form-label">marca</label>
+				<div class="col-sm-10">
+					<select class="form-select" aria-label="marca" name="marca">
+						<option selected>Seleccione el tipo de bebida</option>
+						<option th:if="${categoriaC != null}"
+							th:each="CervezaMarca : ${T(egg.proyecto4.enums.CervezaMarca_e).values()}"
+							th:value="${CervezaMarca}" th:text="${CervezaMarca.displayValue}"></option>
+						<option th:if="${categoriaV != null}"
+							th:each="VinoMarca : ${T(egg.proyecto4.enums.VinoMarca_e).values()}" th:value="${VinoMarca}"
+							th:text="${VinoMarca.displayValue}"></option>
+						<option th:if="${categoriaE != null}"
+							th:each="EspirituosasMarca : ${T(egg.proyecto4.enums.EspirituosasMarca_e).values()}"
+							th:value="${EspirituosasMarca}" th:text="${EspirituosasMarca.displayValue}"></option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label for="envase" class="col-sm-2 col-form-label">envase</label>
+				<div class="col-sm-10">
+					<select class="form-select" aria-label="envase" name="envase">
+						<option selected>Seleccione el tipo de bebida</option>
+						<option th:if="${categoriaC != null}"
+							th:each="CervezaEnvase : ${T(egg.proyecto4.enums.CervezaEnvase_e).values()}"
+							th:value="${CervezaEnvase}" th:text="${CervezaEnvase.displayValue}"></option>
+						<option th:if="${categoriaV != null}"
+							th:each="VinoEnvase : ${T(egg.proyecto4.enums.VinoEnvase_e).values()}"
+							th:value="${VinoEnvase}" th:text="${VinoEnvase.displayValue}"></option>
+						<option th:if="${categoriaE != null}"
+							th:each="EspirituosaEnvase : ${T(egg.proyecto4.enums.EspirituosasEnvase_e).values()}"
+							th:value="${EspirituosaEnvase}" th:text="${EspirituosaEnvase.displayValue}"></option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label for="foto" class="control-label">Foto del Producto</label>
+				<div class="col-sm-10">
+					<input type="file" class="form-control-file" id="foto_producto" name="imagen"
+						placeholder="Foto del producto">
+				</div>
+			</div>
+
+			<div class="row mb-3">
+				<label for="tipo" class="col-sm-2 col-form-label">precio</label>
+				<div class="col-sm-10">
+					<input type="number" th:value="${prod.precio}" name="precio">
+				</div>
+			</div>
+
+			<div class="row mb-3" th:if="${categoriaC != null}">
+				<label for="familia" class="col-sm-2 col-form-label">familia</label>
+				<div class="col-sm-10">
+					<select class="form-select" aria-label="familia de cerveza">
+						<option selected>Seleccione la familia de la cerveza</option>
+						<option th:each="CervezaFamilia : ${T(egg.proyecto4.enums.CervezaFamilia_e).values()}"
+							th:value="${CervezaFamilia}" th:text="${CervezaFamilia.displayValue}"></option>
+					</select>
+				</div>
+			</div>
+			<div class="row mb-3" th:if="${categoriaV != null}">
+				<label for="varietal" class="col-sm-2 col-form-label">varietal blanco</label>
+				<div class="col-sm-10">
+					<select class="form-select" aria-label="varietal">
+						<option selected>Seleccione el varietal</option>
+						<option th:each="VarietalBlanco : ${T(egg.proyecto4.enums.VinoVarietalBlanco_e).values()}"
+							th:value="${VarietalBlanco}" th:text="${VarietalBlanco.displayValue}">
+					</select>
+				</div>
+			</div>
+			<div class="row mb-3" th:if="${categoriaV != null}">
+				<label for="varietal" class="col-sm-2 col-form-label">varietal tinto</label>
+				<div class="col-sm-10">
+					<select class="form-select" aria-label="varietal">
+						<option selected>Seleccione el varietal</option>
+						<option th:each="VarietalTinto : ${T(egg.proyecto4.enums.VinoVarietalTinto_e).values()}"
+							th:value="${VarietalTinto}" th:text="${VarietalTinto.displayValue}">
+					</select>
+				</div>
+			</div>
+
+			<div class="row mb-3" th:if="${categoriaV != null}">
+				<label for="varietal" class="col-sm-2 col-form-label">varietal rosado</label>
+				<div class="col-sm-10">
+					<select class="form-select" aria-label="varietal">
+						<option selected>Seleccione el varietal</option>
+						<option th:each="VarietalRosado : ${T(egg.proyecto4.enums.VinoVarietalRosado_e).values()}"
+							th:value="${VarietalRosado}" th:text="${VarietalRosado.displayValue}">
+					</select>
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary">Actualizar</button>
+		</form>
+	</div>
+
+	<footer class="footer">
+		<div class="grupo-1">
+			<div class="box">
+				<figure>
+					<a href="#">
+						<img src="../../imagenes/Logo Completo.jpeg" alt="Logo 4">
+					</a>
+				</figure>
+			</div>
+
+			<div class="box">
+				<h2>SOBRE NOSOTROS</h2>
+				<p>A partir de este momento somos la primer página</p>
+				<p>de Delivery de Bebidas en la que vas a pensar</p>
+				<p>cuando tengas que comprarlas, estés donde estés.</p>
+				<p>Nos caracteriza ser el mejor equipo para la satisfacción</p>
+				<p>plena de cada uno y una de nuestros clientes.</p>
+			</div>
+
+			<div class="box siguenos">
+				<h2>SIGUENOS</h2>
+				<div class="red-social">
+					<a target="_blank"
+						href="https://www.facebook.com/BARRA-MOVIL-DE-TRAGOS-BARRA-LIBRE-BARRA-PARA-NI%C3%91OS-PRECIOS-PARA-EVENTOS-153529671386665"
+						class="fa fa-facebook"></a>
+					<a target="_blank" href="https://www.instagram.com/barralibre.berazategui/?hl=es-la"
+						class="fa fa-instagram"></a>
+					<a target="_blank" href="https://twitter.com/BARRALIBRE1" class="fa fa-twitter"></a>
+					<a target="_blank" href="https://www.youtube.com/watch?v=BTEkFF-NhAI" class="fa fa-youtube"></a>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="grupo-2">
+			<small>&copy; 2021 <b>Barra Libre</b> - Todos los Derechos Reservados.</small>
+		</div>
+	</footer>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>

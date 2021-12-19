@@ -1,15 +1,20 @@
 spring:
-    mail: 
+    mail:
         host: smtp.gmail.com
         port: 587
         properties:
             mail:
-                smtp:              
+                smtp:
                     auth: true
                     starttls:
                         required: true
                         enable: true
-    datasource: 
+    
+        username: matiicastagno007@gmail.com
+        password: bjqohmosaoydzedi
+    main:
+      allow-bean-definition-overriding: true
+    datasource:
         url: jdbc:mysql://localhost:3306/proyecto4?allowPublicKeyRetrieval=true&useSSL=false&useTimezone=true&serverTimezone=GMT&characterEncoding=UTF-8
         username: root
         password: root
@@ -17,21 +22,29 @@ spring:
     jpa:
         show-sql: true
         hibernate:
-        ddl-auto: update
+          ddl-auto: update
         properties:
-        hibernate:
-            dialect: org.hibernate.dialect.MySQL5InnoDBDialect  
+          hibernate:
+              dialect: org.hibernate.dialect.MySQL5InnoDBDialect
     thymeleaf:
-        cache: false 
-    server:
-    error:
-        whitelabel:
-        enabled: false
+        cache: false
+
     servlet:
+        multipart:
+            max-file-size: 5MB
+            max-request-size: 5MB
         session:
         cookie:
             http-only: true
         tracking-modes:
         - cookie
-    logging.level.org.springframework.web: DEBUG      
+    logging.level.org.springframework.web: DEBUG
     logging.level.org.hibernate: ERROR
+    
+server:
+    error:
+        whitelabel:
+          enabled: false
+
+
+    

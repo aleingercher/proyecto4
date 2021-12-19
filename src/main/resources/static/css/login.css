@@ -5,14 +5,23 @@
 	--light: #ffffff;
 }
 
-.text-light {
-	color: var(--light) !important;
-}
-.bg-dark {
-	background-color: var(--dark) !important;
-}
 .bg-dark-x {
 	background-color: var(--dark-x);
+}
+
+
+.bg-grey{
+	background-color: rgb(121, 121, 121);
+}
+
+
+.formClass {
+	background-color: #555;
+	color: white;
+}
+
+#emailHelp {
+	color: lightblue;
 }
 
 .btn {
@@ -26,21 +35,17 @@
 }
 .form-control:focus {
 	background-color: var(--dark-x);
+	color: none;
 	outline: none;
 }
 
 .img-1 {
-	background-image: url('../imagenes/estantes.jpg');
+	background-image: url('../imagenes/Login1.jpg');
 	background-size: cover;
 	background-position: center;
 }
 
-.img-2 {
-	background-image: url('../imagenes/portada.jpg');
-	background-size: cover;
-	background-position: center;
-}
-
-.mb-4 {
+label,
+h3 {
 	color: white;
 }

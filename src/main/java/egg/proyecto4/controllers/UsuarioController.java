@@ -45,7 +45,7 @@ public class UsuarioController {
 			model.put("celular", celular);
 			return "registro";
 		}
-		return"home";
+		return"redirect:/home";
 	}
 	
 	@GetMapping("modificar/{id}")

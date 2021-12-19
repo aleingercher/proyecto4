@@ -1,15 +1,17 @@
 package egg.proyecto4.entidades;
 
 import egg.proyecto4.enums.Categoria_e;
+
 import java.io.Serializable;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
+
 import org.hibernate.annotations.GenericGenerator;
 
-@Entity
+@MappedSuperclass
 public class Producto implements Serializable {
 
     @Id
@@ -28,7 +30,8 @@ public class Producto implements Serializable {
     private String tipo;//--
     private String foto;
     private String origen;//--
-
+    private String varietal;
+    
     // GETTERS / SETTERS
 
     public String getId() {
@@ -126,5 +129,13 @@ public class Producto implements Serializable {
     public void setOrigen(String origen) {
         this.origen = origen;
     }
+
+	public String getVarietal() {
+		return varietal;
+	}
+
+	public void setVarietal(String varietal) {
+		this.varietal = varietal;
+	}
    
 }

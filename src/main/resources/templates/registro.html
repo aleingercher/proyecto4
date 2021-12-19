@@ -25,9 +25,9 @@
         <div th:replace="fragments-navbar-footer :: navbar"></div>
     </header>
     <form class="form-registro" th:action="@{/user/registrarUsuario}" method="POST">
-        <h4 class="titulo">Registro Usuario:</h4>
+        <h4 class="titulo">Registro Usuario</h4>
         <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
-        <div class="mb-3">
+        <div class="mb-3 container">
             <label for="email">EMAIL:</label>
             <input class="form-control" type="email" name="email" id="email"
                 placeholder="Ingrese su mail " th:value="${email}">

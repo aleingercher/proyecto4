@@ -10,12 +10,11 @@
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
         crossorigin="anonymous">
     <link rel="stylesheet" href="/css/navbar-footer.css">
-    <!--<link rel="stylesheet" href="/css/cargarProductos.css">-->
+    <link rel="stylesheet" href="/css/cargarProductos.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Domine&family=Permanent+Marker&display=swap"
         rel="stylesheet">
     <script src="https://kit.fontawesome.com/e84be291c7.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="cargarProductos.css">
     <title>cargar productos</title>
 </head>
 
@@ -26,10 +25,15 @@
 
     <div class="content">
 
-		<button><a th:href="@{/producto/cervezaSave}">CERVEZA</a></button>
-        <button><a th:href="@{/producto/vinoSave}">VINO</a></button>
-        <button><a th:href="@{/producto/espirituosaSave}">ESPIRITUOSA</a></button>
-
+        <h1 class="text-center">Escoja el producto que desea cargar</h1>
+        <div class="botonera text-center">
+            <a th:href="@{/producto/cervezaSave}"><button type="button"
+                    class="btn btn-outline-warning btn-lg">CERVEZA</button></a>
+            <a th:href="@{/producto/vinoSave}"><button type="button"
+                    class="btn btn-outline-warning btn-lg ">VINO</button></a>
+            <a th:href="@{/producto/espirituosaSave}"><button type="button"
+                    class="btn btn-outline-warning btn-lg ">ESPIRITUOSA</button></a>
+        </div>
 
     </div>
 

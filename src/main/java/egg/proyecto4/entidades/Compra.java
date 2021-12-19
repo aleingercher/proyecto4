@@ -22,8 +22,6 @@ public class Compra implements Serializable {
     private String id;
     @ManyToOne
     private Usuario usuario;
-    @OneToMany
-    private List<Producto> producto;
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaCompra;
     private Float precioTotal;
@@ -48,13 +46,13 @@ public class Compra implements Serializable {
         this.usuario = usuario;
     }
 
-    public List<Producto> getProducto() {
-        return producto;
-    }
-
-    public void setProducto(List<Producto> producto) {
-        this.producto = producto;
-    }
+//    public List<Producto> getProducto() {
+//        return producto;
+//    }
+//
+//    public void setProducto(List<Producto> producto) {
+//        this.producto = producto;
+//    }
 
     public Date getFechaCompra() {
         return fechaCompra;

@@ -10,26 +10,57 @@
 		rel="stylesheet"
 		integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
 		crossorigin="anonymous">
-	<link rel="stylesheet" href="/css/navbar-footer.css">
-</head>
-<body>
-	<header>
-		<div th:replace="fragments-navbar-footer :: navbar"></div>
-	</header>
+	<link rel="stylesheet" href="/css/detalleProducto.css">
 	
+</head>
+
+<body>
+	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+		<div class="container-fluid">
+			<div class="left">
+				<a class="navbar-brand" th:href="@{/home}"> <img
+						src="../../imagenes/Logo Basico.jpeg" alt=""></a>
+				<h3>BARRA LIBRE</h3>
+			</div>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+				data-bs-target="#MENU">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="right collapse navbar-collapse " id="MENU">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-3">
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/home}">HOME</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" th:href="@{/nosotros}">NOSOTROS</a>
+					</li>
+					<li class="nav-item">
+						<a sec:authorize="!isAuthenticated()" class="nav-link"
+							th:href="@{/login}">INGRESAR</a>
+					</li>
+					<li class="nav-item">
+						<a sec:authorize="isAuthenticated()" class="nav-link"
+							th:href="@{/logout}">SALIR</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
 	<div class="container">
 		<div class="card bg-light">
 			<div class="card-header bg-dark text-white text-center text-uppercase"
 				th:text="${titulo}"></div>
 			<div class="card-body">
-			<p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+				<p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
 				<img class="img-thumbnail rounded float-left"
 					th:src="@{'/recursos/' + ${prod.foto}}" th:alt="${prod.foto}"
 					style="max-width: 25%;">
 				<ul class="list-group">
-					<li class="list-group-item" th:text="'ID: ' +${prod.id}"></li>
 					<li class="list-group-item" th:text="'MARCA: ' +${prod.marca}"></li>
-					<li class="list-group-item" th:text="'OTRAS MARCAS: ' +${prod.otrasMarcas}">
+					<li class="list-group-item" th:text="'FAMILIA/VARIETAL: ' +${prod.varietal}"></li>
+					<li th:if="${prod.otrasMarcas} != ''" class="list-group-item"
+						th:text="'OTRAS MARCAS: ' +${prod.otrasMarcas}">
 					</li>
 					<li class="list-group-item" th:text="'DESCRIPCION: ' +${prod.descripcion}"></li>
 					<li class="list-group-item" th:text="'TIPO: ' +${prod.tipo}"></li>
@@ -38,14 +69,53 @@
 					<li class="list-group-item" th:text="'ENVASE: ' +${prod.envase}"></li>
 					<li class="list-group-item" th:text="'ORIGEN: ' +${prod.origen}"></li>
 					<li class="list-group-item" th:text="'VENDIDOS: ' +${prod.vendidos}"></li>
-					
+					<li class="list-group-item" th:text="'ID: ' +${prod.id}"></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	<footer>
-		<div th:replace="fragments-navbar-footer :: footer"></div>
+	<footer class="footer">
+		<div class="grupo-1">
+			<div class="box">
+				<figure>
+					<a href="#">
+						<img src="../../imagenes/Logo Completo.jpeg" alt="Logo 4">
+					</a>
+				</figure>
+			</div>
+
+			<div class="box">
+				<h2>SOBRE NOSOTROS</h2>
+				<p>A partir de este momento somos la primer página</p>
+				<p>de Delivery de Bebidas en la que vas a pensar</p>
+				<p>cuando tengas que comprarlas, estés donde estés.</p>
+				<p>Nos caracteriza ser el mejor equipo para la satisfacción</p>
+				<p>plena de cada uno y una de nuestros clientes.</p>
+			</div>
+
+			<div class="box siguenos">
+				<h2>SIGUENOS</h2>
+				<div class="red-social">
+					<a target="_blank"
+						href="https://www.facebook.com/BARRA-MOVIL-DE-TRAGOS-BARRA-LIBRE-BARRA-PARA-NI%C3%91OS-PRECIOS-PARA-EVENTOS-153529671386665"
+						class="fa fa-facebook"></a>
+					<a target="_blank"
+						href="https://www.instagram.com/barralibre.berazategui/?hl=es-la"
+						class="fa fa-instagram"></a>
+					<a target="_blank" href="https://twitter.com/BARRALIBRE1"
+						class="fa fa-twitter"></a>
+					<a target="_blank" href="https://www.youtube.com/watch?v=BTEkFF-NhAI"
+						class="fa fa-youtube"></a>
+				</div>
+			</div>
+
+		</div>
+
+		<div class="grupo-2">
+			<small>&copy; 2021 <b>Barra Libre</b> - Todos los Derechos Reservados.</small>
+		</div>
 	</footer>
+
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
 		crossorigin="anonymous"></script>

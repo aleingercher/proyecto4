@@ -22,9 +22,9 @@
     <div th:replace="fragments-navbar-footer :: navbar"></div>
   </header>
   <div class="container w-50">
-    <h2 class="text-center">carga de Cervezas</h2>
+    <h2 class="text-center">Carga de Cervezas</h2>
     <form th:action="@{/producto/cervezaSave}" method="POST" enctype="multipart/form-data">
-		<p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+      <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
       <!-- Marca cerveza -->
       <div class="form-group">
         <label for="marca" class="control-label">Marca de cerveza</label>
@@ -45,7 +45,7 @@
       <div class="form-group">
         <!-- Familia cerveza -->
         <label for="familia" class="control-label">Familia de cerveza</label>
-        <select class="form-control" id="familia_producto" name="familia">
+        <select class="form-control" id="familia_producto" name="varietal">
           <option selected="selected" disabled="true">...</option>
           <option th:each="CervezaFamilia : ${T(egg.proyecto4.enums.CervezaFamilia_e).values()}"
             th:value="${CervezaFamilia}" th:text="${CervezaFamilia.displayValue}"></option>
@@ -103,9 +103,13 @@
 
       <!-- origen -->
       <div class="form-group">
+        <!-- origen -->
         <label for="origen" class="control-label">Origen del Producto</label>
-        <input type="text" class="form-control" id="origen_producto" name="origen"
-          placeholder="...">
+        <select class="form-control" id="origen" name="origen">
+          <option selected="selected" disabled="true">...</option>
+          <option th:each="Origen : ${T(egg.proyecto4.enums.Origen_e).values()}"
+            th:value="${Origen}" th:text="${Origen.displayValue}"></option>
+        </select>
       </div>
 
       <!-- Submit Button -->
@@ -116,7 +120,7 @@
     </form>
   </div>
 
-  <footer>
+  <footer class="pie-pagina">
     <div th:replace="fragments-navbar-footer :: footer"></div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
