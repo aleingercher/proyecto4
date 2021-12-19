@@ -3,6 +3,7 @@ package egg.proyecto4.controllers;
 import java.io.IOException;
 
 
+
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -22,7 +23,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import egg.proyecto4.entidades.Cerveza;
 import egg.proyecto4.entidades.Espirituosa;
-import egg.proyecto4.entidades.Producto;
 import egg.proyecto4.entidades.Vino;
 
 import egg.proyecto4.errores.errores;
