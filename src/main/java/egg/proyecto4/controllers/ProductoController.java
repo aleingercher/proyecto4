@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import egg.proyecto4.entidades.Cerveza;
 import egg.proyecto4.entidades.Espirituosa;
+import egg.proyecto4.entidades.Producto;
 import egg.proyecto4.entidades.Vino;
 
 import egg.proyecto4.errores.errores;
@@ -173,7 +174,7 @@ public class ProductoController {
 		Cerveza cerveza = cervezaServi.findById(id);
 		if(cerveza != null) {
 			
-			model.addAttribute("prod", cerveza);
+			model.addAttribute("id", cerveza.getId());
 			model.addAttribute("categoriaC", cerveza.getCategoria());
 			
 		}
@@ -187,7 +188,7 @@ public class ProductoController {
 		
 		if (vino != null) {
 			
-			model.addAttribute("prod", vino);
+			model.addAttribute("id", vino.getId());
 			model.addAttribute("categoriaV", vino.getCategoria());
 			
 		}
@@ -200,12 +201,13 @@ public class ProductoController {
 		Espirituosa espirituosa = espirituosaServi.findById(id);
 		if(espirituosa != null) {
 			
-			model.addAttribute("prod", espirituosa);
+			model.addAttribute("id", espirituosa.getId());
 			model.addAttribute("categoriaE", espirituosa.getCategoria());
 		}
 		return "editarProductos";
 	}
 	
+	@SuppressWarnings("unlikely-arg-type")
 	@PostMapping("/actualizar/{id}")
 	public String updateProducto(ModelMap model,@PathVariable("id") String id, MultipartFile imagen,String marca,@RequestParam(required = false) String otrasmarca,Float precio,@RequestParam(required = false) Integer stock,@RequestParam(required = false) String descripcion, String envase, String tipo, String origen, @RequestParam(required = false) String varietal, @RequestParam(required = false) String bodega) {
 
@@ -226,12 +228,11 @@ public class ProductoController {
 		}
 
 		//ACTUALIZACION DE PRODUCTO
+		
+		Producto producto = productoServi.findById(id);
+		
 
-		Cerveza cerveza = cervezaServi.findById(id);
-		Vino vino = vinoServi.findById(id);
-		Espirituosa espirituosa = espirituosaServi.findById(id);
-
-		if (cerveza != null) {
+		if (producto.getCategoria().equals("CERVEZA")) {
 
 			try {
 				cervezaServi.modificarCerveza(descripcion, envase, varietal, img, marca, origen, otrasmarca, tipo, id, precio, stock);
@@ -243,7 +244,7 @@ public class ProductoController {
 				return "editarProductos";
 			}
 
-		} else if (vino != null) {
+		} else if (producto.getCategoria().equals("VINO")) {
 
 			try {
 				vinoServi.modificarVino(id, descripcion, envase, varietal, bodega, img, marca, origen, otrasmarca, tipo, precio, stock);
@@ -255,7 +256,7 @@ public class ProductoController {
 				return "editarProductos";
 			}
 
-		} else {
+		} else if (producto.getCategoria().equals("ESPIRITUOSA")){
 
 			try {
 				espirituosaServi.modificarEspirituosa(descripcion, envase, img, marca, origen, otrasmarca, tipo, id, precio, stock);
