@@ -17,11 +17,9 @@ public class CervezaServicio {
     @Autowired
     private CervezaRepositorio cervezaRepo;
 
-    private void validar(String descripcion, String envase, String varietal, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
+    private void validar( String envase, String varietal, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
 
-        if (descripcion == null || descripcion.isEmpty()) {
-            throw new errores("La descripción no puede estar vacía.");
-        } else if (envase == null || envase.isEmpty()) {
+        if (envase == null || envase.isEmpty()) {
             throw new errores("Debe seleccionar un envase para la cerveza.");
         } else if (varietal == null || varietal.isEmpty()) {
             throw new errores("Debe seleccionar un tipo de familia.");
@@ -37,21 +35,13 @@ public class CervezaServicio {
             throw new errores("Debe haber stock.");
         } 
 
-        Pattern p1 = Pattern.compile("^[a-zA-Z0-9 ]+$");
-
-        Matcher mDescripcion = p1.matcher(descripcion);
-
-        if (!mDescripcion.find()) {
-            throw new errores("Ingrese solo caracteres y valores númericos");
-        }
-
     }
 
     //Guardar Cerveza 
     @Transactional
     public void guardarCerveza(String descripcion, String envase, String varietal, String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
 
-        validar(descripcion, envase, varietal, marca, origen, tipo, precio, stock);
+        validar(envase, varietal, marca, origen, tipo, precio, stock);
 
         Cerveza cerveza = new Cerveza();
         
@@ -74,24 +64,20 @@ public class CervezaServicio {
 
     //Modificar Cerveza
     @Transactional
-    public void modificarCerveza(String descripcion, String envase, String varietal, String foto, String marca, String origen, String otrasMarcas, String tipo, String id, Float precio, Integer stock) throws errores {
+    public void modificarCerveza(String envase, String varietal, String foto, String marca, String origen, String tipo, String id, Float precio) throws errores {
 
-        validar(descripcion, envase, varietal, marca, origen, tipo, precio, stock);
+        
 
         Cerveza cerveza = cervezaRepo.findById(id).get();
         
         cerveza.setCategoria(Categoria_e.CERVEZA);
-        cerveza.setDescripcion(descripcion);
         cerveza.setEnvase(envase);
         cerveza.setVarietal(varietal);
         cerveza.setFoto(foto);
         cerveza.setMarca(marca);
         cerveza.setOrigen(origen);
-        cerveza.setOtrasMarcas(otrasMarcas);
         cerveza.setTipo(tipo);
-        cerveza.setVendidos(0);
         cerveza.setPrecio(precio);
-        cerveza.setStock(stock);
         
         cervezaRepo.save(cerveza);
         

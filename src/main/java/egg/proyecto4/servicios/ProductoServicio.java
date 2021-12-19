@@ -49,5 +49,19 @@ public class ProductoServicio {
 		
 		return productos;
 	}	 
- 
+	
+	 public Producto findById(String id){
+		 
+		 List<Producto> productos = findAllProductos();
+		 Producto producto = new Producto();
+		 for (Producto x: productos) {
+			
+			 if(id.equals(x.getId())) {
+				 
+				 producto = x;
+			 }
+		 }
+		return producto;
+	 }
 }
+

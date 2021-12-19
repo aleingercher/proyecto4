@@ -27,11 +27,20 @@
                 data-feather="info"></i></a>
           </div> -->
         </tr>
+<<<<<<< HEAD
+        <tr th:each="vino:${vinos}">
+	          <td th:text="${vino.tipo}"></td>
+	          <td th:text="${vino.marca}">Marca</td>
+	          <td th:text="${vino.varietal}">flia</td>
+	          <td th:text="${vino.envase}">envase</td>
+	          <td th:text="${vino.precio}">$</td>
+=======
         <tr th:each="vino:${vinos}" th:href="@{/producto/vinoEspecifico/__${vino.id}__}">
           <td th:text="${vino.marca}">Marca</td>
           <td th:text="${vino.varietal}">flia</td>
           <td th:text="${vino.envase}">envase</td>
           <td th:text="${vino.precio}">$</td>
+>>>>>>> 92007f8fe082aa7eeb38f602fbe35d921be925e6
         </tr>
         <tr th:each="prod:${espirituosas}">
           <a th:href="@{/producto/espirituosaEspecifico/__${prod.id}__}">
