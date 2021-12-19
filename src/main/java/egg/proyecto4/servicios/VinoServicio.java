@@ -77,22 +77,19 @@ public class VinoServicio {
     
     //Modificar Vino
     @Transactional
-    public void modificarVino (String id,String descripcion, String envase, String varietal, String bodega, String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
+    public void modificarVino (String id, String envase, String varietal, String bodega, String foto, String marca, String origen, String tipo, Float precio) throws errores {
         
-        validar(envase,varietal,bodega,marca,origen,tipo,precio,stock);
+        
         
         Vino vino = vinoRepo.findById(id).get();
         
         vino.setBodega(bodega);
         vino.setCategoria(Categoria_e.CERVEZA);
-        vino.setDescripcion(descripcion);
         vino.setEnvase(envase);
         vino.setFoto(foto);
         vino.setMarca(marca);
         vino.setOrigen(origen);
-        vino.setOtrasMarcas(otrasMarcas);
         vino.setPrecio(precio);
-        vino.setStock(stock);
         vino.setTipo(tipo);
         vino.setVendidos(0);
         vino.setPrecio(precio);

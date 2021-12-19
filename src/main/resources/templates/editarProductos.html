@@ -126,10 +126,21 @@
 				</div>
 			</div>
 
+			<div class="row mb-3">
+				<label for="origen" class="col-sm-2 col-form-label">origen</label>
+				<div class="col-sm-10">
+					<select class="form-select" aria-label="origen" name="origen">
+						<option selected>Seleccione la familia de la cerveza</option>
+						<option th:each="origen : ${T(egg.proyecto4.enums.Origen_e).values()}"
+							th:value="${origen}" th:text="${origen.displayValue}"></option>
+					</select>
+				</div>
+			</div>
+
 			<div class="row mb-3" th:if="${categoriaC != null}">
 				<label for="familia" class="col-sm-2 col-form-label">familia</label>
 				<div class="col-sm-10">
-					<select class="form-select" aria-label="familia de cerveza">
+					<select class="form-select" aria-label="familia de cerveza" name="varietal">
 						<option selected>Seleccione la familia de la cerveza</option>
 						<option th:each="CervezaFamilia : ${T(egg.proyecto4.enums.CervezaFamilia_e).values()}"
 							th:value="${CervezaFamilia}" th:text="${CervezaFamilia.displayValue}"></option>
@@ -139,7 +150,7 @@
 			<div class="row mb-3" th:if="${categoriaV != null}">
 				<label for="varietal" class="col-sm-2 col-form-label">varietal blanco</label>
 				<div class="col-sm-10">
-					<select class="form-select" aria-label="varietal">
+					<select class="form-select" aria-label="varietal" name="varietal">
 						<option selected>Seleccione el varietal</option>
 						<option th:each="VarietalBlanco : ${T(egg.proyecto4.enums.VinoVarietalBlanco_e).values()}"
 							th:value="${VarietalBlanco}" th:text="${VarietalBlanco.displayValue}">
@@ -149,7 +160,7 @@
 			<div class="row mb-3" th:if="${categoriaV != null}">
 				<label for="varietal" class="col-sm-2 col-form-label">varietal tinto</label>
 				<div class="col-sm-10">
-					<select class="form-select" aria-label="varietal">
+					<select class="form-select" aria-label="varietal" name="varietal">
 						<option selected>Seleccione el varietal</option>
 						<option th:each="VarietalTinto : ${T(egg.proyecto4.enums.VinoVarietalTinto_e).values()}"
 							th:value="${VarietalTinto}" th:text="${VarietalTinto.displayValue}">
@@ -160,7 +171,7 @@
 			<div class="row mb-3" th:if="${categoriaV != null}">
 				<label for="varietal" class="col-sm-2 col-form-label">varietal rosado</label>
 				<div class="col-sm-10">
-					<select class="form-select" aria-label="varietal">
+					<select class="form-select" aria-label="varietal" name="varietal">
 						<option selected>Seleccione el varietal</option>
 						<option th:each="VarietalRosado : ${T(egg.proyecto4.enums.VinoVarietalRosado_e).values()}"
 							th:value="${VarietalRosado}" th:text="${VarietalRosado.displayValue}">

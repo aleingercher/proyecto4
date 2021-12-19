@@ -64,24 +64,20 @@ public class CervezaServicio {
 
     //Modificar Cerveza
     @Transactional
-    public void modificarCerveza(String descripcion, String envase, String varietal, String foto, String marca, String origen, String otrasMarcas, String tipo, String id, Float precio, Integer stock) throws errores {
+    public void modificarCerveza(String envase, String varietal, String foto, String marca, String origen, String tipo, String id, Float precio) throws errores {
 
-        validar( envase, varietal, marca, origen, tipo, precio, stock);
+        
 
         Cerveza cerveza = cervezaRepo.findById(id).get();
         
         cerveza.setCategoria(Categoria_e.CERVEZA);
-        cerveza.setDescripcion(descripcion);
         cerveza.setEnvase(envase);
         cerveza.setVarietal(varietal);
         cerveza.setFoto(foto);
         cerveza.setMarca(marca);
         cerveza.setOrigen(origen);
-        cerveza.setOtrasMarcas(otrasMarcas);
         cerveza.setTipo(tipo);
-        cerveza.setVendidos(0);
         cerveza.setPrecio(precio);
-        cerveza.setStock(stock);
         
         cervezaRepo.save(cerveza);
         
