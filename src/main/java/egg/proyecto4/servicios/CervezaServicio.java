@@ -78,12 +78,12 @@ public class CervezaServicio {
         Cerveza cerveza = cervezaRepo.findById(id).get();
         
         cerveza.setCategoria("Cerveza");
-        cerveza.setEnvase(envase);
-        cerveza.setVarietal(varietal);
+        cerveza.setEnvase(prettify(envase));
+        cerveza.setVarietal(prettify(varietal));
         cerveza.setFoto(foto);
-        cerveza.setMarca(marca);
-        cerveza.setOrigen(origen);
-        cerveza.setTipo(tipo);
+        cerveza.setMarca(prettify(marca));
+        cerveza.setOrigen(prettify(origen));
+        cerveza.setTipo(prettify(tipo));
         cerveza.setPrecio(precio);
         cerveza.setStock(stock);
         

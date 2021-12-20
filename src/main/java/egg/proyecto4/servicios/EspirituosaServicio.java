@@ -68,11 +68,11 @@ public class EspirituosaServicio {
         Espirituosa espirituosa = espirituosaRepo.findById(id).get();
 
         espirituosa.setCategoria("Espirituosa");
-        espirituosa.setEnvase(envase);
+        espirituosa.setEnvase(prettify(envase));
         espirituosa.setFoto(foto);
-        espirituosa.setMarca(marca);
-        espirituosa.setOrigen(origen);
-        espirituosa.setTipo(tipo);
+        espirituosa.setMarca(prettify(marca));
+        espirituosa.setOrigen(prettify(origen));
+        espirituosa.setTipo(prettify(tipo));
         espirituosa.setVendidos(0);
         espirituosa.setPrecio(precio);
 
