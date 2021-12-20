@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import egg.proyecto4.entidades.Usuario;
+import egg.proyecto4.servicios.EnvioMail;
 import egg.proyecto4.servicios.UsuarioServicio;
 
 @Controller
@@ -21,6 +22,9 @@ public class UsuarioController {
 	
 	@Autowired
 	UsuarioServicio serviUsuario;
+	
+	@Autowired
+	EnvioMail envioMail;
 	
 	@GetMapping("/save")
 	public String userSave() {
@@ -59,5 +63,22 @@ public class UsuarioController {
 	}
 	
 	
+	@GetMapping("/recuperarClave")
+	public String recuperarClave(ModelMap model) {
+		
+		String codigo = null;
+		model.addAttribute("codigo", codigo);
+		
+		return"recuperacionClave";
+	}
 	
+	@GetMapping("/cargarCodigo")
+	public String cargarCodigo(ModelMap model, String email) {
+		
+		envioMail.sendEmailClave(email);
+		
+		model.addAttribute("codigo", email);
+		
+		return"recuperacionClave";
+	}
 }

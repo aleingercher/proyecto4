@@ -62,7 +62,7 @@ public class EspirituosaServicio {
     
     //Modificar Espirituosa
     @Transactional
-    public void modificarEspirituosa(String envase,String foto, String marca, String origen, String tipo, String id, Float precio) throws errores {
+    public void modificarEspirituosa(String envase,String foto, String marca, String origen, String tipo, String id, Float precio, Integer stock) throws errores {
         
         
         
@@ -76,6 +76,7 @@ public class EspirituosaServicio {
         espirituosa.setTipo(tipo);
         espirituosa.setVendidos(0);
         espirituosa.setPrecio(precio);
+        espirituosa.setStock(stock);
         
         espirituosaRepo.save(espirituosa);
         

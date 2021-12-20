@@ -64,10 +64,8 @@ public class CervezaServicio {
 
     //Modificar Cerveza
     @Transactional
-    public void modificarCerveza(String envase, String varietal, String foto, String marca, String origen, String tipo, String id, Float precio) throws errores {
-
+    public void modificarCerveza(String envase, String varietal, String foto, String marca, String origen, String tipo, String id, Float precio, Integer stock) throws errores {
         
-
         Cerveza cerveza = cervezaRepo.findById(id).get();
         
         cerveza.setCategoria(Categoria_e.CERVEZA);
@@ -78,6 +76,7 @@ public class CervezaServicio {
         cerveza.setOrigen(origen);
         cerveza.setTipo(tipo);
         cerveza.setPrecio(precio);
+        cerveza.setStock(stock);
         
         cervezaRepo.save(cerveza);
         

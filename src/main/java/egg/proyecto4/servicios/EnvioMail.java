@@ -29,5 +29,12 @@ public class EnvioMail {
 
 			sendEmail(email, "Registro a Barra Libre", "Usted se ha registrado exitosamente a Barra Libre!");
 	}
+	
+	
+	public void sendEmailClave(String email) {
 
-}
+		Integer codigo = (int) (Math.random() * 9999 + 1111);
+		
+		sendEmail(email, "Recuperacion de clave", "ingrese el siguiente codigo para recuperar su clave: " + codigo);
+	}
+}	

@@ -155,10 +155,16 @@ public class UsuarioServicio implements UserDetailsService {
 		return usuarioRepo.findByCelular(celular);
 	}
     
-        public Usuario findById(String id){
-            return usuarioRepo.getById(id);
-        }
-        
+    public Usuario findById(String id){
+         return usuarioRepo.getById(id);
+    }
+     
+    public void recuperarClave(String email) {
+		
+    	senderService.sendEmailClave(email);
+    	
+	}
+    
 	
 	@Override
 	public UserDetails loadUserByUsername (String email) throws UsernameNotFoundException {

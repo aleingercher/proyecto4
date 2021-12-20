@@ -77,7 +77,7 @@ public class VinoServicio {
     
     //Modificar Vino
     @Transactional
-    public void modificarVino (String id, String envase, String varietal, String bodega, String foto, String marca, String origen, String tipo, Float precio) throws errores {
+    public void modificarVino (String id, String envase, String varietal, String bodega, String foto, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
         
         
         
@@ -94,6 +94,7 @@ public class VinoServicio {
         vino.setVendidos(0);
         vino.setPrecio(precio);
         vino.setVarietal(varietal);
+        vino.setStock(stock);
         
         vinoRepo.save(vino);
         
