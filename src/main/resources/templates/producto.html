@@ -9,10 +9,13 @@
 	integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 	<link rel="stylesheet" href="/css/detalleProducto.css">
 	<link rel="stylesheet" href="/css/producto.css">
+	<script src="https://unpkg.com/feather-icons"></script>
+
 	<title>Producto</title>
 </head>
 
 <body>
+	<!-- NAVBAR -->
 	<nav class="navbar navbar-expand-md navbar-dark bg-dark">
 		<div class="container-fluid">
 			<div class="left">
@@ -44,58 +47,72 @@
 			</div>
 		</div>
 	</nav>
+	
+	<!-- PRODUCTO-->
+<div class="content ">
 	<div class="product bg-light">
-		<div  id="item" class="img-container">
-			<img class="img-thumbnail rounded float-left"
+		<div  id="item" class="img-container ">
+			<img class=" rounded float-left"
 					th:src="@{'/recursos/' + ${producto.foto}}" th:alt="${producto.foto}"
 					style="max-width: 90%;">
 		</div>
 		<div id="item">
 			<h1 th:if="${producto.varietal != null}" th:text="${producto.marca} + ' ' + ${producto.varietal}">Marca</h1>
 			<h1 th:if="${producto.varietal == null}" th:text="${producto.marca} + ' ' + ${producto.tipo}">Marca</h1>
-			<p th:if="${producto.varietal != null}" th:text="${producto.tipo}">Tipo</p>
-			<p th:text="${producto.envase}">Envase</p>
-			<h3 th:text="${producto.precio}">Precio</h3>
+			<h4 th:if="${producto.varietal != null}" th:text="${producto.tipo}">Tipo</h4>
+			<h4 th:text="${producto.envase}">Envase</h4>
+			<h2 th:text="${producto.precio}">Precio</h2>
+			<p></p>
 			<form class="formulario" method="GET">
-                    <div class="botones">
+                    <div class="botones ">
                         <button class="btn btn-dark menos">-</button>
-                        <input class="cantidad fs-3 align-self-center" style="width: 70%;" th:value="0" />
-                        <button class="btn btn-dark mas">+</button>
+                        <input class="cantidad fs-3 formulario" style="width: 50%" th:value="0" />
+                        <button class="btn btn-success mas">+</button>
                     </div>
-                    <a type="button" class="btn btn-danger" href="#">Agregar a Carrito</a>
-            </form>		
+					<br>
+                    <a type="button" class="btn btn-primary" href="#">Agregar <i data-feather="shopping-cart"></i>
+					</a>
+            </form>	
+			<br>
+			<h5><i data-feather="truck"></i> Hacemos envío a todo el país</h5>
+			<p></p>
+			<h5><i data-feather="check-circle"></i> Compra Protegida</h5>
+			
 		</div>
 	</div>
 	<br>
+	<!-- MEDIOS DE PAGO -->
 	<div class="medios bg-light">
 		<h2 style="text-align: center;">MEDIOS DE PAGO</h2>
-		<br>
 		<div class="grupo">
 			<div id="item" class="img-containeR">
-				<img id="marcas" src="../../imagenes/1200px-American_Express_logo_(2018).svg.png" alt="">
+				<img id="marcas" src="../../imagenes/amex.png" alt="">
 			</div>
 				
 			<div id="item" class="img-containeR">
-				<img id="marcas" src="../../imagenes/visa.png" alt="">
+				<img id="marcas" src="../../imagenes/visa2.png" alt="">
 			</div>
 	
 			<div id="item" class="img-containeR">
-				<img id="marcas" src="../../imagenes/1200px-Mastercard-logo.svg.png" alt="">
+				<img id="marcas" src="../../imagenes/master.jpg" alt="">
 			</div>
 	
 			<div id="item" class="img-containeR">
-				<img id="marcas" src="../../imagenes/como-obtener-resument-tarjeta-naranja_foro.jpg" alt="">
+				<img id="marcas" src="../../imagenes/naranja.jpg" alt="">
 			</div>
 	
 			<div id="item" class="img-containeR">
-				<img id="marcas" src="../../imagenes/unnamed.png" alt="">
+				<img id="marcas" src="../../imagenes/nativa.jpeg" alt="">
 			</div>
 	
 			<div id="item" class="img-containeR">
-				<img id="marcas" src="../../imagenes/tarjeta-argencard-logo.jpg" alt="">
+				<img id="marcas" src="../../imagenes/cabal.png" alt="">
 			</div>
 		</div>
 	</div>
+</div>
+
+	<!-- FOOTER-->
 	<footer class="footer">
 		<div class="grupo-1">
 			<div class="box">
@@ -137,9 +154,16 @@
 			<small>&copy; 2021 <b>Barra Libre</b> - Todos los Derechos Reservados.</small>
 		</div>
 	</footer>
+	<!-- SCRIPT BOOTSTRAP -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
 		crossorigin="anonymous"></script>
+		<!-- SCRIPT ICONOS-->
+		<script>
+			feather.replace()
+		  </script>
+		
+	<!-- JAVA SCRIPT-->	
 	<script>
 		 // para cambiara cantidad de producto
         const menos = document.querySelectorAll('.menos');
