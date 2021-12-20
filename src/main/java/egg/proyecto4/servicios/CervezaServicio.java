@@ -26,7 +26,7 @@ public class CervezaServicio {
         } else if (marca == null || marca.isEmpty()) {
             throw new errores("Debe seleccionar una marca.");
         } else if (origen == null || origen.isEmpty()) {
-            throw new errores("Debe seleciconar un origen.");
+            throw new errores("Debe seleccionar un origen.");
         } else if (tipo == null || tipo.isEmpty()) {
             throw new errores("Debe seleccionar un tipo.");
         } else if (precio == null || tipo.isEmpty()) {
@@ -45,15 +45,15 @@ public class CervezaServicio {
 
         Cerveza cerveza = new Cerveza();
         
-        cerveza.setCategoria(Categoria_e.CERVEZA);
-        cerveza.setDescripcion(descripcion);
-        cerveza.setEnvase(envase);
-        cerveza.setVarietal(varietal);
+        cerveza.setCategoria("Cerveza");
+        cerveza.setDescripcion(prettify(descripcion));
+        cerveza.setEnvase(prettify(envase));
+        cerveza.setVarietal(prettify(varietal));
         cerveza.setFoto(foto);
-        cerveza.setMarca(marca);
-        cerveza.setOrigen(origen);
-        cerveza.setOtrasMarcas(otrasMarcas);
-        cerveza.setTipo(tipo);
+        cerveza.setMarca(prettify(marca));
+        cerveza.setOrigen(prettify(origen));
+        cerveza.setOtrasMarcas(prettify(otrasMarcas));
+        cerveza.setTipo(prettify(tipo));
         cerveza.setVendidos(0);
         cerveza.setPrecio(precio);
         cerveza.setStock(stock);
@@ -62,15 +62,19 @@ public class CervezaServicio {
 
     }
 
+    public String prettify(String en){
+        String pretty = en.replace("_", " ").toLowerCase();
+        pretty = pretty.substring(0, 1).toUpperCase() + pretty.substring(1);
+        return pretty;
+    }
+    
     //Modificar Cerveza
     @Transactional
-    public void modificarCerveza(String envase, String varietal, String foto, String marca, String origen, String tipo, String id, Float precio) throws errores {
-
-        
+    public void modificarCerveza(String envase, String varietal, String foto, String marca, String origen, String tipo, String id, Float precio) throws errores {        
 
         Cerveza cerveza = cervezaRepo.findById(id).get();
         
-        cerveza.setCategoria(Categoria_e.CERVEZA);
+        cerveza.setCategoria("Cerveza");
         cerveza.setEnvase(envase);
         cerveza.setVarietal(varietal);
         cerveza.setFoto(foto);

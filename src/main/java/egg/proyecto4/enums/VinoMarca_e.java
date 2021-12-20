@@ -4,16 +4,16 @@ public enum VinoMarca_e {
 
     
     ALMA_MORA("Alma Mora"),/**/
-    ALTOS("Altos del Plata"),/**/
+    ALTOS_DEL_PLATA("Altos del Plata"),/**/
     CABALLERO("Caballero"),/**/
     CAFAYATE("Cafayate"),/**/
-    CINCO("Cinco Sentidos"),/**/
-    DESIERTO("Desierto 25"),/**/
-    ESCORIHUELA("Escorihuela"),/**/
-    FINCA("Finca Flichman"),/**/
+    CINCO_SENTIDOS("Cinco Sentidos"),/**/
+    DESIERTO_25("Desierto 25"),/**/
+    ESCORIHUELA_GASCON("Escorihuela"),/**/
+    FINCA_FLICHMAN("Finca Flichman"),/**/
     LUIGI_BOSCA("Luigi Bosca"),/**/
     TRAPICHE("Trapiche"),/**/
-    TRASLA("Tras la Piedra"),/**/
+    TRAS_LA_PIEDRA("Tras la Piedra"),/**/
     ZUCCARDI("Zuccardi"),/**/
     SANTA_JULIA("Santa Julia");/**/
 

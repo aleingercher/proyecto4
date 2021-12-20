@@ -18,8 +18,8 @@ public class Producto implements Serializable {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     private String id;
-    @Enumerated(EnumType.STRING)
-    private Categoria_e categoria;
+//    @Enumerated(EnumType.STRING)
+    private String categoria;
     private String marca;//--
     private String otrasMarcas;
     private Float precio;
@@ -42,11 +42,11 @@ public class Producto implements Serializable {
         this.id = id;
     }
 
-    public Categoria_e getCategoria() {
+    public String getCategoria() {
         return categoria;
     }
 
-    public void setCategoria(Categoria_e categoria) {
+    public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
 
