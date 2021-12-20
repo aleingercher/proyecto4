@@ -52,7 +52,7 @@ public class CervezaServicio {
         cerveza.setFoto(foto);
         cerveza.setMarca(prettify(marca));
         cerveza.setOrigen(prettify(origen));
-        cerveza.setOtrasMarcas(prettify(otrasMarcas));
+        cerveza.setOtrasMarcas(otrasMarcas);
         cerveza.setTipo(prettify(tipo));
         cerveza.setVendidos(0);
         cerveza.setPrecio(precio);
