@@ -1,0 +1,35 @@
+:root {
+	--dark: #16191c;
+	--dark-x: #1e2126;
+	--light: #ffffff;
+}
+
+.bg-dark-x {
+	background-color: var(--dark-x);
+}
+
+.bg-grey {
+	background-color: rgb(121, 121, 121);
+}
+
+.formClass {
+	background-color: #555;
+	color: white;
+}
+
+
+.btn {
+	min-height: 3.125rem;
+	font-weight: 600;
+}
+
+.img-1 {
+	background-image: url('../imagenes/nosotros/brindis1.jpg');
+	background-size: cover;
+	background-position: center;
+}
+
+label,
+h3 {
+	color: white;
+}
