@@ -44,12 +44,12 @@ public class EspirituosaServicio {
         Espirituosa espirituosa = new Espirituosa();
 
         espirituosa.setCategoria("Espirituosa");
-        espirituosa.setDescripcion(prettify(descripcion));
+        espirituosa.setDescripcion(descripcion);
         espirituosa.setEnvase(prettify(envase));
         espirituosa.setFoto(foto);
         espirituosa.setMarca(prettify(marca));
         espirituosa.setOrigen(prettify(origen));
-        espirituosa.setOtrasMarcas(prettify(otrasMarcas));
+        espirituosa.setOtrasMarcas(otrasMarcas);
         espirituosa.setTipo(prettify(tipo));
         espirituosa.setVendidos(0);
         espirituosa.setPrecio(precio);

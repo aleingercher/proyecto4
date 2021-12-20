@@ -59,6 +59,7 @@ public class VinoServicio {
         vino.setDescripcion(descripcion);
         vino.setEnvase(prettify(envase));
         vino.setFoto(foto);
+        vino.setStock(stock);
         vino.setMarca(prettify(marca));
         vino.setOtrasMarcas(otrasMarcas);
         vino.setOrigen(prettify(origen));
