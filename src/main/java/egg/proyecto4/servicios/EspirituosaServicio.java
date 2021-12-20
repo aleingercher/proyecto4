@@ -13,15 +13,13 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EspirituosaServicio {
-    
+
     @Autowired
     private EspirituosaRepositorio espirituosaRepo;
-    
-    private void validar(String descripcion, String envase, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
-        
-        if (descripcion == null || descripcion.isEmpty()) {
-            throw new errores("La descripción no puede estar vacía.");
-        } else if (envase == null || envase.isEmpty()) {
+
+    private void validar(String envase, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
+
+        if (envase == null || envase.isEmpty()) {
             throw new errores("Debe seleccionar un envase para la cerveza.");
         } else if (marca == null || marca.isEmpty()) {
             throw new errores("Debe seleccionar una marca.");
@@ -33,78 +31,76 @@ public class EspirituosaServicio {
             throw new errores("Debe contener un precio.");
         } else if (stock == null || tipo.isEmpty()) {
             throw new errores("Debe haber stock.");
-        } 
-
-        Pattern p1 = Pattern.compile("^[a-zA-Z0-9]+$");
-
-        Matcher mDescripcion = p1.matcher(descripcion);
-
-        if (!mDescripcion.find()) {
-            throw new errores("Ingrese solo caracteres y valores númericos");
         }
+
     }
-    
-    
+
     //Guardar Espirituosa
     @Transactional
-    public void guardarEspirituosa (String descripcion, String envase,String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
-        
-        validar(descripcion,envase,marca,origen,tipo,precio,stock);
-        
+    public void guardarEspirituosa(String descripcion, String envase, String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
+
+        validar(envase, marca, origen, tipo, precio, stock);
+
         Espirituosa espirituosa = new Espirituosa();
-        
-        espirituosa.setCategoria(Categoria_e.ESPIRITUOSAS);
+
+        espirituosa.setCategoria("Espirituosa");
         espirituosa.setDescripcion(descripcion);
-        espirituosa.setEnvase(envase);
+        espirituosa.setEnvase(prettify(envase));
         espirituosa.setFoto(foto);
-        espirituosa.setMarca(marca);
-        espirituosa.setOrigen(origen);
+        espirituosa.setMarca(prettify(marca));
+        espirituosa.setOrigen(prettify(origen));
         espirituosa.setOtrasMarcas(otrasMarcas);
-        espirituosa.setTipo(tipo);
+        espirituosa.setTipo(prettify(tipo));
         espirituosa.setVendidos(0);
         espirituosa.setPrecio(precio);
         espirituosa.setStock(stock);
-        
+
         espirituosaRepo.save(espirituosa);
-        
+
     }
-    
+
     //Modificar Espirituosa
     @Transactional
-    public void modificarEspirituosa(String descripcion, String envase,String foto, String marca, String origen, String otrasMarcas, String tipo, String id, Float precio, Integer stock) throws errores {
+
+    public void modificarEspirituosa(String envase,String foto, String marca, String origen, String tipo, String id, Float precio, Integer stock) throws errores {
         
-        validar(descripcion,envase,marca,origen,tipo,precio,stock);
-        
+
         Espirituosa espirituosa = espirituosaRepo.findById(id).get();
-        
-        espirituosa.setCategoria(Categoria_e.ESPIRITUOSAS);
-        espirituosa.setDescripcion(descripcion);
-        espirituosa.setEnvase(envase);
+
+        espirituosa.setCategoria("Espirituosa");
+        espirituosa.setEnvase(prettify(envase));
         espirituosa.setFoto(foto);
-        espirituosa.setMarca(marca);
-        espirituosa.setOrigen(origen);
-        espirituosa.setOtrasMarcas(otrasMarcas);
-        espirituosa.setTipo(tipo);
+        espirituosa.setMarca(prettify(marca));
+        espirituosa.setOrigen(prettify(origen));
+        espirituosa.setTipo(prettify(tipo));
         espirituosa.setVendidos(0);
         espirituosa.setPrecio(precio);
+
         espirituosa.setStock(stock);
         
+
+
         espirituosaRepo.save(espirituosa);
-        
+
     }
-    
+
     //Consultar Espirituosa
-    public List<Espirituosa> consultarEspirituosas(){
+    public List<Espirituosa> consultarEspirituosas() {
         return espirituosaRepo.findAll();
     }
-    
-    
-    public Espirituosa findById(String id){
+
+    public Espirituosa findById(String id) {
         return espirituosaRepo.getById(id);
     }
- 
-    public void eliminarEspirituosa(String id){
+
+    public void eliminarEspirituosa(String id) {
         Espirituosa espirituosa = espirituosaRepo.findById(id).get();
         espirituosaRepo.delete(espirituosa);
+    }
+
+    public String prettify(String en) {
+        String pretty = en.replace("_", " ").toLowerCase();
+        pretty = pretty.substring(0, 1).toUpperCase() + pretty.substring(1);
+        return pretty;
     }
 }

@@ -1,4 +1,3 @@
-/* cuerpo del login*/
 :root {
 	--dark: #16191c;
 	--dark-x: #1e2126;
@@ -18,27 +17,14 @@
 	color: white;
 }
 
-#emailHelp {
-	color: lightblue;
-}
 
 .btn {
 	min-height: 3.125rem;
 	font-weight: 600;
 }
 
-.form-control {
-	min-height: 3.125rem;
-	line-height: initial;
-}
-.form-control:focus {
-	background-color: var(--dark-x);
-	color: none;
-	outline: none;
-}
-
 .img-1 {
-	background-image: url('../imagenes/Login/Login1.jpg');
+	background-image: url('../imagenes/nosotros/brindis1.jpg');
 	background-size: cover;
 	background-position: center;
 }

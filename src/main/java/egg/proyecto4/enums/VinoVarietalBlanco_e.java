@@ -5,7 +5,7 @@ public enum VinoVarietalBlanco_e {
 
 	
 	CHARDONNAY("Chardonnay"),
-	SUAVIGNON("Suavignon"),
+	SAUVIGNON_BLANC("Sauvignon blanc"),
         MOSCATEL("Moscatel"),
         CHENIN("Chenin"),
         TORRONTES("Torrontes");

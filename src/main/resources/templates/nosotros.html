@@ -1,84 +1,71 @@
 <!DOCTYPE html>
-<html xmlns="http://www.thymeleaf.org" lang="es">
+<html xmlns="http://www.thymeleaf.org" lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nosotros</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" href="/css/navbar-footer.css">
+	<link rel="stylesheet" href="/css/nosotros.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Domine&family=Permanent+Marker&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/e84be291c7.js" crossorigin="anonymous"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/detalleProducto.css">
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Domine&family=Permanent+Marker&display=swap"
-        rel="stylesheet">
-    <script src="https://kit.fontawesome.com/e84be291c7.js" crossorigin="anonymous"></script>
+	<title>Inicio</title>
 </head>
 
-<body>
-    <header>
-        <div th:replace="fragments-navbar-footer :: navbar"></div>
-    </header>
-    
-    <div>
-      <h3>Algo sobre nosotros</h3>
-        <p> 
-            Somos un equipo de expertos en bebidas dedicado a proveer la más amplia variedad de productos a clientes de todo el país.
-            Nos enfocamos en un servicio personalizado, facilidad de compra y entregas inmediatas.
-            ¿Nuestro misión? 
-            Contar con la más amplia variedad de bebidas y proveer a clientes de todo el país.
-            ¿Nuestra visión?
-            Ser los primeros en los que pienses cuando tengas que comprar bebidas, estés donde estés.
-        </p>
-    </div>
-
-	<footer class="footer">
-		<div class="grupo-1">
-			<div class="box">
-				<figure>
-					<a href="#">
-						<img src="../../imagenes/Logo Completo.jpeg" alt="Logo 4">
-					</a>
-				</figure>
+<body class="bg-dark">
+	<!--Header-->
+	<header>
+		<div th:replace="fragments-navbar-footer :: navbar"></div>
+	</header>
+	<section>
+		<div class="row g-0">
+			<div class="col-lg-7 d-none d-lg-block img-1">
 			</div>
+			<div class="col-lg-5 formClass d-flex flex-column align-items-end ">
 
-			<div class="box">
-				<h2>SOBRE NOSOTROS</h2>
-				<p>A partir de este momento somos la primer página</p>
-				<p>de Delivery de Bebidas en la que vas a pensar</p>
-				<p>cuando tengas que comprarlas, estés donde estés.</p>
-				<p>Nos caracteriza ser el mejor equipo para la satisfacción</p>
-				<p>plena de cada uno y una de nuestros clientes.</p>
-			</div>
+				<div class="align-self-center w-100 px-lg-5 py-lg-4 p-4 text-center">
+					<h1 class="font-weight-bold mb-4 text-center">Sobre Nosotros y Nosotras</h2>
+					<h5 class="mb-4">
+					El deseo de esta página y de este equipo es que cada momento que vivas, lo vivas al máximo 
+					y aproveches cada instante como si fuera el último.
+					<p></p>
+					Para eso estamos, para que en cada encuentro que vivis con las personas que querés,
+					no tengas que salir a comprar las bebidas y perderte un anecdota, ni un chiste 
+					o un abrazo.
+					<p></p>
+					Garantizamos que cuentes con las bebidas que queres y este equipo también
+					cuenta con la mejor logistica y delivery, garantizando tus bebidas 100% frías
+					y en el menor tiempo posible, exactamente lo que necesitas.
+					<p></p>
+					Y aprovechando esta hermosa epoca de fiestas, de festejos, de encuentros, de abrazos, 
+					de risas, de vida; Mati, Ale, Ro, Seba, Artu, Aldo y Javi, queremos brindar con vos 
+					y desearte las mejores de las fiestas, y que tus metas y deseos del nuevo año 
+					que viene se cumplan.
+					<p></p>
+					<h1 class= "align-self-center">!!Salud!!</h1>
+					<p></p>
+					<h3>Equipo Barra Libre</h3>
 
-			<div class="box siguenos">
-				<h2>SIGUENOS</h2>
-				<div class="red-social">
-					<a target="_blank"
-						href="https://www.facebook.com/BARRA-MOVIL-DE-TRAGOS-BARRA-LIBRE-BARRA-PARA-NI%C3%91OS-PRECIOS-PARA-EVENTOS-153529671386665"
-						class="fa fa-facebook"></a>
-					<a target="_blank"
-						href="https://www.instagram.com/barralibre.berazategui/?hl=es-la"
-						class="fa fa-instagram"></a>
-					<a target="_blank" href="https://twitter.com/BARRALIBRE1"
-						class="fa fa-twitter"></a>
-					<a target="_blank" href="https://www.youtube.com/watch?v=BTEkFF-NhAI"
-						class="fa fa-youtube"></a>
 				</div>
 			</div>
-
 		</div>
+	</section>
 
-		<div class="grupo-2">
-			<small>&copy; 2021 <b>Barra Libre</b> - Todos los Derechos Reservados.</small>
-		</div>
+
+
+	<!--Footer-->
+	<footer class="pie-pagina">
+		<div th:replace="fragments-navbar-footer :: footer"></div>
 	</footer>
+	<!--Script Bootstrap-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+		crossorigin="anonymous"></script>
 </body>
 
 </html>

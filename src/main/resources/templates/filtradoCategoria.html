@@ -46,10 +46,11 @@
                 <img th:src="@{'/recursos/' + ${prod.foto}}" th:alt="${prod.foto}"
                     class="card-img-top" />
                 <div class="card-body titulo text-center text-uppercase">
-                    <span class="categoria" th:text="${prod.categoria}">Categoria</span>
+                    <span class="categoria"
+                        th:text="${prod.categoria} == 'Espirituosa' ? ${prod.tipo} : ${prod.categoria}">Categoria</span>
                     <span class="marca" th:text="${prod.marca}">Marca</span>
-                    <span th:if="${prod.categoria} != 'ESPIRITUOSAS'" class="tipo" 
-                        th:text="${prod.varietal}">Familia</span>
+                    <!-- <span class="marca" th:text="${prod.marca}">Marca</span> -->
+                    <span class="tipo" th:text="${prod.varietal}">Familia</span>
                 </div>
                 <h2 class="precio align-self-center my-3" th:text="'$' +${prod.precio}">Precio</h2>
 
@@ -118,6 +119,7 @@
             boton.addEventListener('click', (e) => {
                 e.preventDefault();
                 const input = e.target.previousElementSibling;
+                // if(input < stock)
                 input.setAttribute('value', (input.value++))
             })
         });

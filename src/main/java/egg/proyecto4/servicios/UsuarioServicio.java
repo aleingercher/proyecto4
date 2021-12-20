@@ -49,22 +49,22 @@ public class UsuarioServicio implements UserDetailsService {
 			throw new errores("El celular del usuario ya existe, pruebe con otro.");
 		}else if(localidad == null || localidad.isEmpty()) {
 			throw new errores("La localidad del usuario no puede ser nulo.");
-		}else if(celular == null || celular.isEmpty() || celular.length() <=5) {
-			throw new errores("El numero de telefono del cliente no puede ser nulo y debe tener mas de 5 digitos.");
+		}else if(celular == null || celular.isEmpty() || celular.length() < 8) {
+			throw new errores("El numero de telefono del cliente no puede ser nulo y debe tener al menos 8 digitos.");
 		}else if(email == null || email.isEmpty()) {
 			throw new errores("El mail del cliente no puede ser nulo.");
-		} else if(clave == null || clave.isEmpty() || clave.length() <= 6) {
+		} else if(clave == null || clave.isEmpty() || clave.length() < 6) {
 			throw new errores("La clave del cliente no puede ser nulo y debe contener mas de 6 caracteres.");
 		}else if(!clave.equals(clave2)){
 			throw new errores("Las claves deben ser iguales");
 		}
 		
 		
-		Pattern p1 = Pattern.compile("^[a-zA-Z]+$");										//Patron para inputs de solo caracteres. EJ:Nombre, apellido.
+		Pattern p1 = Pattern.compile("^[a-zA-Z ]+$");										//Patron para inputs de solo caracteres. EJ:Nombre, apellido.
 		Pattern p2 = Pattern.compile("^[0-9]+$");											//Patron para inputs de solo numeros. EJ: documento, telefono, nroTarjeta.
 		Pattern p3 = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+[.][A-Za-z]{2,}$");	//Patron para inputs que reciban solamente MAILS.
 		Pattern p4 = Pattern.compile("^[A-Za-z0-9 ]+$");								//Patron para inputs para que reciba caracteres y nmros con la condicion de que el 1er caracter sea en MAY y letra.
-		Pattern p5 = Pattern.compile("^[a-z0-9]+[ ]{1}[0-9]+$");
+		Pattern p5 = Pattern.compile("^[A-Za-z0-9 ]+[ ]{1}[0-9]+$");
 		Pattern p6 = Pattern.compile("^[A-Za-z0-9]+$");
 		
 		
@@ -113,6 +113,7 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setCelular(celular);
 		usuario.setClave(encoder.encode(clave));
 		usuario.setRole(Role_e.USER.toString());
+		usuario.setCodigo(null);
 		
 		usuarioRepo.save(usuario);
 		
@@ -147,6 +148,40 @@ public class UsuarioServicio implements UserDetailsService {
 		}
 	}
 		
+		public void ModificarCodigo(String email, Integer codigo) throws errores {
+			
+			Usuario  usuario = usuarioRepo.findByEmail(email);
+			if(usuario != null) {
+				
+				usuario.setCodigo(codigo);
+				
+				usuarioRepo.save(usuario);
+				
+			}else{
+				
+				throw new errores("No se puede asignar el codigo");
+		
+			}
+		}
+		
+		public void ModificarClave( String email, String clave, String clave2) throws errores {
+			
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			
+			Usuario  usuario = usuarioRepo.findByEmail(email);
+			if(usuario != null) {
+				
+				usuario.setClave(encoder.encode(clave));
+				usuarioRepo.save(usuario);
+				
+			}else{
+				
+				throw new errores("No se encuentra el cliente solicitado");
+		
+			}
+		}
+		
+		
 	public Usuario findByEmail(String email) {
 		return usuarioRepo.findByEmail(email);
 	}
@@ -155,10 +190,16 @@ public class UsuarioServicio implements UserDetailsService {
 		return usuarioRepo.findByCelular(celular);
 	}
     
-        public Usuario findById(String id){
-            return usuarioRepo.getById(id);
-        }
-        
+    public Usuario findById(String id){
+         return usuarioRepo.getById(id);
+    }
+     
+    public void recuperarClave(String email) throws errores {
+		
+    	senderService.sendEmailClave(email);
+    	
+	}
+    
 	
 	@Override
 	public UserDetails loadUserByUsername (String email) throws UsernameNotFoundException {

@@ -27,6 +27,7 @@ public class Usuario implements Serializable {
     private Date nacimineto;
     private String celular;
     private String role;//--
+    private Integer codigo;
 
     // GETTERS / SETTERS
     public String getId() {
@@ -118,6 +119,14 @@ public class Usuario implements Serializable {
     public void setRole(String role) {
         this.role = role;
     }
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
 
     
 
