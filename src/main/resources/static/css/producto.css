@@ -7,7 +7,7 @@
 	justify-content: center;
 	align-items: center;
     color: rgb(0, 0, 0);
-	text-align: center;
+	text-align: left;
 }
 
 .img-container {
@@ -22,6 +22,7 @@
 }
 
 .product{
+	width: 80%;
     margin-left: 25em;
     margin-right: 25em;
     overflow: hidden;
@@ -34,10 +35,10 @@
 }
 
 #item {
-    padding-top: 10px;
+    padding-top: 5px;
     padding-left: 25px;
     padding-right: 25px;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     float: left;
     max-width: 50%;
 }
@@ -61,5 +62,5 @@
 }
 
 .formulario {
-    text-align: center;
+	 text-align: center;
 }
