@@ -60,7 +60,7 @@ public class UsuarioServicio implements UserDetailsService {
 		}
 		
 		
-		Pattern p1 = Pattern.compile("^[a-zA-Z]+$");										//Patron para inputs de solo caracteres. EJ:Nombre, apellido.
+		Pattern p1 = Pattern.compile("^[a-zA-Z ]+$");										//Patron para inputs de solo caracteres. EJ:Nombre, apellido.
 		Pattern p2 = Pattern.compile("^[0-9]+$");											//Patron para inputs de solo numeros. EJ: documento, telefono, nroTarjeta.
 		Pattern p3 = Pattern.compile("^[A-Za-z0-9._%+-]+@[A-Za-z0-9-]+[.][A-Za-z]{2,}$");	//Patron para inputs que reciban solamente MAILS.
 		Pattern p4 = Pattern.compile("^[A-Za-z0-9 ]+$");								//Patron para inputs para que reciba caracteres y nmros con la condicion de que el 1er caracter sea en MAY y letra.
@@ -113,6 +113,7 @@ public class UsuarioServicio implements UserDetailsService {
 		usuario.setCelular(celular);
 		usuario.setClave(encoder.encode(clave));
 		usuario.setRole(Role_e.USER.toString());
+		usuario.setCodigo(null);
 		
 		usuarioRepo.save(usuario);
 		
@@ -147,6 +148,40 @@ public class UsuarioServicio implements UserDetailsService {
 		}
 	}
 		
+		public void ModificarCodigo(String email, Integer codigo) throws errores {
+			
+			Usuario  usuario = usuarioRepo.findByEmail(email);
+			if(usuario != null) {
+				
+				usuario.setCodigo(codigo);
+				
+				usuarioRepo.save(usuario);
+				
+			}else{
+				
+				throw new errores("No se puede asignar el codigo");
+		
+			}
+		}
+		
+		public void ModificarClave( String email, String clave, String clave2) throws errores {
+			
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			
+			Usuario  usuario = usuarioRepo.findByEmail(email);
+			if(usuario != null) {
+				
+				usuario.setClave(encoder.encode(clave));
+				usuarioRepo.save(usuario);
+				
+			}else{
+				
+				throw new errores("No se encuentra el cliente solicitado");
+		
+			}
+		}
+		
+		
 	public Usuario findByEmail(String email) {
 		return usuarioRepo.findByEmail(email);
 	}
@@ -159,7 +194,7 @@ public class UsuarioServicio implements UserDetailsService {
          return usuarioRepo.getById(id);
     }
      
-    public void recuperarClave(String email) {
+    public void recuperarClave(String email) throws errores {
 		
     	senderService.sendEmailClave(email);
     	

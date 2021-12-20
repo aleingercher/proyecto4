@@ -23,13 +23,10 @@
   </header>
   <section>
 		<div id="flex-center">
-    <div "${error != null}" th:text="${error}"
-      class="alert-success alert-dismissible fade show mt-3" role="alert">
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-    </div>
     <h3 style="color: white; text-align: center;">Recuperacion de clave</h3>
     <div class="block-mid" th:if="${codigo} == null">
       <form th:action="@{/user/cargarCodigo}" method="GET">
+      		<p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
       		<div class="mb-4">
               <label for="exampleInputEmail1" class="form-label font-weight-bold">Ingrese su Email: </label>
               <input type="email" class="form-control bg-light border-0" id="exampleInputEmail1"
@@ -38,18 +35,36 @@
       	<button type="submit" class="btn btn-primary w-100">Pedir codigo</button>
       </form>
     </div>
-    <div class="block-mid" th:if="${codigo} != null">
-      <form th:action="@{/user/recuperarClave}" method="POST">
+    <div class="block-mid" th:if="${email} != null">
+      <form th:action="@{/user/cambiarClave/__${email}__}" method="GET">
+      		<p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
       		<div class="mb-4">
-              <label for="exampleInputEmail1" class="form-label font-weight-bold">Ingrese su codigo: </label>
-              <input type="number" class="form-control bg-light border-0" id="exampleInputEmail1"
-                placeholder="Ingresa tu codigo" aria-describedby="emailHelp" name="email">
+              <label for="codigo" class="form-label font-weight-bold">Ingrese su codigo: </label>
+              <input type="number" class="form-control bg-light border-0" id="codigo"
+                placeholder="Ingresa tu codigo" aria-describedby="emailHelp" name="codigo">
             </div>
       	<button type="submit" class="btn btn-primary w-100">Verificar</button>
       </form>
     </div>
   </div>
 
+	 <div class="block-mid" th:if="${bandera} != null">
+      <form th:action="@{/user/modificarClave/__${emaill}__}" method="POST">
+      		<p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+      		<div class="mb-4">
+              <label for="clave" class="form-label font-weight-bold">Ingrese su nueva clave: </label>
+              <input type="password" class="form-control bg-light border-0" id="clave"
+                placeholder="Ingresa tu clave" aria-describedby="emailHelp" name="clave">
+            </div>
+            <div class="mb-4">
+              <label for="clave2" class="form-label font-weight-bold">Confirme su clave: </label>
+              <input type="password" class="form-control bg-light border-0" id="clave2"
+                placeholder="Confirma tu clave" aria-describedby="emailHelp" name="clave2">
+            </div>
+      	<button type="submit" class="btn btn-primary w-100">Verificar</button>
+      </form>
+    </div>
+  	</div>
   </section>
   <!-- Optional JavaScript -->
   <!-- Popper.js first, then Bootstrap JS -->
