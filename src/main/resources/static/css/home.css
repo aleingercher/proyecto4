@@ -95,7 +95,7 @@ body {
 	background-size: cover;
 	background-position: center;
 	border-radius: 0.5rem;
-	border: 2px solid rgb(65, 65, 65);
+	border: 2px solid;
 	border-collapse: collapse;
 	display: flex;
 	justify-content: center;

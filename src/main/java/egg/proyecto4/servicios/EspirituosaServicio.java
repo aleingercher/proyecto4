@@ -61,18 +61,24 @@ public class EspirituosaServicio {
 
     //Modificar Espirituosa
     @Transactional
-    public void modificarEspirituosa(String envase, String foto, String marca, String origen, String tipo, String id, Float precio) throws errores {
+
+    public void modificarEspirituosa(String envase,String foto, String marca, String origen, String tipo, String id, Float precio, Integer stock) throws errores {
+        
 
         Espirituosa espirituosa = espirituosaRepo.findById(id).get();
 
         espirituosa.setCategoria("Espirituosa");
-        espirituosa.setEnvase(envase);
+        espirituosa.setEnvase(prettify(envase));
         espirituosa.setFoto(foto);
-        espirituosa.setMarca(marca);
-        espirituosa.setOrigen(origen);
-        espirituosa.setTipo(tipo);
+        espirituosa.setMarca(prettify(marca));
+        espirituosa.setOrigen(prettify(origen));
+        espirituosa.setTipo(prettify(tipo));
         espirituosa.setVendidos(0);
         espirituosa.setPrecio(precio);
+
+        espirituosa.setStock(stock);
+        
+
 
         espirituosaRepo.save(espirituosa);
 

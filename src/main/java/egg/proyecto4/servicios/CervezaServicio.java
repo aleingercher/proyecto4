@@ -1,6 +1,7 @@
 package egg.proyecto4.servicios;
 
 import egg.proyecto4.entidades.Cerveza;
+
 import egg.proyecto4.enums.Categoria_e;
 import egg.proyecto4.errores.errores;
 import egg.proyecto4.repositorios.CervezaRepositorio;
@@ -70,18 +71,21 @@ public class CervezaServicio {
     
     //Modificar Cerveza
     @Transactional
-    public void modificarCerveza(String envase, String varietal, String foto, String marca, String origen, String tipo, String id, Float precio) throws errores {        
+
+    public void modificarCerveza(String envase, String varietal, String foto, String marca, String origen, String tipo, String id, Float precio, Integer stock) throws errores {
+        
 
         Cerveza cerveza = cervezaRepo.findById(id).get();
         
         cerveza.setCategoria("Cerveza");
-        cerveza.setEnvase(envase);
-        cerveza.setVarietal(varietal);
+        cerveza.setEnvase(prettify(envase));
+        cerveza.setVarietal(prettify(varietal));
         cerveza.setFoto(foto);
-        cerveza.setMarca(marca);
-        cerveza.setOrigen(origen);
-        cerveza.setTipo(tipo);
+        cerveza.setMarca(prettify(marca));
+        cerveza.setOrigen(prettify(origen));
+        cerveza.setTipo(prettify(tipo));
         cerveza.setPrecio(precio);
+        cerveza.setStock(stock);
         
         cervezaRepo.save(cerveza);
         

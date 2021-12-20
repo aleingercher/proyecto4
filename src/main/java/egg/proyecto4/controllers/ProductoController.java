@@ -173,6 +173,7 @@ public class ProductoController {
 		Cerveza cerveza = cervezaServi.findById(id);
 		if(cerveza != null) {
 			
+			model.addAttribute("prod", cerveza);
 			model.addAttribute("id", cerveza.getId());
 			model.addAttribute("categoriaC", cerveza.getCategoria());
 			
@@ -187,6 +188,7 @@ public class ProductoController {
 		
 		if (vino != null) {
 			
+			model.addAttribute("prod", vino);
 			model.addAttribute("id", vino.getId());
 			model.addAttribute("categoriaV", vino.getCategoria());
 			
@@ -200,6 +202,7 @@ public class ProductoController {
 		Espirituosa espirituosa = espirituosaServi.findById(id);
 		if(espirituosa != null) {
 			
+			model.addAttribute("prod", espirituosa);
 			model.addAttribute("id", espirituosa.getId());
 			model.addAttribute("categoriaE", espirituosa.getCategoria());
 		}
@@ -207,7 +210,7 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/actualizar/{id}")
-	public String updateProducto(ModelMap model,@PathVariable("id") String id, MultipartFile imagen,String marca,Float precio, String envase, String tipo,@RequestParam(required = false) String origen, @RequestParam(required = false) String varietal, @RequestParam(required = false) String bodega) {
+	public String updateProducto(ModelMap model,@PathVariable("id") String id, MultipartFile imagen,String marca,Float precio, String envase, String tipo,@RequestParam(required = false) String origen,@RequestParam(required = false) Integer stock, @RequestParam(required = false) String varietal, @RequestParam(required = false) String bodega) {
 
 		//GUARDADO DE IMAGEN 
 		String img = null;
@@ -233,35 +236,35 @@ public class ProductoController {
 		if (producto.getCategoria().equals("Cerveza")) {
 
 			try {
-				cervezaServi.modificarCerveza(envase, varietal, img, marca, origen, tipo, id, precio);
+				cervezaServi.modificarCerveza(envase, varietal, img, marca, origen, tipo, id, precio, stock);
 			} catch (Exception e) {
 				model.put("error", e.getMessage());
-				model.addAttribute("id", producto.getId());
-				model.addAttribute("categoriaC", producto.getCategoria());
+				model.put("id", producto.getId());
+				model.put("categoriaC", producto.getCategoria());
 				return "editarProductos";
 			}
 
 		} else if (producto.getCategoria().equals("Vino")) {
 
 			try {
-				vinoServi.modificarVino(id, envase, varietal, bodega, img, marca, origen, tipo, precio);
+				vinoServi.modificarVino(id, envase, varietal, bodega, img, marca, origen, tipo, precio, stock);
 			} catch (Exception e) {
 				model.put("error", e.getMessage());
 				model.put("precio", precio);
-				model.addAttribute("id", producto.getId());
-				model.addAttribute("categoriaV", producto.getCategoria());
+				model.put("id", producto.getId());
+				model.put("categoriaV", producto.getCategoria());
 				return "editarProductos";
 			}
 
 		} else if (producto.getCategoria().equals("Espirituosa")){
 
 			try {
-				espirituosaServi.modificarEspirituosa(envase, img, marca, origen, tipo, id, precio);
+				espirituosaServi.modificarEspirituosa(envase, img, marca, origen, tipo, id, precio, stock);
 			} catch (Exception e) {
 				model.put("error", e.getMessage());
 				model.put("precio", precio);
-				model.addAttribute("id", producto.getId());
-				model.addAttribute("categoriaE", producto.getCategoria());
+				model.put("id", producto.getId());
+				model.put("categoriaE", producto.getCategoria());
 				return "editarProductos";
 			}
 		}
