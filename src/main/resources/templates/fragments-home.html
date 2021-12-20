@@ -1,7 +1,7 @@
 <div th:fragment="user">
 
   <div class="buscador">
-    <i class="icono fa fa-search" onclick="rowClickedCerveza(this.getAttribute('class'))"></i>
+    <i class="icono fa fa-search"></i>
     <input autocomplete="off" type="text" name="search" id="search"
       placeholder="Ingrese su busqueda">
     <table class="table">
@@ -14,12 +14,13 @@
         </tr>
       </thead>
       <tbody>
-        <tr th:each="cerveza:${cervezas}" style="cursor: pointer" th:idcerve="${cerveza.id}">
-
+        <tr th:each="cerveza:${cervezas}" th:idc=${cerveza.id}
+          onclick="rowClickedCerveza(this.getAttribute('idc'))" style="cursor: pointer">
           <td th:text="${cerveza.marca}">Marca</td>
           <td th:text="${cerveza.varietal}">flia</td>
           <td th:text="${cerveza.envase}">envase</td>
           <td th:text="${cerveza.precio}">$</td>
+
           <!-- ESTE BOTON ESTA PUESTO PARA PODER IR A LA VISTA producto.html, SE TENDRIA QUE SACAR-->
           <!-- <div class="btn-group" role="group" aria-label="Basic mixed styles example">
             <a type="button" class="btn btn-primary"
@@ -27,22 +28,16 @@
                 data-feather="info"></i></a>
           </div> -->
         </tr>
-<<<<<<< HEAD
-        <tr th:each="vino:${vinos}">
-	          <td th:text="${vino.tipo}"></td>
-	          <td th:text="${vino.marca}">Marca</td>
-	          <td th:text="${vino.varietal}">flia</td>
-	          <td th:text="${vino.envase}">envase</td>
-	          <td th:text="${vino.precio}">$</td>
-=======
-        <tr th:each="vino:${vinos}" th:href="@{/producto/vinoEspecifico/__${vino.id}__}">
+        <tr th:each="vino:${vinos}" th:idv=${vino.id}
+          onclick="rowClickedVino(this.getAttribute('idv'))" style="cursor: pointer">
           <td th:text="${vino.marca}">Marca</td>
           <td th:text="${vino.varietal}">flia</td>
           <td th:text="${vino.envase}">envase</td>
           <td th:text="${vino.precio}">$</td>
->>>>>>> 92007f8fe082aa7eeb38f602fbe35d921be925e6
         </tr>
-        <tr th:each="prod:${espirituosas}">
+
+        <tr th:each="prod:${espirituosas}" th:ide=${prod.id}
+          onclick="rowClickedEspirituosa(this.getAttribute('ide'))" style="cursor: pointer">
           <a th:href="@{/producto/espirituosaEspecifico/__${prod.id}__}">
             <td th:text="${prod.marca}">Marca</td>
             <td th:text="${prod.tipo}">Flia</td>

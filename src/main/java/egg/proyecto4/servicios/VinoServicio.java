@@ -17,7 +17,7 @@ public class VinoServicio {
     @Autowired
     private VinoRepositorio vinoRepo;
 
-    private void validar( String envase, String varietal, String bodega, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
+    private void validar(String envase, String varietal, String bodega, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
 
         if (envase == null || envase.isEmpty()) {
             throw new errores("Debe seleccionar un envase para la cerveza.");
@@ -44,47 +44,47 @@ public class VinoServicio {
 //        if (!mDescripcion.find()) {
 //            throw new errores("Ingrese solo caracteres y valores númericos");
 //        }
-
     }
-    
+
     //Guardar Vino
     @Transactional
-    public void guardarVino( String descripcion, String envase, String varietal, String bodega, String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
+    public void guardarVino(String descripcion, String envase, String varietal, String bodega, String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
 
-        validar(envase,varietal,bodega,marca,origen,tipo,precio,stock);
-        
+        validar(envase, varietal, bodega, marca, origen, tipo, precio, stock);
+
         Vino vino = new Vino();
-        
-        vino.setBodega(bodega);
-        vino.setCategoria(Categoria_e.VINO);
+
+        vino.setBodega(prettify(bodega));
+        vino.setCategoria("Vino");
         vino.setDescripcion(descripcion);
-        vino.setEnvase(envase);
+        vino.setEnvase(prettify(envase));
         vino.setFoto(foto);
-        vino.setMarca(marca);
-        vino.setOrigen(origen);
-        vino.setOtrasMarcas(otrasMarcas);
-        vino.setPrecio(precio);
         vino.setStock(stock);
-        vino.setTipo(tipo);
+        vino.setMarca(prettify(marca));
+        vino.setOtrasMarcas(otrasMarcas);
+        vino.setOrigen(prettify(origen));
+        vino.setPrecio(precio);
+        vino.setTipo(prettify(tipo));
         vino.setVendidos(0);
         vino.setPrecio(precio);
-        vino.setVarietal(varietal);
-        
+        vino.setVarietal(prettify(varietal));
+
         vinoRepo.save(vino);
 
     }
 
-    
     //Modificar Vino
     @Transactional
+
     public void modificarVino (String id, String envase, String varietal, String bodega, String foto, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
         
         
         
+
         Vino vino = vinoRepo.findById(id).get();
-        
+
         vino.setBodega(bodega);
-        vino.setCategoria(Categoria_e.CERVEZA);
+        vino.setCategoria("Vino");
         vino.setEnvase(envase);
         vino.setFoto(foto);
         vino.setMarca(marca);
@@ -95,22 +95,28 @@ public class VinoServicio {
         vino.setPrecio(precio);
         vino.setVarietal(varietal);
         vino.setStock(stock);
-        
+
         vinoRepo.save(vino);
-        
     }
-    
+
+
     //Consultar Vino
-    public List<Vino> consultarVinos(){
+    public List<Vino> consultarVinos() {
         return vinoRepo.findAll();
     }
-    
-    public Vino findById(String id){
+
+    public Vino findById(String id) {
         return vinoRepo.getById(id);
     }
-    
-    public void eliminarVino(String id){
+
+    public void eliminarVino(String id) {
         Vino vino = vinoRepo.findById(id).get();
         vinoRepo.delete(vino);
+    }
+    
+    public String prettify(String en) {
+        String pretty = en.replace("_", " ").toLowerCase();
+        pretty = pretty.substring(0, 1).toUpperCase() + pretty.substring(1);
+        return pretty;
     }
 }

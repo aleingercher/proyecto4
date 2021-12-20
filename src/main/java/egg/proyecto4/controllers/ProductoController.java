@@ -63,7 +63,6 @@ public class ProductoController {
 	public String cerveza() {
 		
 		
-		
 		return "cargaCerveza"; 	//Estas vistan se retornan a ellas mismas.
 	}
 	
@@ -234,7 +233,7 @@ public class ProductoController {
 		Producto producto = productoServi.findById(id);
 		
 
-		if (producto.getCategoria().equals(Categoria_e.CERVEZA)) {
+		if (producto.getCategoria().equals("Cerveza")) {
 
 			try {
 				cervezaServi.modificarCerveza(envase, varietal, img, marca, origen, tipo, id, precio, stock);
@@ -245,7 +244,7 @@ public class ProductoController {
 				return "editarProductos";
 			}
 
-		} else if (producto.getCategoria().equals(Categoria_e.VINO)) {
+		} else if (producto.getCategoria().equals("Vino")) {
 
 			try {
 				vinoServi.modificarVino(id, envase, varietal, bodega, img, marca, origen, tipo, precio, stock);
@@ -257,7 +256,7 @@ public class ProductoController {
 				return "editarProductos";
 			}
 
-		} else if (producto.getCategoria().equals(Categoria_e.ESPIRITUOSAS)){
+		} else if (producto.getCategoria().equals("Espirituosa")){
 
 			try {
 				espirituosaServi.modificarEspirituosa(envase, img, marca, origen, tipo, id, precio, stock);

@@ -8,10 +8,10 @@ public enum EspirituosasMarca_e {
 //	SMIRNOFF("Smirnoff"),/**/
         
         BALLANTINES("Ballantines"),/**/
-        CHIVAS("Chivas Regal"),/**/
+        CHIVAS_REGAL("Chivas Regal"),/**/
         HAVANA("Havana"),/**/
-        CAPITAN("Capitan Morgan"),/**/
-        JACK("Jack Daniel"),/**/
+        CAPITAN_MORGAN("Capitan Morgan"),/**/
+        JACK_DANIELS("Jack Daniels"),/**/
 	JAMESON("Jameson"),/**/
         JIM("Jim Beam"),/**/
         BULLDOG("Bulldog"),
@@ -19,21 +19,21 @@ public enum EspirituosasMarca_e {
         VITONE("Vitone"),/**/
         MIL_OCHO("1882"),/**/
         CINZANO("Cinzano"),/**/
-        ANICA("Anica Fórmula"),
-        ANIS("Anis Chinchon"),/**/
+        ANICA_FORMULA("Anica Fórmula"),
+        ANIS_CHINCHON("Anis Chinchon"),/**/
         AMARGO_OBRERO("Amargo Obrero"),/**/
         APEROL("Aperol"),/**/
         GANCIA("Gancia"),/**/
-        JOHNNIE("Johnnie Walker"),
-        HIERRO("Hierro Quina Pereti"),/**/
+        JOHNNY_WALKER("Johnnie Walker"),
+        HIERRO_QUINA_PERETI("Hierro Quina Pereti"),/**/
         LUNFA("Lunfa"),/**/
         MARTINI("Martini"),/**/
         PIMMS("Pimms"),/**/
         PINERAL("Pineral"),/**/
-        RED("Red Label"),/**/
+        RED_LABEL("Red Label"),/**/
         SWING("Swing"),/**/
         BAT("Bat 69"),/**/
-        PINA_COL("American Club"),/**/
+        AMERICAN_CLUB("American Club"),/**/
         PUNT("Punt"),/**/
         RICARD("Ricard"),/**/
         FUERZA("La Fuerza"),/**/

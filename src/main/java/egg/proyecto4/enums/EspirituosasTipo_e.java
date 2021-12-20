@@ -4,7 +4,7 @@ public enum EspirituosasTipo_e {
 
 	VODKA("Vodka"),
 	RON("Ron"),
-        PINA("Piña Colada"),
+        PINA_COLADA("Piña Colada"),
 	WHISKY("Whysky"),
 	//BOURBON("Bourbon"),
 	TEQUILA("Tequila"),

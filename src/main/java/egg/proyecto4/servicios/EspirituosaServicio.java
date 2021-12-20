@@ -13,12 +13,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EspirituosaServicio {
-    
+
     @Autowired
     private EspirituosaRepositorio espirituosaRepo;
-    
-    private void validar( String envase, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
-        
+
+    private void validar(String envase, String marca, String origen, String tipo, Float precio, Integer stock) throws errores {
+
         if (envase == null || envase.isEmpty()) {
             throw new errores("Debe seleccionar un envase para la cerveza.");
         } else if (marca == null || marca.isEmpty()) {
@@ -31,44 +31,43 @@ public class EspirituosaServicio {
             throw new errores("Debe contener un precio.");
         } else if (stock == null || tipo.isEmpty()) {
             throw new errores("Debe haber stock.");
-        } 
+        }
 
     }
-    
-    
+
     //Guardar Espirituosa
     @Transactional
-    public void guardarEspirituosa (String descripcion, String envase,String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
-        
-        validar(envase,marca,origen,tipo,precio,stock);
-        
+    public void guardarEspirituosa(String descripcion, String envase, String foto, String marca, String origen, String otrasMarcas, String tipo, Float precio, Integer stock) throws errores {
+
+        validar(envase, marca, origen, tipo, precio, stock);
+
         Espirituosa espirituosa = new Espirituosa();
-        
-        espirituosa.setCategoria(Categoria_e.ESPIRITUOSAS);
+
+        espirituosa.setCategoria("Espirituosa");
         espirituosa.setDescripcion(descripcion);
-        espirituosa.setEnvase(envase);
+        espirituosa.setEnvase(prettify(envase));
         espirituosa.setFoto(foto);
-        espirituosa.setMarca(marca);
-        espirituosa.setOrigen(origen);
+        espirituosa.setMarca(prettify(marca));
+        espirituosa.setOrigen(prettify(origen));
         espirituosa.setOtrasMarcas(otrasMarcas);
-        espirituosa.setTipo(tipo);
+        espirituosa.setTipo(prettify(tipo));
         espirituosa.setVendidos(0);
         espirituosa.setPrecio(precio);
         espirituosa.setStock(stock);
-        
+
         espirituosaRepo.save(espirituosa);
-        
+
     }
-    
+
     //Modificar Espirituosa
     @Transactional
+
     public void modificarEspirituosa(String envase,String foto, String marca, String origen, String tipo, String id, Float precio, Integer stock) throws errores {
         
-        
-        
+
         Espirituosa espirituosa = espirituosaRepo.findById(id).get();
-        
-        espirituosa.setCategoria(Categoria_e.ESPIRITUOSAS);
+
+        espirituosa.setCategoria("Espirituosa");
         espirituosa.setEnvase(envase);
         espirituosa.setFoto(foto);
         espirituosa.setMarca(marca);
@@ -76,24 +75,32 @@ public class EspirituosaServicio {
         espirituosa.setTipo(tipo);
         espirituosa.setVendidos(0);
         espirituosa.setPrecio(precio);
+
         espirituosa.setStock(stock);
         
+
+
         espirituosaRepo.save(espirituosa);
-        
+
     }
-    
+
     //Consultar Espirituosa
-    public List<Espirituosa> consultarEspirituosas(){
+    public List<Espirituosa> consultarEspirituosas() {
         return espirituosaRepo.findAll();
     }
-    
-    
-    public Espirituosa findById(String id){
+
+    public Espirituosa findById(String id) {
         return espirituosaRepo.getById(id);
     }
- 
-    public void eliminarEspirituosa(String id){
+
+    public void eliminarEspirituosa(String id) {
         Espirituosa espirituosa = espirituosaRepo.findById(id).get();
         espirituosaRepo.delete(espirituosa);
+    }
+
+    public String prettify(String en) {
+        String pretty = en.replace("_", " ").toLowerCase();
+        pretty = pretty.substring(0, 1).toUpperCase() + pretty.substring(1);
+        return pretty;
     }
 }

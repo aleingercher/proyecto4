@@ -66,6 +66,7 @@
             </div>
           </td>
         </tr>
+
         <tr th:each="vino:${vinos}">
           <td th:text="${vino.marca}">Marca</td>
           <td th:text="${vino.envase}">Envase</td>
@@ -82,6 +83,7 @@
             </div>
           </td>
         </tr>
+        
         <tr th:each="espirituosa:${espirituosas}">
           <td th:text="${espirituosa.marca}">Marca</td>
           <td th:text="${espirituosa.envase}">Envase</td>

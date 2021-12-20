@@ -49,18 +49,18 @@
       <div class="form-group">
         <label for="Precio" class="control-label">Precio producto</label>
         <input type="number" class="form-control" id="precio_producto" name="precio"
-          placeholder="...">
+          placeholder="..." th:value="${precio}">
       </div>
 
       <!-- stock -->
       <div class="form-group">
         <label for="stock" class="control-label">Stock productos</label>
-        <input type="number" class="form-control" id="stock_producto" name="stock"
-          placeholder="...">
+        <input type="number" class="form-control" id="stock_producto" name="stock" placeholder="..."
+          th:value="${stock}">
       </div>
 
       <!-- descripción -->
-      <div class="form-group">
+      <div class=" form-group">
         <label for="descripcion" class="control-label">Descripción del Producto</label>
         <input type="text" class="form-control" id="descripcion_producto" name="descripcion"
           placeholder="...">
